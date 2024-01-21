@@ -14,7 +14,7 @@
 
 ## API URL 🌐
 
-```http
+```
 https://alfa-leetcode-api.vercel.app/
 ```
 
