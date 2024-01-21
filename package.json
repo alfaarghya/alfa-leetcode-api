@@ -1,10 +1,13 @@
 {
   "name": "custom-leetcode-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "It's a leetcode custom api",
   "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "start" : "node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
