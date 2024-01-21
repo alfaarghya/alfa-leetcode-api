@@ -4,7 +4,7 @@
   "description": "It's a leetcode custom api",
   "main": "index.js",
   "engines": {
-    "node": "20.x"
+    "node": "18.x"
   },
   "scripts": {
     "start": "node index.js",
