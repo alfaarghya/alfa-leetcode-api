@@ -24,18 +24,16 @@ This API provides endpoints to retrieve details about a user's profile, badges, 
 
 ### 👤User Details
 
-| Details              | Endpoint                             | Description                                                  |
-| :------------------- | :----------------------------------- | :----------------------------------------------------------- |
-| _Profile_            | `/:username`                         | Get details about a user's profile.                          |
-| _Badges_             | `/:username/badges`                  | Get the badges earned by the user.                           |
+| Details              | Endpoint                             | Description                                                  | Demo                                                               |
+| :------------------- | :----------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------------ |
+| _Profile_            | `/:username`                         | Get details about a user's profile.                          | ![Link](./public/demo/demo2.png)                                   |
+| _Badges_             | `/:username/badges`                  | Get the badges earned by the user.                           | <a href="./public/demo/demo2.png" target="_blank">See the Demo</a> |
 | _Solved_             | `/:username/solved`                  | Get the total number of questions solved by the user.        |
 | _Contest_            | `/:username/contest`                 | Get details about the user's contest participation.          |
 | _Contest History_    | `/:username/contest/history`         | Get contest history.                                         |
 | _Submission_         | `/:username/submission`              | Get the last 20 submissions of the user.                     |
 | _Limited Submission_ | `/:username/submission?limit=number` | Get a specified **_number_** of the user's last submissions. |
 | _Calendar_           | `/:username/calendar`                | Get the user's submission calendar.                          |
-
----
 
 ### ❓Problem
 
@@ -48,9 +46,7 @@ This API provides endpoints to retrieve details about a user's profile, badges, 
 | _Filter Problems_           | `/problems?tags=tag1+tag2`                   | Get a list of problems based on selected **_tags_**.                             |
 | _Filter & Limited Problems_ | `/problems?tags=tag1+tag2+tag3&limit=number` | Get a list of a specified **_number_** of problems based on selected **_tags_**. |
 
----
-
-### Connect Here
+## Connect Here
 
 [![LinkedIn](https://img.shields.io/badge/linkedin-%2320232a.svg?style=normal&logo=linkedIn&logoColor=%230077B5)](https://linkedin.com/in/alfaarghya)
 [![Twitter](https://img.shields.io/badge/twitter-%2320232a.svg?style=normal&logo=twitter&logoColor=%230077B5)](https://twitter.com/alfa_arghya)
