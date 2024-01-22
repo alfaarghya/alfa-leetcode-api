@@ -24,27 +24,27 @@ This API provides endpoints to retrieve details about a user's profile, badges, 
 
 ### 👤User Details
 
-| Details              | Endpoint                             | Description                                                  | Demo                                                               |
-| :------------------- | :----------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------------ |
-| _Profile_            | `/:username`                         | Get details about a user's profile.                          | ![Link](./public/demo/demo2.png)                                   |
-| _Badges_             | `/:username/badges`                  | Get the badges earned by the user.                           | <a href="./public/demo/demo2.png" target="_blank">See the Demo</a> |
-| _Solved_             | `/:username/solved`                  | Get the total number of questions solved by the user.        |
-| _Contest_            | `/:username/contest`                 | Get details about the user's contest participation.          |
-| _Contest History_    | `/:username/contest/history`         | Get contest history.                                         |
-| _Submission_         | `/:username/submission`              | Get the last 20 submissions of the user.                     |
-| _Limited Submission_ | `/:username/submission?limit=number` | Get a specified **_number_** of the user's last submissions. |
-| _Calendar_           | `/:username/calendar`                | Get the user's submission calendar.                          |
+| Details              | Endpoint                             | Description                                                  | Demo                                                             |
+| :------------------- | :----------------------------------- | :----------------------------------------------------------- | ---------------------------------------------------------------- |
+| _Profile_            | `/:username`                         | Get details about a user's profile.                          | <a href="./public/demo/demo2.png" target="_blank">click here</a> |
+| _Badges_             | `/:username/badges`                  | Get the badges earned by the user.                           | <a href="./public/demo/demo3.png" target="_blank">click here</a> |
+| _Solved_             | `/:username/solved`                  | Get the total number of questions solved by the user.        | <a href="./public/demo/demo4.png" target="_blank">click here</a> |
+| _Contest_            | `/:username/contest`                 | Get details about the user's contest participation.          | <a href="./public/demo/demo5.png" target="_blank">click here</a> |
+| _Contest History_    | `/:username/contest/history`         | Get contest history.                                         | <a href="./public/demo/demo6.png" target="_blank">click here</a> |
+| _Submission_         | `/:username/submission`              | Get the last 20 submissions of the user.                     | <a href="./public/demo/demo7.png" target="_blank">click here</a> |
+| _Limited Submission_ | `/:username/submission?limit=number` | Get a specified **_number_** of the user's last submissions. | <a href="./public/demo/demo8.png" target="_blank">click here</a> |
+| _Calendar_           | `/:username/calendar`                | Get the user's submission calendar.                          | <a href="./public/demo/demo9.png" target="_blank">click here</a> |
 
 ### ❓Problem
 
-| Details                     | Endpoint                                     | Description                                                                      |
-| :-------------------------- | :------------------------------------------- | :------------------------------------------------------------------------------- |
-| _Daily Problems_            | `/daily`                                     | Get the daily question.                                                          |
-| _Selected Problem_          | `/select?titleSlug=selected-question`        | Get details about a **_selected-question_**.                                     |
-| _Problems_                  | `/problems`                                  | Get a list of 20 problems.                                                       |
-| _Limited Problems_          | `/problems?limit=number`                     | Get a list of a specified **_number_** of problems.                              |
-| _Filter Problems_           | `/problems?tags=tag1+tag2`                   | Get a list of problems based on selected **_tags_**.                             |
-| _Filter & Limited Problems_ | `/problems?tags=tag1+tag2+tag3&limit=number` | Get a list of a specified **_number_** of problems based on selected **_tags_**. |
+| Details                     | Endpoint                                     | Description                                                                      | Demo                                                              |
+| :-------------------------- | :------------------------------------------- | :------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| _Daily Problems_            | `/daily`                                     | Get the daily question.                                                          | <a href="./public/demo/demo10.png" target="_blank">click here</a> |
+| _Selected Problem_          | `/select?titleSlug=selected-question`        | Get details about a **_selected-question_**.                                     | <a href="./public/demo/demo11.png" target="_blank">click here</a> |
+| _Problems_                  | `/problems`                                  | Get a list of 20 problems.                                                       | <a href="./public/demo/demo12.png" target="_blank">click here</a> |
+| _Limited Problems_          | `/problems?limit=number`                     | Get a list of a specified **_number_** of problems.                              | <a href="./public/demo/demo13.png" target="_blank">click here</a> |
+| _Filter Problems_           | `/problems?tags=tag1+tag2`                   | Get a list of problems based on selected **_tags_**.                             | <a href="./public/demo/demo14.png" target="_blank">click here</a> |
+| _Filter & Limited Problems_ | `/problems?tags=tag1+tag2+tag3&limit=number` | Get a list of a specified **_number_** of problems based on selected **_tags_**. | <a href="./public/demo/demo15.png" target="_blank">click here</a> |
 
 ## Connect Here
 
