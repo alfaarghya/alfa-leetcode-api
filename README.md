@@ -1,5 +1,8 @@
 <h1 align="center">alfa-leetcode-api</h1>
 <div align="center">
+
+### The API for retrieving your LeetCode profile & Problems statistics
+
 <img src="https://img.shields.io/badge/License-MIT-green.svg"/>
 <img src="https://img.shields.io/npm/v/npm.svg?logo=nodedotjs"/>
 
