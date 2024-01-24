@@ -16,6 +16,7 @@ const query = `query getUserProfile($username: String!) {
         profile {
             realName
             userAvatar
+            birthday
             ranking
             reputation
             websites
