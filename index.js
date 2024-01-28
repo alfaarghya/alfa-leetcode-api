@@ -14,6 +14,8 @@ app.get("/", (req, res) => {
         "/:username/contest/history": "get all contest history",
         "/:username/submission": "get your last 20 submission",
         "/:username/submission?limit=7": "get some of your last submission",
+        "/:username/ac_submission": "get your last 20 accepted submission",
+        "/:username/ac_submission?limit=7": "get some of your last accepted submission",
         "/:username/calendar": "get your submission calendar",
       },
       problems: {
@@ -47,6 +49,7 @@ app.get("/:username/solved", leetcode.solvedProblem);
 app.get("/:username/contest", leetcode.userContest);
 app.get("/:username/contest/history", leetcode.userContestHistory);
 app.get("/:username/submission", leetcode.submission);
+app.get("/:username/ac_submission", leetcode.acSubmission);
 app.get("/:username/calendar", leetcode.calendar);
 
 app.listen(port, () => {
