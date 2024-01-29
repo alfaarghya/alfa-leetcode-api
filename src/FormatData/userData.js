@@ -61,6 +61,12 @@ exports.formatSubmissionData = (data) => {
     submission: data.recentSubmissionList,
   };
 };
+exports.formatAcSubmissionData = (data) => {
+  return {
+    count: data.recentAcSubmissionList.length,
+    submission: data.recentAcSubmissionList,
+  };
+};
 exports.formatSubmissionCalendarData = (data) => {
   return {
     submissionCalendar: data.matchedUser.submissionCalendar,

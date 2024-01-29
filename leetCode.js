@@ -4,6 +4,7 @@ const contestQuery = require("./src/GraphqlQuery/contest");
 const dailyQuery = require("./src/GraphqlQuery/dailyProblem");
 const selectProblemQuery = require("./src/GraphqlQuery/selectProblem");
 const submissionQuery = require("./src/GraphqlQuery/recentSubmit");
+const AcSubmissionQuery = require("./src/GraphqlQuery/recentAcSubmit");
 const problemsQuery = require("./src/GraphqlQuery/problemList");
 
 //API Fetch
@@ -38,6 +39,9 @@ exports.solvedProblem = (req, res) => {
 };
 exports.submission = (req, res) => {
   userDetailsFetch(req, res, userData.formatSubmissionData, submissionQuery);
+};
+exports.acSubmission = (req, res) => {
+  userDetailsFetch(req, res, userData.formatAcSubmissionData, AcSubmissionQuery);
 };
 exports.calendar = (req, res) => {
   userDetailsFetch(
