@@ -29,16 +29,18 @@ https://alfa-leetcode-api.vercel.app/
 
 ### 👤User Details
 
-| Details              | Endpoint                             | Description                                                  | Demo                                                             |
-| :------------------- | :----------------------------------- | :----------------------------------------------------------- | ---------------------------------------------------------------- |
-| _Profile_            | `/:username`                         | Get details about a user's profile.                          | <a href="./public/demo/demo2.png" target="_blank">click here</a> |
-| _Badges_             | `/:username/badges`                  | Get the badges earned by the user.                           | <a href="./public/demo/demo3.png" target="_blank">click here</a> |
-| _Solved_             | `/:username/solved`                  | Get the total number of questions solved by the user.        | <a href="./public/demo/demo4.png" target="_blank">click here</a> |
-| _Contest_            | `/:username/contest`                 | Get details about the user's contest participation.          | <a href="./public/demo/demo5.png" target="_blank">click here</a> |
-| _Contest History_    | `/:username/contest/history`         | Get contest history.                                         | <a href="./public/demo/demo6.png" target="_blank">click here</a> |
-| _Submission_         | `/:username/submission`              | Get the last 20 submissions of the user.                     | <a href="./public/demo/demo7.png" target="_blank">click here</a> |
-| _Limited Submission_ | `/:username/submission?limit=number` | Get a specified **_number_** of the user's last submissions. | <a href="./public/demo/demo8.png" target="_blank">click here</a> |
-| _Calendar_           | `/:username/calendar`                | Get the user's submission calendar.                          | <a href="./public/demo/demo9.png" target="_blank">click here</a> |
+| Details                       | Endpoint                             | Description                                                          | Demo                                                              |
+| :---------------------------- | :----------------------------------- | :------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| _Profile_                     | `/:username`                         | Get details about a user's profile.                                  | <a href="./public/demo/demo2.png" target="_blank">click here</a>  |
+| _Badges_                      | `/:username/badges`                  | Get the badges earned by the user.                                   | <a href="./public/demo/demo3.png" target="_blank">click here</a>  |
+| _Solved_                      | `/:username/solved`                  | Get the total number of questions solved by the user.                | <a href="./public/demo/demo4.png" target="_blank">click here</a>  |
+| _Contest_                     | `/:username/contest`                 | Get details about the user's contest participation.                  | <a href="./public/demo/demo5.png" target="_blank">click here</a>  |
+| _Contest History_             | `/:username/contest/history`         | Get contest history.                                                 | <a href="./public/demo/demo6.png" target="_blank">click here</a>  |
+| _Submission_                  | `/:username/submission`              | Get the last 20 submissions of the user.                             | <a href="./public/demo/demo7.png" target="_blank">click here</a>  |
+| _Limited Submission_          | `/:username/submission?limit=number` | Get a specified **_number_** of the user's last submissions.         | <a href="./public/demo/demo8.png" target="_blank">click here</a>  |
+| _Accepted Submission_         | `/:username/acSubmission`            | Get the last 20 accepted submission of the user.                     | <a href="./public/demo/demo16.png" target="_blank">click here</a> |
+| _Limited Accepted Submission_ | `/:username/acSubmission?limit=7`    | Get a specified **_number_** of the user's last accepted submission. | <a href="./public/demo/demo17.png" target="_blank">click here</a> |
+| _Calendar_                    | `/:username/calendar`                | Get the user's submission calendar.                                  | <a href="./public/demo/demo9.png" target="_blank">click here</a>  |
 
 ### ❓Questions Details
 
@@ -50,6 +52,14 @@ https://alfa-leetcode-api.vercel.app/
 | _Limited Problems_          | `/problems?limit=number`                     | Get a list of a specified **_number_** of problems.                              | <a href="./public/demo/demo13.png" target="_blank">click here</a> |
 | _Filter Problems_           | `/problems?tags=tag1+tag2`                   | Get a list of problems based on selected **_tags_**.                             | <a href="./public/demo/demo14.png" target="_blank">click here</a> |
 | _Filter & Limited Problems_ | `/problems?tags=tag1+tag2+tag3&limit=number` | Get a list of a specified **_number_** of problems based on selected **_tags_**. | <a href="./public/demo/demo15.png" target="_blank">click here</a> |
+
+## Author
+
+- [@alfaArghya](https://www.github.com/alfaArghya)
+
+## Contributer
+
+- [@aryanpingle](https://www.github.com/aryanpingle)
 
 ## Connect with me 📲
 
