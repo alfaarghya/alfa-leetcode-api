@@ -53,13 +53,17 @@ https://alfa-leetcode-api.vercel.app/
 | _Filter Problems_           | `/problems?tags=tag1+tag2`                   | Get a list of problems based on selected **_tags_**.                             | <a href="./public/demo/demo14.png" target="_blank">click here</a> |
 | _Filter & Limited Problems_ | `/problems?tags=tag1+tag2+tag3&limit=number` | Get a list of a specified **_number_** of problems based on selected **_tags_**. | <a href="./public/demo/demo15.png" target="_blank">click here</a> |
 
-## Author
+## Author ✒️
 
 - [@alfaArghya](https://www.github.com/alfaArghya)
 
-## Contributer
+## Contributor ✏️
 
 - [@aryanpingle](https://www.github.com/aryanpingle)
+
+## Join Server 💬
+
+[![Discord](https://img.shields.io/badge/discord-%2320232a.svg?style=normal&logo=discord&logoColor=%230077B5)](https://discord.gg/GJ6YM4zrBt)
 
 ## Connect with me 📲
 

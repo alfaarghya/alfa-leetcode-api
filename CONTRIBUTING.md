@@ -41,3 +41,9 @@
   📝Note - It's not Necessary for contribution but it will help me to marge it.
 
 #
+
+### Discuss Here 💬
+
+[![Discord](https://img.shields.io/badge/discord-%2320232a.svg?style=normal&logo=discord&logoColor=%230077B5)](https://discord.gg/GJ6YM4zrBt)
+
+#
