@@ -1,7 +1,10 @@
 const express = require("express");
+const cors = require("cors");
+const leetcode = require("./leetCode");
 const app = express();
 const port = 3000;
-const leetcode = require("./leetCode");
+
+app.use(cors()); //enable all CORS request
 
 app.get("/", (req, res) => {
   res.json({
