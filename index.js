@@ -7,8 +7,8 @@ const port = 3000;
 
 const limiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  limit: 60, // Limit each IP to 60 requests per `window` (here, 1 hour).
-  message: "Too many request from this IP",
+  limit: 60,
+  message: "Too many request from this IP, try again in 1 hour",
 });
 
 app.use(cors()); //enable all CORS request
