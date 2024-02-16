@@ -22,8 +22,13 @@ At First, I struggled to find proper documentation for the `leetcode.com/graphql
 ## API URL 🌐
 
 ```
-https://alfa-leetcode-api.vercel.app/
+Sorry For the inconvenience, due to so many request my free tier on vercel server has ended!!
+The API will activate soon. . . .
 ```
+
+### 💡 Alternate way
+
+If anyone still want to use The API, follow this documention => <a href="CONTRIBUTING.md" target="_blank">Local Deploy</a>
 
 ## Endpoints 🚀
 
