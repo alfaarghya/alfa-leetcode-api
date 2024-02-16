@@ -7,9 +7,7 @@ const port = 3000;
 
 const limiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  limit: 60, // Limit each IP to 100 requests per `window` (here, 1 hour).
-  standardHeaders: "draft-7",
-  legacyHeaders: false,
+  limit: 60, // Limit each IP to 60 requests per `window` (here, 1 hour).
   message: "Too many request from this IP",
 });
 
