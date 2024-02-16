@@ -1,10 +1,20 @@
 const express = require("express");
 const cors = require("cors");
+const rateLimit = require("express-rate-limit");
 const leetcode = require("./leetCode");
 const app = express();
 const port = 3000;
 
+const limiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  limit: 60, // Limit each IP to 100 requests per `window` (here, 1 hour).
+  standardHeaders: "draft-7",
+  legacyHeaders: false,
+  message: "Too many request from this IP",
+});
+
 app.use(cors()); //enable all CORS request
+app.use(limiter); //limit to all API
 
 app.get("/", (req, res) => {
   res.json({
