@@ -13,6 +13,8 @@
 
 </div>
 
+## JS code
+
 ## About ✨
 
 At First, I struggled to find proper documentation for the `leetcode.com/graphql`. After scouring various articles about the LeetCode public API, I still couldn't find the comprehensive documentation I was looking for. Fueled by the desire to fill this gap I created **alfa-leetcode-api**.
