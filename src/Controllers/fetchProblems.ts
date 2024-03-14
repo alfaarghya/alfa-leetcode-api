@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import { ProblemSetQuestionListData } from '../types';
 
-const problemsFetch = async (
+const fetchProblems = async (
   options: { limit: number; tags: string },
   res: Response,
   formatData: (data: ProblemSetQuestionListData) => {},
@@ -36,4 +36,4 @@ const problemsFetch = async (
   }
 };
 
-export default problemsFetch;
+export default fetchProblems;

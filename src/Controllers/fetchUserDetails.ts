@@ -29,8 +29,6 @@ const fetchUserDetails = async (
       return res.send(result);
     }
 
-    console.log('HERE');
-    console.log(result.data.matchedUser);
     return res.json(formatData(result.data));
   } catch (err) {
     console.error('Error: ', err);
