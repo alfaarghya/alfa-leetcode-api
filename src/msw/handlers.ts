@@ -2,7 +2,6 @@ import * as msw from 'msw';
 import singleUser from './mockData/singleUser.json';
 export const handlers = [
   // Intercept the "GET /resource" request.
-  // @ts-ignore
   msw.http.post('https://leetcode.com/graphql', async (ctx) => {
     const test = await ctx.request.json();
     const typed = test as { query: string };
@@ -10,6 +9,6 @@ export const handlers = [
       return msw.HttpResponse.json(singleUser);
     }
 
-    return msw.HttpResponse.json({ test: 'test' });
+    return msw.HttpResponse.json({});
   }),
 ];

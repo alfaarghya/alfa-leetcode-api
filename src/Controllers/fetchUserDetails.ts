@@ -1,9 +1,10 @@
 import { Response } from 'express';
+import { UserData } from '../types';
 
 const fetchUserDetails = async (
   options: { username: string; limit: number },
   res: Response,
-  formatData: (data: any) => {},
+  formatData: (data: UserData) => {},
   query: string
 ) => {
   try {
