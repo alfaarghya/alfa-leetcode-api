@@ -1,4 +1,5 @@
-const query = `query {
+const query = `#graphql
+  query {
     activeDailyCodingChallengeQuestion {
         date
         link
@@ -67,4 +68,4 @@ const query = `query {
     }
 }`;
 
-module.exports = query;
+export default query;
