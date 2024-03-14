@@ -1,0 +1,52 @@
+{
+  "data": {
+    "matchedUser": {
+      "submissionCalendar": "{\"1704153600\": 24, \"1704240000\": 9, \"1704326400\": 5, \"1704412800\": 3, \"1705017600\": 1, \"1705104000\": 6, \"1699315200\": 46, \"1701302400\": 6, \"1701648000\": 24, \"1701734400\": 11, \"1702339200\": 29, \"1702425600\": 7}",
+      "submitStats": {
+        "totalSubmissionNum": [
+          { "difficulty": "All", "count": 158, "submissions": 463 },
+          { "difficulty": "Easy", "count": 131, "submissions": 388 },
+          { "difficulty": "Medium", "count": 27, "submissions": 75 },
+          { "difficulty": "Hard", "count": 0, "submissions": 0 }
+        ],
+        "acSubmissionNum": [
+          { "difficulty": "All", "count": 133, "submissions": 215 },
+          { "difficulty": "Easy", "count": 122, "submissions": 202 },
+          { "difficulty": "Medium", "count": 11, "submissions": 13 },
+          { "difficulty": "Hard", "count": 0, "submissions": 0 }
+        ]
+      },
+      "username": "jambobjones",
+      "githubUrl": "https://github.com/jambobjones",
+      "twitterUrl": null,
+      "linkedinUrl": null,
+      "contributions": {
+        "points": 115,
+        "questionCount": 0,
+        "testcaseCount": 0
+      },
+      "profile": {
+        "realName": "Jambob Jones",
+        "userAvatar": "https://assets.leetcode.com/users/jambobjones/avatar_1617850141.png",
+        "birthday": null,
+        "ranking": 630800,
+        "reputation": 0,
+        "websites": [],
+        "countryName": null,
+        "company": null,
+        "school": null,
+        "skillTags": [],
+        "aboutMe": "",
+        "starRating": 2
+      },
+      "badges": [],
+      "upcomingBadges": [
+        {
+          "name": "Mar LeetCoding Challenge",
+          "icon": "/static/images/badges/dcc-2024-3.png"
+        }
+      ],
+      "activeBadge": null
+    }
+  }
+}

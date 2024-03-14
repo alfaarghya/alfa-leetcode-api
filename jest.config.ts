@@ -7,6 +7,7 @@ const customJestConfig: Config.InitialOptions = {
   },
   moduleDirectories: ['node_modules', '<rootDir>/'],
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+  testMatch: ['<rootDir>/src/__tests__/**/*.spec.ts'],
   testPathIgnorePatterns: ['<rootDir>/iac'],
 };
 

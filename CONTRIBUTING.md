@@ -27,7 +27,7 @@
 - #### 🏃🏽‍♂️Run Project Locally
 
   ```bash
-  npm start
+  npm run dev
   ```
 
 - #### 💡 Make Changes & Pull Requests

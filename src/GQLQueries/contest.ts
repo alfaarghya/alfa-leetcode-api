@@ -1,5 +1,5 @@
 const query = `#graphql
-query ($username: String!){
+query getUserContestRanking ($username: String!) {
     userContestRanking(username: $username) {
         attendedContestsCount
         rating

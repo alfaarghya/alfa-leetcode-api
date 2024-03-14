@@ -1,0 +1,146 @@
+{
+  "data": {
+    "recentSubmissionList": [
+      {
+        "title": "Generate a String With Characters That Have Odd Counts",
+        "titleSlug": "generate-a-string-with-characters-that-have-odd-counts",
+        "timestamp": "1705161771",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Count Negative Numbers in a Sorted Matrix",
+        "titleSlug": "count-negative-numbers-in-a-sorted-matrix",
+        "timestamp": "1705161438",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Count Negative Numbers in a Sorted Matrix",
+        "titleSlug": "count-negative-numbers-in-a-sorted-matrix",
+        "timestamp": "1705161424",
+        "statusDisplay": "Runtime Error",
+        "lang": "javascript"
+      },
+      {
+        "title": "Check If N and Its Double Exist",
+        "titleSlug": "check-if-n-and-its-double-exist",
+        "timestamp": "1705161205",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Check If N and Its Double Exist",
+        "titleSlug": "check-if-n-and-its-double-exist",
+        "timestamp": "1705161123",
+        "statusDisplay": "Wrong Answer",
+        "lang": "javascript"
+      },
+      {
+        "title": "Minimum Number of Steps to Make Two Strings Anagram",
+        "titleSlug": "minimum-number-of-steps-to-make-two-strings-anagram",
+        "timestamp": "1705160304",
+        "statusDisplay": "Wrong Answer",
+        "lang": "javascript"
+      },
+      {
+        "title": "Determine if String Halves Are Alike",
+        "titleSlug": "determine-if-string-halves-are-alike",
+        "timestamp": "1705032551",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Longest Increasing Subsequence",
+        "titleSlug": "longest-increasing-subsequence",
+        "timestamp": "1704442672",
+        "statusDisplay": "Wrong Answer",
+        "lang": "javascript"
+      },
+      {
+        "title": "Longest Increasing Subsequence",
+        "titleSlug": "longest-increasing-subsequence",
+        "timestamp": "1704440871",
+        "statusDisplay": "Wrong Answer",
+        "lang": "javascript"
+      },
+      {
+        "title": "Longest Increasing Subsequence",
+        "titleSlug": "longest-increasing-subsequence",
+        "timestamp": "1704439843",
+        "statusDisplay": "Wrong Answer",
+        "lang": "javascript"
+      },
+      {
+        "title": "Minimum Number of Operations to Make Array Empty",
+        "titleSlug": "minimum-number-of-operations-to-make-array-empty",
+        "timestamp": "1704343666",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Minimum Number of Operations to Make Array Empty",
+        "titleSlug": "minimum-number-of-operations-to-make-array-empty",
+        "timestamp": "1704343585",
+        "statusDisplay": "Wrong Answer",
+        "lang": "javascript"
+      },
+      {
+        "title": "Minimum Number of Operations to Make Array Empty",
+        "titleSlug": "minimum-number-of-operations-to-make-array-empty",
+        "timestamp": "1704343426",
+        "statusDisplay": "Wrong Answer",
+        "lang": "javascript"
+      },
+      {
+        "title": "Minimum Number of Operations to Make Array Empty",
+        "titleSlug": "minimum-number-of-operations-to-make-array-empty",
+        "timestamp": "1704343413",
+        "statusDisplay": "Runtime Error",
+        "lang": "javascript"
+      },
+      {
+        "title": "Minimum Number of Operations to Make Array Empty",
+        "titleSlug": "minimum-number-of-operations-to-make-array-empty",
+        "timestamp": "1704343387",
+        "statusDisplay": "Runtime Error",
+        "lang": "javascript"
+      },
+      {
+        "title": "Sort Array By Parity",
+        "titleSlug": "sort-array-by-parity",
+        "timestamp": "1704316936",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Convert an Array Into a 2D Array With Conditions",
+        "titleSlug": "convert-an-array-into-a-2d-array-with-conditions",
+        "timestamp": "1704261617",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Convert an Array Into a 2D Array With Conditions",
+        "titleSlug": "convert-an-array-into-a-2d-array-with-conditions",
+        "timestamp": "1704261566",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Convert an Array Into a 2D Array With Conditions",
+        "titleSlug": "convert-an-array-into-a-2d-array-with-conditions",
+        "timestamp": "1704261530",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Average Value of Even Numbers That Are Divisible by Three",
+        "titleSlug": "average-value-of-even-numbers-that-are-divisible-by-three",
+        "timestamp": "1704259967",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      }
+    ]
+  }
+}

@@ -8,7 +8,6 @@ const fetchUserDetails = async (
   query: string
 ) => {
   try {
-    console.log(options);
     const response = await fetch('https://leetcode.com/graphql', {
       method: 'POST',
       headers: {
