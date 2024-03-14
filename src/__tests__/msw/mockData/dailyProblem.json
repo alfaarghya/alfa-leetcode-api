@@ -1,0 +1,152 @@
+{
+  "data": {
+    "activeDailyCodingChallengeQuestion": {
+      "date": "2024-03-14",
+      "link": "/problems/binary-subarrays-with-sum/",
+      "question": {
+        "questionId": "966",
+        "questionFrontendId": "930",
+        "boundTopicId": null,
+        "title": "Binary Subarrays With Sum",
+        "titleSlug": "binary-subarrays-with-sum",
+        "content": "<p>Given a binary array <code>nums</code> and an integer <code>goal</code>, return <em>the number of non-empty <strong>subarrays</strong> with a sum</em> <code>goal</code>.</p>\r\n\r\n<p>A <strong>subarray</strong> is a contiguous part of the array.</p>\r\n\r\n<p>&nbsp;</p>\r\n<p><strong class=\"example\">Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> nums = [1,0,1,0,1], goal = 2\r\n<strong>Output:</strong> 4\r\n<strong>Explanation:</strong> The 4 subarrays are bolded and underlined below:\r\n[<u><strong>1,0,1</strong></u>,0,1]\r\n[<u><strong>1,0,1,0</strong></u>,1]\r\n[1,<u><strong>0,1,0,1</strong></u>]\r\n[1,0,<u><strong>1,0,1</strong></u>]\r\n</pre>\r\n\r\n<p><strong class=\"example\">Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> nums = [0,0,0,0,0], goal = 0\r\n<strong>Output:</strong> 15\r\n</pre>\r\n\r\n<p>&nbsp;</p>\r\n<p><strong>Constraints:</strong></p>\r\n\r\n<ul>\r\n\t<li><code>1 &lt;= nums.length &lt;= 3 * 10<sup>4</sup></code></li>\r\n\t<li><code>nums[i]</code> is either <code>0</code> or <code>1</code>.</li>\r\n\t<li><code>0 &lt;= goal &lt;= nums.length</code></li>\r\n</ul>",
+        "translatedTitle": null,
+        "translatedContent": null,
+        "isPaidOnly": false,
+        "difficulty": "Medium",
+        "likes": 3592,
+        "dislikes": 120,
+        "isLiked": null,
+        "similarQuestions": "[{\"title\": \"Count Subarrays With Score Less Than K\", \"titleSlug\": \"count-subarrays-with-score-less-than-k\", \"difficulty\": \"Hard\", \"translatedTitle\": null}, {\"title\": \"Ways to Split Array Into Good Subarrays\", \"titleSlug\": \"ways-to-split-array-into-good-subarrays\", \"difficulty\": \"Medium\", \"translatedTitle\": null}]",
+        "exampleTestcases": "[1,0,1,0,1]\n2\n[0,0,0,0,0]\n0",
+        "contributors": [],
+        "topicTags": [
+          { "name": "Array", "slug": "array", "translatedName": null },
+          {
+            "name": "Hash Table",
+            "slug": "hash-table",
+            "translatedName": null
+          },
+          {
+            "name": "Sliding Window",
+            "slug": "sliding-window",
+            "translatedName": null
+          },
+          { "name": "Prefix Sum", "slug": "prefix-sum", "translatedName": null }
+        ],
+        "companyTagStats": null,
+        "codeSnippets": [
+          {
+            "lang": "C++",
+            "langSlug": "cpp",
+            "code": "class Solution {\r\npublic:\r\n    int numSubarraysWithSum(vector<int>& nums, int goal) {\r\n        \r\n    }\r\n};"
+          },
+          {
+            "lang": "Java",
+            "langSlug": "java",
+            "code": "class Solution {\r\n    public int numSubarraysWithSum(int[] nums, int goal) {\r\n        \r\n    }\r\n}"
+          },
+          {
+            "lang": "Python",
+            "langSlug": "python",
+            "code": "class Solution(object):\r\n    def numSubarraysWithSum(self, nums, goal):\r\n        \"\"\"\r\n        :type nums: List[int]\r\n        :type goal: int\r\n        :rtype: int\r\n        \"\"\""
+          },
+          {
+            "lang": "Python3",
+            "langSlug": "python3",
+            "code": "class Solution:\r\n    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:"
+          },
+          {
+            "lang": "C",
+            "langSlug": "c",
+            "code": "int numSubarraysWithSum(int* nums, int numsSize, int goal){\r\n\r\n}"
+          },
+          {
+            "lang": "C#",
+            "langSlug": "csharp",
+            "code": "public class Solution {\r\n    public int NumSubarraysWithSum(int[] nums, int goal) {\r\n        \r\n    }\r\n}"
+          },
+          {
+            "lang": "JavaScript",
+            "langSlug": "javascript",
+            "code": "/**\r\n * @param {number[]} nums\r\n * @param {number} goal\r\n * @return {number}\r\n */\r\nvar numSubarraysWithSum = function(nums, goal) {\r\n    \r\n};"
+          },
+          {
+            "lang": "TypeScript",
+            "langSlug": "typescript",
+            "code": "function numSubarraysWithSum(nums: number[], goal: number): number {\r\n\r\n};"
+          },
+          {
+            "lang": "PHP",
+            "langSlug": "php",
+            "code": "class Solution {\r\n\r\n    /**\r\n     * @param Integer[] $nums\r\n     * @param Integer $goal\r\n     * @return Integer\r\n     */\r\n    function numSubarraysWithSum($nums, $goal) {\r\n        \r\n    }\r\n}"
+          },
+          {
+            "lang": "Swift",
+            "langSlug": "swift",
+            "code": "class Solution {\r\n    func numSubarraysWithSum(_ nums: [Int], _ goal: Int) -> Int {\r\n        \r\n    }\r\n}"
+          },
+          {
+            "lang": "Kotlin",
+            "langSlug": "kotlin",
+            "code": "class Solution {\r\n    fun numSubarraysWithSum(nums: IntArray, goal: Int): Int {\r\n        \r\n    }\r\n}"
+          },
+          {
+            "lang": "Go",
+            "langSlug": "golang",
+            "code": "func numSubarraysWithSum(nums []int, goal int) int {\r\n    \r\n}"
+          },
+          {
+            "lang": "Ruby",
+            "langSlug": "ruby",
+            "code": "# @param {Integer[]} nums\r\n# @param {Integer} goal\r\n# @return {Integer}\r\ndef num_subarrays_with_sum(nums, goal)\r\n    \r\nend"
+          },
+          {
+            "lang": "Scala",
+            "langSlug": "scala",
+            "code": "object Solution {\r\n    def numSubarraysWithSum(nums: Array[Int], goal: Int): Int = {\r\n        \r\n    }\r\n}"
+          },
+          {
+            "lang": "Rust",
+            "langSlug": "rust",
+            "code": "impl Solution {\r\n    pub fn num_subarrays_with_sum(nums: Vec<i32>, goal: i32) -> i32 {\r\n        \r\n    }\r\n}"
+          },
+          {
+            "lang": "Racket",
+            "langSlug": "racket",
+            "code": "(define/contract (num-subarrays-with-sum nums goal)\r\n  (-> (listof exact-integer?) exact-integer? exact-integer?)\r\n\r\n  )"
+          }
+        ],
+        "stats": "{\"totalAccepted\": \"203.9K\", \"totalSubmission\": \"330.4K\", \"totalAcceptedRaw\": 203936, \"totalSubmissionRaw\": 330374, \"acRate\": \"61.7%\"}",
+        "hints": [],
+        "solution": {
+          "id": "2266",
+          "canSeeDetail": true,
+          "paidOnly": false,
+          "hasVideoSolution": false,
+          "paidOnlyVideo": true
+        },
+        "status": null,
+        "sampleTestCase": "[1,0,1,0,1]\n2",
+        "metaData": "{\n  \"name\": \"numSubarraysWithSum\",\n  \"params\": [\n    {\n      \"name\": \"nums\",\n      \"type\": \"integer[]\"\n    },\n    {\n      \"name\": \"goal\",\n      \"type\": \"integer\"\n    }\n  ],\n  \"return\": {\n    \"type\": \"integer\"\n  }\n}",
+        "judgerAvailable": true,
+        "judgeType": "large",
+        "mysqlSchemas": [],
+        "enableRunCode": true,
+        "enableTestMode": false,
+        "enableDebugger": true,
+        "envInfo": "{\"cpp\": [\"C++\", \"<p>Compiled with <code> clang 17 </code> using the latest C++ 20 standard, and <code>libstdc++</code> provided by GCC 11.</p>\\r\\n\\r\\n<p>Your code is compiled with level two optimization (<code>-O2</code>). <a href=\\\"https://github.com/google/sanitizers/wiki/AddressSanitizer\\\" target=\\\"_blank\\\">AddressSanitizer</a> is also enabled to help detect out-of-bounds and use-after-free bugs.</p>\\r\\n\\r\\n<p>Most standard library headers are already included automatically for your convenience.</p>\"], \"java\": [\"Java\", \"<p><code>OpenJDK 21</code>. Using compile arguments: <code>--enable-preview --release 21</code></p>\\r\\n\\r\\n<p>Most standard library headers are already included automatically for your convenience.</p>\\r\\n<p>Includes <code>Pair</code> class from https://docs.oracle.com/javase/8/javafx/api/javafx/util/Pair.html.</p>\"], \"python\": [\"Python\", \"<p><code>Python 2.7.12</code>.</p>\\r\\n\\r\\n<p>Most libraries are already imported automatically for your convenience, such as <a href=\\\"https://docs.python.org/2/library/array.html\\\" target=\\\"_blank\\\">array</a>, <a href=\\\"https://docs.python.org/2/library/bisect.html\\\" target=\\\"_blank\\\">bisect</a>, <a href=\\\"https://docs.python.org/2/library/collections.html\\\" target=\\\"_blank\\\">collections</a>. If you need more libraries, you can import it yourself.</p>\\r\\n\\r\\n<p>For Map/TreeMap data structure, you may use <a href=\\\"http://www.grantjenks.com/docs/sortedcontainers/\\\" target=\\\"_blank\\\">sortedcontainers</a> library.</p>\\r\\n\\r\\n<p>Note that Python 2.7 <a href=\\\"https://www.python.org/dev/peps/pep-0373/\\\" target=\\\"_blank\\\">will not be maintained past 2020</a>. For the latest Python, please choose Python3 instead.</p>\"], \"c\": [\"C\", \"<p>Compiled with <code>gcc 11</code> using the gnu11 standard.</p>\\r\\n\\r\\n<p>Your code is compiled with level one optimization (<code>-O2</code>). <a href=\\\"https://github.com/google/sanitizers/wiki/AddressSanitizer\\\" target=\\\"_blank\\\">AddressSanitizer</a> is also enabled to help detect out-of-bounds and use-after-free bugs.</p>\\r\\n\\r\\n<p>Most standard library headers are already included automatically for your convenience.</p>\\r\\n\\r\\n<p>For hash table operations, you may use <a href=\\\"https://troydhanson.github.io/uthash/\\\" target=\\\"_blank\\\">uthash</a>. \\\"uthash.h\\\" is included by default. Below are some examples:</p>\\r\\n\\r\\n<p><b>1. Adding an item to a hash.</b>\\r\\n<pre>\\r\\nstruct hash_entry {\\r\\n    int id;            /* we'll use this field as the key */\\r\\n    char name[10];\\r\\n    UT_hash_handle hh; /* makes this structure hashable */\\r\\n};\\r\\n\\r\\nstruct hash_entry *users = NULL;\\r\\n\\r\\nvoid add_user(struct hash_entry *s) {\\r\\n    HASH_ADD_INT(users, id, s);\\r\\n}\\r\\n</pre>\\r\\n</p>\\r\\n\\r\\n<p><b>2. Looking up an item in a hash:</b>\\r\\n<pre>\\r\\nstruct hash_entry *find_user(int user_id) {\\r\\n    struct hash_entry *s;\\r\\n    HASH_FIND_INT(users, &user_id, s);\\r\\n    return s;\\r\\n}\\r\\n</pre>\\r\\n</p>\\r\\n\\r\\n<p><b>3. Deleting an item in a hash:</b>\\r\\n<pre>\\r\\nvoid delete_user(struct hash_entry *user) {\\r\\n    HASH_DEL(users, user);  \\r\\n}\\r\\n</pre>\\r\\n</p>\"], \"csharp\": [\"C#\", \"<p><a href=\\\"https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-12\\\" target=\\\"_blank\\\">C# 12</a> with .NET 8 runtime</p>\"], \"javascript\": [\"JavaScript\", \"<p><code>Node.js 20.10.0</code>.</p>\\r\\n\\r\\n<p>Your code is run with <code>--harmony</code> flag, enabling <a href=\\\"http://node.green/\\\" target=\\\"_blank\\\">new ES6 features</a>.</p>\\r\\n\\r\\n<p><a href=\\\"https://lodash.com\\\" target=\\\"_blank\\\">lodash.js</a> library is included by default.</p>\\r\\n\\r\\n<p>For Priority Queue / Queue data structures, you may use 5.4.0 version of <a href=\\\"https://github.com/datastructures-js/priority-queue/blob/v5/README.md\\\" target=\\\"_blank\\\">datastructures-js/priority-queue</a> and 4.2.3 version of <a href=\\\"https://github.com/datastructures-js/queue/tree/v4.2.3\\\" target=\\\"_blank\\\">datastructures-js/queue</a>.</p>\"], \"ruby\": [\"Ruby\", \"<p><code>Ruby 3.2</code></p>\\r\\n\\r\\n<p>Some common data structure implementations are provided in the Algorithms module: https://www.rubydoc.info/github/kanwei/algorithms/Algorithms</p>\"], \"swift\": [\"Swift\", \"<p><code>Swift 5.9</code>.</p>\\r\\n\\r\\n<p>You may use <a href=\\\"https://github.com/apple/swift-algorithms/tree/1.2.0\\\" target=\\\"_blank\\\">swift-algorithms 1.2.0</a> and <a href=\\\"https://github.com/apple/swift-collections/tree/1.0.6\\\" target=\\\"_blank\\\">swift-collections 1.0.6</a>.</p>\"], \"golang\": [\"Go\", \"<p><code>Go 1.21</code></p>\\r\\n<p>Support <a href=\\\"https://github.com/emirpasic/gods/tree/v1.18.1\\\" target=\\\"_blank\\\">https://godoc.org/github.com/emirpasic/gods@v1.18.1</a> library.</p>\"], \"python3\": [\"Python3\", \"<p><code>Python 3.11</code>.</p>\\r\\n\\r\\n<p>Most libraries are already imported automatically for your convenience, such as <a href=\\\"https://docs.python.org/3/library/array.html\\\" target=\\\"_blank\\\">array</a>, <a href=\\\"https://docs.python.org/3/library/bisect.html\\\" target=\\\"_blank\\\">bisect</a>, <a href=\\\"https://docs.python.org/3/library/collections.html\\\" target=\\\"_blank\\\">collections</a>. If you need more libraries, you can import it yourself.</p>\\r\\n\\r\\n<p>For Map/TreeMap data structure, you may use <a href=\\\"http://www.grantjenks.com/docs/sortedcontainers/\\\" target=\\\"_blank\\\">sortedcontainers</a> library.</p>\"], \"scala\": [\"Scala\", \"<p><code>Scala 3.3.1</code>.</p>\"], \"kotlin\": [\"Kotlin\", \"<p><code>Kotlin 1.9.0</code>.</p>\\r\\n\\r\\n<p>We are using an experimental compiler provided by JetBrains.</p>\"], \"rust\": [\"Rust\", \"<p><code>Rust 1.74.1</code></p>\\r\\n\\r\\n<p>Supports <a href=\\\"https://crates.io/crates/rand\\\" target=\\\"_blank\\\">rand </a> v0.6\\u00a0from crates.io</p>\"], \"php\": [\"PHP\", \"<p><code>PHP 8.2</code>.</p>\\r\\n<p>With bcmath module</p>\"], \"typescript\": [\"Typescript\", \"<p><code>TypeScript 5.1.6, Node.js 20.10.0</code>.</p>\\r\\n\\r\\n<p>Compile Options: <code>--alwaysStrict --strictBindCallApply --strictFunctionTypes --target ES2022</code></p>\\r\\n\\r\\n<p>Your code is run with <code>--harmony</code> flag, enabling <a href=\\\"http://node.green/\\\" target=\\\"_blank\\\">new ES2022 features</a>.</p>\\r\\n\\r\\n<p><a href=\\\"https://lodash.com\\\" target=\\\"_blank\\\">lodash.js</a> library is included by default.</p>\"], \"racket\": [\"Racket\", \"<p><a href=\\\"https://docs.racket-lang.org/guide/performance.html#%28tech._c%29\\\" target=\\\"_blank\\\">Racket CS</a> v8.11</p>\\r\\n\\r\\n<p>Using <code>#lang racket</code></p>\\r\\n\\r\\n<p>Required <code>data/gvector data/queue data/order data/heap</code> automatically for your convenience</p>\"]}",
+        "libraryUrl": null,
+        "adminUrl": null,
+        "challengeQuestion": {
+          "id": "1692",
+          "date": "2024-03-14",
+          "incompleteChallengeCount": 0,
+          "streakCount": 0,
+          "type": "DAILY"
+        },
+        "note": null
+      }
+    }
+  }
+}

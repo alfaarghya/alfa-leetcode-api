@@ -1,6 +1,6 @@
 import { Response } from 'express';
 import { DailyProblemData, SelectProblemData } from '../types';
-
+import * as fs from 'fs';
 const fetchSingleProblem = async (
   res: Response,
   formatData: (data: DailyProblemData & SelectProblemData) => void,
@@ -24,6 +24,7 @@ const fetchSingleProblem = async (
 
     const result = await response.json();
 
+    fs.writeFileSync('./test.json', JSON.stringify(result));
     if (result.errors) {
       return res.send(result);
     }

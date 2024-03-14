@@ -1,5 +1,5 @@
 const query = `#graphql
-  query {
+  query getDailyProblem {
     activeDailyCodingChallengeQuestion {
         date
         link
