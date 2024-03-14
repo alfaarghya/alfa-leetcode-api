@@ -1,4 +1,5 @@
-const query = `query ($titleSlug: String!) {
+const query = `#graphql
+query ($titleSlug: String!) {
     question(titleSlug: $titleSlug) {
         questionId
         questionFrontendId
@@ -62,4 +63,5 @@ const query = `query ($titleSlug: String!) {
         note
     }
 }`;
-module.exports = query;
+
+export default query;

@@ -1,4 +1,5 @@
-let query = `query ($username: String!, $limit: Int) {
+const query = `#graphql
+query ($username: String!, $limit: Int) {
     recentSubmissionList(username: $username, limit: $limit) {
         title
         titleSlug
@@ -8,4 +9,4 @@ let query = `query ($username: String!, $limit: Int) {
     }
 }`;
 
-module.exports = query;
+export default query;

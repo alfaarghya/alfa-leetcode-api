@@ -1,4 +1,5 @@
-const query = `query ($username: String!){
+const query = `#graphql
+query ($username: String!){
     userContestRanking(username: $username) {
         attendedContestsCount
         rating
@@ -23,4 +24,5 @@ const query = `query ($username: String!){
         }
     }
 }`;
-module.exports = query;
+
+export default query;

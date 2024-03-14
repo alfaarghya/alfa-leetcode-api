@@ -1,4 +1,5 @@
-const query = `query getUserProfile($username: String!) {
+const query = `#graphql
+query getUserProfile($username: String!) {
     allQuestionsCount {
         difficulty
         count
@@ -66,4 +67,4 @@ const query = `query getUserProfile($username: String!) {
     }
 }`;
 
-module.exports = query;
+export default query;
