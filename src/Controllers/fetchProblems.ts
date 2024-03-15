@@ -26,6 +26,7 @@ const fetchProblems = async (
     });
 
     const result = await response.json();
+
     if (result.errors) {
       return res.send(result);
     }

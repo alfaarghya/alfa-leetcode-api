@@ -27,4 +27,11 @@ describe('Problem Data Tests', () => {
       assert(key in response.body);
     });
   });
+
+  it('Should fetch a list of problems', async () => {
+    const response = await request(app).get('/problems');
+    ['totalQuestions', 'count', 'problemsetQuestionList'].forEach((key) => {
+      assert(key in response.body);
+    });
+  });
 });

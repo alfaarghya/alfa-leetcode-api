@@ -5,6 +5,7 @@ import {
   recentSubmissions,
   recentACSubmissions,
   dailyProblem,
+  problems,
 } from './mockData';
 
 export const handlers = [
@@ -29,6 +30,10 @@ export const handlers = [
 
     if (typed.query.indexOf('getDailyProblem') !== -1) {
       return msw.HttpResponse.json(dailyProblem);
+    }
+
+    if (typed.query.indexOf('getProblems') !== -1) {
+      return msw.HttpResponse.json(problems);
     }
 
     return msw.HttpResponse.json({});

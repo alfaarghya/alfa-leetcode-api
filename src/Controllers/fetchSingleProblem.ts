@@ -24,7 +24,6 @@ const fetchSingleProblem = async (
 
     const result = await response.json();
 
-    fs.writeFileSync('./test.json', JSON.stringify(result));
     if (result.errors) {
       return res.send(result);
     }

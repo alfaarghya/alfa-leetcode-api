@@ -1,5 +1,5 @@
 const query = `#graphql
-    query ($categorySlug: String, $limit: Int, $skip: Int, $filters: QuestionListFilterInput) {
+    query getProblems($categorySlug: String, $limit: Int, $skip: Int, $filters: QuestionListFilterInput) {
         problemsetQuestionList: questionList(
             categorySlug: $categorySlug
             limit: $limit
