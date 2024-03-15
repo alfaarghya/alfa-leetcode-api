@@ -6,7 +6,8 @@
 <img src="https://img.shields.io/badge/License-MIT-green.svg"/>
 <img src="https://img.shields.io/npm/v/npm.svg?logo=nodedotjs"/>
 
-![Typescript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+
+![TypeScript](https://img.shields.io/badge/typetcript-%2320232a.svg?style=for-the-badge&logo=typescript&logoColor=%fff)
 ![Node.js](https://img.shields.io/badge/Node.js-%2320232a?style=for-the-badge&logo=node.js&logoColor=43853D)
 ![Express.js](https://img.shields.io/badge/express-%2320232a.svg?style=for-the-badge&logo=express&logoColor=%23F7DF1E)
 ![REST API](https://img.shields.io/badge/RestApi-%2320232a.svg?style=for-the-badge&logo=restAPI&logoColor=%23F7DF1E)
@@ -65,8 +66,11 @@ During development, it's recommended to utilize the API locally. To do so, follo
 
 ## Contributor ✏️
 
-- [@aryanpingle](https://www.github.com/aryanpingle)
-- [@jamesh48](https://www.github.com/jamesh48)
+| Contributor                                        | Contribution           |
+| :------------------------------------------------- | :--------------------- |
+| [@aryanpingle](https://www.github.com/aryanpingle) | AC submission          |
+| [@jamesh48](https://www.github.com/jamesh48)       | TypeScript Refactoring |
+
 
 ## Join Server 💬
 
