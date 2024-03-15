@@ -1,5 +1,5 @@
 const query = `#graphql
-query ($username: String!, $limit: Int) {
+query getACSubmissions ($username: String!, $limit: Int) {
     recentAcSubmissionList(username: $username, limit: $limit) {
         title
         titleSlug

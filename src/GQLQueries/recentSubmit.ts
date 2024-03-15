@@ -1,5 +1,5 @@
 const query = `#graphql
-query ($username: String!, $limit: Int) {
+query getRecentSubmissions($username: String!, $limit: Int) {
     recentSubmissionList(username: $username, limit: $limit) {
         title
         titleSlug

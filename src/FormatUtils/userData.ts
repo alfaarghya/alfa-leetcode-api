@@ -26,41 +26,35 @@ export const formatBadgesData = (data: UserData) => ({
 });
 
 export const formatContestData = (data: UserData) => ({
-  contestAttend: data.userContestRanking.attendedContestsCount,
-  contestRating: data.userContestRanking.rating,
-  contestGlobalRanking: data.userContestRanking.globalRanking,
-  totalParticipants: data.userContestRanking.totalParticipants,
-  contestTopPercentage: data.userContestRanking.topPercentage,
-  contestBadges: data.userContestRanking.badge,
+  contestAttend: data.userContestRanking?.attendedContestsCount,
+  contestRating: data.userContestRanking?.rating,
+  contestGlobalRanking: data.userContestRanking?.globalRanking,
+  totalParticipants: data.userContestRanking?.totalParticipants,
+  contestTopPercentage: data.userContestRanking?.topPercentage,
+  contestBadges: data.userContestRanking?.badge,
   contestParticipation: data.userContestRankingHistory.filter(
     (obj) => obj.attended === true
   ),
 });
 
-export const formatContestHistoryData = (data: UserData) => {
-  return {
-    count: data.userContestRankingHistory.length,
-    contestHistory: data.userContestRankingHistory,
-  };
-};
+export const formatContestHistoryData = (data: UserData) => ({
+  count: data.userContestRankingHistory.length,
+  contestHistory: data.userContestRankingHistory,
+});
 
-export const formatSolvedProblemsData = (data: UserData) => {
-  return {
-    solvedProblem: data.matchedUser.submitStats.acSubmissionNum[0].count,
-    easySolved: data.matchedUser.submitStats.acSubmissionNum[1].count,
-    mediumSolved: data.matchedUser.submitStats.acSubmissionNum[2].count,
-    hardSolved: data.matchedUser.submitStats.acSubmissionNum[3].count,
-    totalSubmissionNum: data.matchedUser.submitStats.totalSubmissionNum,
-    acSubmissionNum: data.matchedUser.submitStats.acSubmissionNum,
-  };
-};
+export const formatSolvedProblemsData = (data: UserData) => ({
+  solvedProblem: data.matchedUser.submitStats.acSubmissionNum[0].count,
+  easySolved: data.matchedUser.submitStats.acSubmissionNum[1].count,
+  mediumSolved: data.matchedUser.submitStats.acSubmissionNum[2].count,
+  hardSolved: data.matchedUser.submitStats.acSubmissionNum[3].count,
+  totalSubmissionNum: data.matchedUser.submitStats.totalSubmissionNum,
+  acSubmissionNum: data.matchedUser.submitStats.acSubmissionNum,
+});
 
-export const formatSubmissionData = (data: UserData) => {
-  return {
-    count: data.recentSubmissionList.length,
-    submission: data.recentSubmissionList,
-  };
-};
+export const formatSubmissionData = (data: UserData) => ({
+  count: data.recentSubmissionList.length,
+  submission: data.recentSubmissionList,
+});
 
 export const formatAcSubmissionData = (data: UserData) => ({
   count: data.recentAcSubmissionList.length,

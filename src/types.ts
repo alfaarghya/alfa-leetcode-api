@@ -25,14 +25,22 @@ interface MatchedUser {
   twitterUrl?: string;
   submissionCalendar: string;
   submitStats: {
-    totalSubmissionNum: number;
-    acSubmissionNum: { count: number }[];
+    totalSubmissionNum: {
+      difficulty: Difficulty;
+      count: number;
+      submissions: number;
+    }[];
+    acSubmissionNum: {
+      difficulty: Difficulty;
+      count: number;
+      submissions: number;
+    }[];
     count: number;
   };
 }
 
 export interface UserData {
-  userContestRanking: {
+  userContestRanking: null | {
     attendedContestsCount: number;
     badge: Badge;
     globalRanking: number;
@@ -55,7 +63,7 @@ export interface UserData {
   }[];
   matchedUser: MatchedUser;
   recentAcSubmissionList: {}[];
-  recentSubmissionList: {}[];
+  recentSubmissionList: Submission[];
 }
 
 interface Badge {
@@ -63,6 +71,7 @@ interface Badge {
   icon: string;
 }
 
+type Difficulty = 'All' | 'Easy' | 'Medium' | 'Hard';
 //User Details
 export type FetchUserDataRequest = Request<
   { username: string },
@@ -85,10 +94,18 @@ export interface ProblemSetQuestionListData {
   };
 }
 
+interface Submission {
+  title: string;
+  titleSlug: string;
+  timestamp: string;
+  statusDisplay: string;
+  lang: string;
+}
+
 interface Question {
   content: string;
   companyTagStats: string[];
-  difficulty: string;
+  difficulty: Difficulty;
   dislikes: number;
   exampleTestcases: {}[];
   hints: {}[];

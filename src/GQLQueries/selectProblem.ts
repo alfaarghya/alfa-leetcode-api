@@ -1,5 +1,5 @@
 const query = `#graphql
-query ($titleSlug: String!) {
+query selectProblem($titleSlug: String!) {
     question(titleSlug: $titleSlug) {
         questionId
         questionFrontendId

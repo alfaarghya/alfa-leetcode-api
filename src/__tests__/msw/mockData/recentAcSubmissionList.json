@@ -1,0 +1,146 @@
+{
+  "data": {
+    "recentAcSubmissionList": [
+      {
+        "title": "Generate a String With Characters That Have Odd Counts",
+        "titleSlug": "generate-a-string-with-characters-that-have-odd-counts",
+        "timestamp": "1705161771",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Count Negative Numbers in a Sorted Matrix",
+        "titleSlug": "count-negative-numbers-in-a-sorted-matrix",
+        "timestamp": "1705161438",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Check If N and Its Double Exist",
+        "titleSlug": "check-if-n-and-its-double-exist",
+        "timestamp": "1705161205",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Determine if String Halves Are Alike",
+        "titleSlug": "determine-if-string-halves-are-alike",
+        "timestamp": "1705032551",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Minimum Number of Operations to Make Array Empty",
+        "titleSlug": "minimum-number-of-operations-to-make-array-empty",
+        "timestamp": "1704343666",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Sort Array By Parity",
+        "titleSlug": "sort-array-by-parity",
+        "timestamp": "1704316936",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Convert an Array Into a 2D Array With Conditions",
+        "titleSlug": "convert-an-array-into-a-2d-array-with-conditions",
+        "timestamp": "1704261617",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Average Value of Even Numbers That Are Divisible by Three",
+        "titleSlug": "average-value-of-even-numbers-that-are-divisible-by-three",
+        "timestamp": "1704259967",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Number of Laser Beams in a Bank",
+        "titleSlug": "number-of-laser-beams-in-a-bank",
+        "timestamp": "1704256409",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Take Gifts From the Richest Pile",
+        "titleSlug": "take-gifts-from-the-richest-pile",
+        "timestamp": "1704252901",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Decompress Run-Length Encoded List",
+        "titleSlug": "decompress-run-length-encoded-list",
+        "timestamp": "1704236706",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Make Array Zero by Subtracting Equal Amounts",
+        "titleSlug": "make-array-zero-by-subtracting-equal-amounts",
+        "timestamp": "1704234483",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Remove One Element to Make the Array Strictly Increasing",
+        "titleSlug": "remove-one-element-to-make-the-array-strictly-increasing",
+        "timestamp": "1704228445",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Check if All A's Appears Before All B's",
+        "titleSlug": "check-if-all-as-appears-before-all-bs",
+        "timestamp": "1704223378",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Contains Duplicate II",
+        "titleSlug": "contains-duplicate-ii",
+        "timestamp": "1704222499",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Pascal's Triangle",
+        "titleSlug": "pascals-triangle",
+        "timestamp": "1704219156",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Make Array Zero by Subtracting Equal Amounts",
+        "titleSlug": "make-array-zero-by-subtracting-equal-amounts",
+        "timestamp": "1704216984",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Apply Transform Over Each Element in Array",
+        "titleSlug": "apply-transform-over-each-element-in-array",
+        "timestamp": "1704215794",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Find the Difference",
+        "titleSlug": "find-the-difference",
+        "timestamp": "1702492842",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      },
+      {
+        "title": "Monotonic Array",
+        "titleSlug": "monotonic-array",
+        "timestamp": "1702417451",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "data": {
+    "userContestRanking": null,
+    "userContestRankingHistory": [
+      {
+        "attended": false,
+        "rating": 1500,
+        "ranking": 0,
+        "trendDirection": "NONE",
+        "problemsSolved": 0,
+        "totalProblems": 3,
+        "finishTimeInSeconds": 0
+      }
+    ]
+  }
+}
