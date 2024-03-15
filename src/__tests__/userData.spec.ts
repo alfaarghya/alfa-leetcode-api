@@ -2,7 +2,7 @@ import request from 'supertest';
 import app from '../app';
 import assert from 'assert';
 
-describe.skip('User Data Tests', () => {
+describe('User Data Tests', () => {
   it('should fetch a single user', async () => {
     const response = await request(app).get('/jambobjones');
     expect(response.body.username).toBe('jambobjones');

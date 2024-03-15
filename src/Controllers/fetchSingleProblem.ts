@@ -1,6 +1,6 @@
 import { Response } from 'express';
 import { DailyProblemData, SelectProblemData } from '../types';
-import * as fs from 'fs';
+
 const fetchSingleProblem = async (
   res: Response,
   formatData: (data: DailyProblemData & SelectProblemData) => void,
