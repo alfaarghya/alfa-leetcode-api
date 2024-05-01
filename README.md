@@ -6,7 +6,6 @@
 <img src="https://img.shields.io/badge/License-MIT-green.svg"/>
 <img src="https://img.shields.io/npm/v/npm.svg?logo=nodedotjs"/>
 
-
 ![TypeScript](https://img.shields.io/badge/typetcript-%2320232a.svg?style=for-the-badge&logo=typescript&logoColor=%fff)
 ![Node.js](https://img.shields.io/badge/Node.js-%2320232a?style=for-the-badge&logo=node.js&logoColor=43853D)
 ![Express.js](https://img.shields.io/badge/express-%2320232a.svg?style=for-the-badge&logo=express&logoColor=%23F7DF1E)
@@ -66,15 +65,11 @@ During development, it's recommended to utilize the API locally. To do so, follo
 
 ## Contributor ✏️
 
-| Contributor                                        | Contribution           |
-| :------------------------------------------------- | :--------------------- |
-| [@aryanpingle](https://www.github.com/aryanpingle) | AC submission          |
-| [@jamesh48](https://www.github.com/jamesh48)       | TypeScript Refactoring |
-
-
-## Join Server 💬
-
-[![Discord](https://img.shields.io/badge/discord-%2320232a.svg?style=normal&logo=discord&logoColor=%230077B5)](https://discord.gg/GJ6YM4zrBt)
+| Contributor                                        | Contribution              |
+| :------------------------------------------------- | :------------------------ |
+| [@aryanpingle](https://www.github.com/aryanpingle) | AC submission             |
+| [@jamesh48](https://www.github.com/jamesh48)       | TypeScript Refactoring    |
+| [@kvqn](https://www.github.com/kvqn)               | PORT environment variable |
 
 ## Connect with me 📲
 
