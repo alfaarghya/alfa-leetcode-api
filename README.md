@@ -1,69 +1,79 @@
+<h1 align="center">alfa-leetcode-api</h1>
 <div align="center">
-  <img width=200 style="border-radius:50%" src="https://avatars.githubusercontent.com/alfaarghya"/>
+
+### The API for retrieving your LeetCode profile & Problems statistics
+
+<img src="https://img.shields.io/badge/License-MIT-green.svg"/>
+<img src="https://img.shields.io/npm/v/npm.svg?logo=nodedotjs"/>
+
+![TypeScript](https://img.shields.io/badge/typetcript-%2320232a.svg?style=for-the-badge&logo=typescript&logoColor=%fff)
+![Node.js](https://img.shields.io/badge/Node.js-%2320232a?style=for-the-badge&logo=node.js&logoColor=43853D)
+![Express.js](https://img.shields.io/badge/express-%2320232a.svg?style=for-the-badge&logo=express&logoColor=%23F7DF1E)
+![REST API](https://img.shields.io/badge/RestApi-%2320232a.svg?style=for-the-badge&logo=restAPI&logoColor=%23F7DF1E)
+
 </div>
-<div align="center">
-<img src="https://visitcount.itsvg.in/api?id=alfaarghya&icon=5&color=6"/>
-</div>
 
-## 💫 About Me:
+## About ✨
 
-👋 Hii, I'm .... , a Fullstack-engineer from India.<br>  💻 I'm currently Working on ....<br>  👯 I'm looking to collaborate on ....<br>  🤝 I'm looking for help with ....<br>  🌱 I'm currently learning ....<br>  💬 Ask me about ....<br>  
+At First, I struggled to find proper documentation for the `leetcode.com/graphql`. After scouring various articles about the LeetCode public API, I still couldn't find the comprehensive documentation I was looking for. Fueled by the desire to fill this gap I created **alfa-leetcode-api**.
 
-## 💻 Tech Stack:
+**alfa-leetcode-api** is a custom solution born out of the need for a well-documented and detailed LeetCode API. This project is designed to provide developers with endpoints that offer insights into a user's profile, badges, solved questions, contest details, contest history, submissions, and also daily questions, selected problem, list of problems.
 
-#### Languages:
+## API URL 🌐
 
-![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white),![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+```
+https://alfa-leetcode-api.onrender.com/
+```
 
-#### Framework & Libraries:
+### 💡 Rate Limit
 
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB),![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+I've implemented a rate limit to prevent any potential server overload issues.
 
-#### ML:
+During development, it's recommended to utilize the API locally. To do so, follow this documentation => <a href="CONTRIBUTING.md" target="_blank">Local Deploy</a>
 
-![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black),![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white),![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+## Endpoints 🚀
 
-#### Databases:
+### 👤User Details
 
-![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white),![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white),![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white),![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+| Details                       | Endpoint                             | Description                                                          | Demo                                                              |
+| :---------------------------- | :----------------------------------- | :------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| _Profile_                     | `/:username`                         | Get details about a user's profile.                                  | <a href="./public/demo/demo2.png" target="_blank">click here</a>  |
+| _Badges_                      | `/:username/badges`                  | Get the badges earned by the user.                                   | <a href="./public/demo/demo3.png" target="_blank">click here</a>  |
+| _Solved_                      | `/:username/solved`                  | Get the total number of questions solved by the user.                | <a href="./public/demo/demo4.png" target="_blank">click here</a>  |
+| _Contest_                     | `/:username/contest`                 | Get details about the user's contest participation.                  | <a href="./public/demo/demo5.png" target="_blank">click here</a>  |
+| _Contest History_             | `/:username/contest/history`         | Get contest history.                                                 | <a href="./public/demo/demo6.png" target="_blank">click here</a>  |
+| _Submission_                  | `/:username/submission`              | Get the last 20 submissions of the user.                             | <a href="./public/demo/demo7.png" target="_blank">click here</a>  |
+| _Limited Submission_          | `/:username/submission?limit=number` | Get a specified **_number_** of the user's last submissions.         | <a href="./public/demo/demo8.png" target="_blank">click here</a>  |
+| _Accepted Submission_         | `/:username/acSubmission`            | Get the last 20 accepted submission of the user.                     | <a href="./public/demo/demo16.png" target="_blank">click here</a> |
+| _Limited Accepted Submission_ | `/:username/acSubmission?limit=7`    | Get a specified **_number_** of the user's last accepted submission. | <a href="./public/demo/demo17.png" target="_blank">click here</a> |
+| _Calendar_                    | `/:username/calendar`                | Get the user's submission calendar.                                  | <a href="./public/demo/demo9.png" target="_blank">click here</a>  |
 
-#### Servers:
+### ❓Questions Details
 
+| Details                     | Endpoint                                     | Description                                                                      | Demo                                                              |
+| :-------------------------- | :------------------------------------------- | :------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| _Daily Problem_             | `/daily`                                     | Get the daily question.                                                          | <a href="./public/demo/demo10.png" target="_blank">click here</a> |
+| _Selected Problem_          | `/select?titleSlug=selected-question`        | Get details about a **_selected-question_**.                                     | <a href="./public/demo/demo11.png" target="_blank">click here</a> |
+| _Problems_                  | `/problems`                                  | Get a list of 20 problems.                                                       | <a href="./public/demo/demo12.png" target="_blank">click here</a> |
+| _Limited Problems_          | `/problems?limit=number`                     | Get a list of a specified **_number_** of problems.                              | <a href="./public/demo/demo13.png" target="_blank">click here</a> |
+| _Filter Problems_           | `/problems?tags=tag1+tag2`                   | Get a list of problems based on selected **_tags_**.                             | <a href="./public/demo/demo14.png" target="_blank">click here</a> |
+| _Filter & Limited Problems_ | `/problems?tags=tag1+tag2+tag3&limit=number` | Get a list of a specified **_number_** of problems based on selected **_tags_**. | <a href="./public/demo/demo15.png" target="_blank">click here</a> |
 
+## Author ✒️
 
-#### Hosting:
+- [@alfaArghya](https://www.github.com/alfaArghya)
 
-![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white),![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
+## Contributor ✏️
 
-#### CI/CD:
+| Contributor                                        | Contribution              |
+| :------------------------------------------------- | :------------------------ |
+| [@aryanpingle](https://www.github.com/aryanpingle) | AC submission             |
+| [@jamesh48](https://www.github.com/jamesh48)       | TypeScript Refactoring    |
+| [@kvqn](https://www.github.com/kvqn)               | PORT environment variable |
 
-![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white),![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+## Connect with me 📲
 
-#### Design:
-
-![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white),![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white)
-
-#### others:
-
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white),![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)
-
-
-
-## 🔝 Top Contributed Repo
-
-![](https://github-contributor-stats.vercel.app/api?username=alfaarghya&limit=5&theme=transparent&combine_all_yearly_contributions=true)
-
-
-## 📊 GitHub Stats:
-
-![](https://github-readme-streak-stats.herokuapp.com?theme=transparent&user=alfaarghya)
-
-
-
-
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=alfaarghya&theme=transparent&layout=compact)
-
-
-## 🌐 Socials:
-[![X](https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white)](https://x.com/alfaarghya),[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/alfaarghya),[![LeetCode](https://img.shields.io/badge/LeetCode-%2320232a.svg?style=normal&logo=LeetCode&logoColor=%FFA116)](https://leetcode.com/alfaarghya/),[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/alfaarghya)
-
+[![LinkedIn](https://img.shields.io/badge/linkedin-%2320232a.svg?style=normal&logo=linkedIn&logoColor=%230077B5)](https://linkedin.com/in/alfaarghya)
+[![Twitter](https://img.shields.io/badge/twitter-%2320232a.svg?style=normal&logo=twitter&logoColor=%230077B5)](https://twitter.com/alfa_arghya)
+[![Twitter](https://img.shields.io/badge/Instagram-%2320232a.svg?style=normal&logo=instagram&logoColor=white)](https://www.instagram.com/alfaarghya)
+[![LeetCode](https://img.shields.io/badge/LeetCode-%2320232a.svg?style=normal&logo=LeetCode&logoColor=%FFA116)](https://leetcode.com/alfa_arghya/)
