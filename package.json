@@ -1,6 +1,6 @@
 {
-  "name": "custom-leetcode-api",
-  "version": "1.0.0",
+  "name": "alfa-leetcode-api",
+  "version": "2.0.0",
   "description": "It's a leetcode custom api",
   "main": "index.js",
   "engines": {
