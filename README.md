@@ -1,4 +1,4 @@
-## V2
+## V2.0.0
 
 <h1 align="center">alfa-leetcode-api</h1>
 <div align="center">
@@ -25,6 +25,12 @@ At First, I struggled to find proper documentation for the `leetcode.com/graphql
 
 ```
 https://alfa-leetcode-api.onrender.com/
+```
+
+## Run with docker 🐳
+
+```
+docker run -p 3000:3000 alfaarghya/alfa-leetcode-api:2.0.0
 ```
 
 ### 💡 Rate Limit
