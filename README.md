@@ -27,6 +27,12 @@ At First, I struggled to find proper documentation for the `leetcode.com/graphql
 https://alfa-leetcode-api.onrender.com/
 ```
 
+## Run locally with docker 🌐
+
+```
+docker run -p 3000:3000 alfaarghya/alfa-leetcode-api:1.0.0
+```
+
 ### 💡 Rate Limit
 
 I've implemented a rate limit to prevent any potential server overload issues.
