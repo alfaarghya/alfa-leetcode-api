@@ -5,7 +5,7 @@ import * as leetcode from './leetCode';
 import { FetchUserDataRequest } from './types';
 import apicache from 'apicache';
 import axios from 'axios';
-import { userContestRankingInfoQuery, discussCommentsQuery, discussTopicQuery, trendingDiscussQuery, languageStatsQuery, userProfileUserQuestionProgressV2Query, skillStatsQuery, getUserProfileQuery, userProfileCalendarQuery, officialSolutionQuery, questionOfTodayQuery, dailyQeustion } from './GQLQueries/newQueries';
+import { userContestRankingInfoQuery, discussCommentsQuery, discussTopicQuery, userProfileUserQuestionProgressV2Query, skillStatsQuery, getUserProfileQuery, userProfileCalendarQuery, officialSolutionQuery, questionOfTodayQuery, dailyQeustion } from './GQLQueries/newQueries';
 
 
 const app = express();
@@ -28,8 +28,6 @@ app.use((req: express.Request, _res: Response, next: NextFunction) => {
   console.log('Requested URL:', req.originalUrl);
   next();
 });
-
-
 
 async function queryLeetCodeAPI(query: string, variables: any) {
   try {
@@ -66,7 +64,7 @@ app.get('/', (_req, res) => {
         '/userProfile/:username': 'get full profile details in one call',
         '/userProfileCalendar?username=yourname&year=2024':
         'get your calendar details with year',
-        '/languageStats/:username': 'get your language stats',
+        '/languageStats?username=yourname': 'get the language stats of a user',
         '/userProfileUserQuestionProgressV2/:userSlug': 'get your question progress',
         '/skillStats/:username': 'get your skill stats',
             },
@@ -76,7 +74,7 @@ app.get('/', (_req, res) => {
         '/userContestRankingInfo/:username': 'get user contest ranking info',
       },
       discussion: {
-        '/discussion/:first': 'get trending discussion',
+        '/trendingDiscuss?first=20': 'get top 20 trending discussions',
         '/discussTopic/:topicId': 'get discussion topic',
         '/discussComments/:topicId': 'get discussion comments',
       },
@@ -84,7 +82,6 @@ app.get('/', (_req, res) => {
         singleProblem: { '/select?titleSlug=two-sum': 'get selected Problem' ,
         '/daily': 'get daily Problem',
         '/dailyQeustion': 'get raw daily question',
-        '/questionOfTodayQuery': 'get raw question of today',
         },
         problemList: {
           '/problems': 'get list of 20 problems',
@@ -178,10 +175,6 @@ const handleRequest = async (res: Response, query: string, params: any) => {
     res.status(500).json({ error: error.message });
   }
 };
-app.get('/questionOfTodayQuery', (_, res) => {
-  handleRequest(res, questionOfTodayQuery, {});
-});
-
 app.get('/dailyQeustion', (_, res) => {
   handleRequest(res, dailyQeustion, {});
 });
@@ -196,15 +189,6 @@ app.get('/userProfileUserQuestionProgressV2/:userSlug', (req, res) => {
   handleRequest(res, userProfileUserQuestionProgressV2Query, { userSlug });
 });
 
-app.get('/languageStats/:username', (req, res) => {
-  const { username } = req.params;
-  handleRequest(res, languageStatsQuery, { username });
-});
-
-app.get('/discussion/:first', (req, res) => {
-  const first = parseInt(req.params.first);
-  handleRequest(res, trendingDiscussQuery, { first });
-});
 
 app.get('/discussTopic/:topicId', (req, res) => {
   const topicId = parseInt(req.params.topicId);
@@ -231,6 +215,12 @@ app.get('/select', leetcode.selectProblem);
 
 //get list of problems
 app.get('/problems', leetcode.problems);
+
+//get 20 trending Discuss
+app.get('/trendingDiscuss', leetcode.trendingCategoryTopics);
+
+app.get('/languageStats', leetcode.languageStats);
+
 
 // Construct options object on all user routes.
 app.use(

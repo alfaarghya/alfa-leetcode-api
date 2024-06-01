@@ -1,13 +1,3 @@
-export const languageStatsQuery = `
-    query languageStats($username: String!) {
-        matchedUser(username: $username) {
-            languageProblemCount {
-                languageName
-                problemsSolved
-            }
-        }
-    }
-`;
 
 export const selectQuestion = `
 query selectProblem($titleSlug: String!) {
@@ -391,16 +381,12 @@ export const discussCommentsQuery = `
                 pinned
                 pinnedBy {
                     username
-                    __typename
                 }
                 post {
                     ...DiscussPost
-                    __typename
                 }
                 numChildren
-                __typename
             }
-            __typename
         }
     }
 
@@ -415,7 +401,6 @@ export const discussCommentsQuery = `
         isHidden
         coinRewards {
             ...CoinReward
-            __typename
         }
         author {
             isDiscussAdmin
@@ -425,19 +410,15 @@ export const discussCommentsQuery = `
             activeBadge {
                 displayName
                 icon
-                __typename
             }
             profile {
                 userAvatar
                 reputation
-                __typename
             }
             isActive
-            __typename
         }
         authorIsModerator
         isOwnPost
-        __typename
     }
 
     fragment CoinReward on ScoreNode {
@@ -445,7 +426,6 @@ export const discussCommentsQuery = `
         score
         description
         date
-        __typename
     }
 `;
 
@@ -462,9 +442,7 @@ export const discussTopicQuery = `
             hideFromTrending
             post {
                 ...DiscussPost
-                __typename
             }
-            __typename
         }
     }
 
@@ -479,7 +457,6 @@ export const discussTopicQuery = `
         isHidden
         coinRewards {
             ...CoinReward
-            __typename
         }
         author {
             isDiscussAdmin
@@ -489,19 +466,15 @@ export const discussTopicQuery = `
             activeBadge {
                 displayName
                 icon
-                __typename
             }
             profile {
                 userAvatar
                 reputation
-                __typename
             }
             isActive
-            __typename
         }
         authorIsModerator
         isOwnPost
-        __typename
     }
 
     fragment CoinReward on ScoreNode {
@@ -509,32 +482,5 @@ export const discussTopicQuery = `
         score
         description
         date
-        __typename
-    }
-`;
-
-// queries.ts
-export const trendingDiscussQuery = `
-    query trendingDiscuss($first: Int!) {
-        cachedTrendingCategoryTopics(first: $first) {
-            id
-            title
-            post {
-                id
-                creationDate
-                contentPreview
-                author {
-                    username
-                    isActive
-                    profile {
-                        userAvatar
-                        __typename
-                    }
-                    __typename
-                }
-                __typename
-            }
-            __typename
-        }
     }
 `;

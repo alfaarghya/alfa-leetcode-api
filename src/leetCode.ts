@@ -127,3 +127,43 @@ export const problems = (
     gqlQueries.problemListQuery
   );
 };
+
+
+export const trendingCategoryTopics = (_req: Request, res: Response) => {
+  const first = parseInt(_req.query.first as string);
+  if (!isNaN(first)) {
+    controllers.fetchTrendingTopics(
+      { first },
+      res,
+      formatUtils.formatTrendingCategoryTopicData,
+      gqlQueries.trendingDiscussQuery
+    );
+  }
+  else {
+    res.status(400).json({
+      error: 'Missing or invalid query parameter: limit',
+      solution: 'put query after discussion',
+      example: 'localhost:3000/trendingDiscuss?first=20',
+    });
+  }
+ 
+};
+
+export const languageStats = (_req: Request, res: Response) => {
+  const username = _req.query.username as string;
+  if (username) {
+    controllers.fetchDataRawFormat(
+      { username },
+      res,
+      gqlQueries.languageStatsQuery
+    );
+  }
+  else {
+    res.status(400).json({
+      error: 'Missing or invalid query parameter: username',
+      solution: 'put query after discussion',
+      example: 'localhost:3000/languageStats?username=uwi',
+    });
+  }
+ 
+};
