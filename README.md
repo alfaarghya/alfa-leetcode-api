@@ -48,6 +48,23 @@ During development, it's recommended to utilize the API locally. To do so, follo
 | _Limited Accepted Submission_ | `/:username/acSubmission?limit=7`    | Get a specified **_number_** of the user's last accepted submission. | <a href="./public/demo/demo17.png" target="_blank">click here</a> |
 | _Calendar_                    | `/:username/calendar`                | Get the user's submission calendar.                                  | <a href="./public/demo/demo9.png" target="_blank">click here</a>  |
 
+### 😀 New Endpoints 🎉
+
+| Details                | Endpoint                                           | Description                          |
+| :--------------------- | :------------------------------------------------- | :----------------------------------- |
+| _Full Profile_         | `/userProfile/:username`                           | get full profile details in one call |
+| _Year Calender_        | `/userProfileCalendar?username=yourname&year=2024` | get your calendar details with year  |
+| _Lang Stats_           | `/languageStats?username=yourname`                 | get the language stats of a user     |
+| _Question Progress_    | `/userProfileUserQuestionProgressV2/:userSlug`     | get your question progress           |
+| _Skill Stats_          | `/skillStats/:username`                            | get your skill stats                 |
+| _Contest details_      | `/contest/:contestSlug`                            | get contest details                  |
+| _Contest Ranking_      | `/contestRanking/:contestSlug`                     | get contest ranking                  |
+| _Contest Ranking Info_ | `/userContestRankingInfo/:username`                | get user contest ranking info        |
+| _Trending Discussion_  | `/trendingDiscuss?first=20`                        | get top 20 trending discussions      |
+| _Discussion Topic_     | `/discussTopic/:topicId`                           | get discussion topic                 |
+| _Discussion Comment_   | `/discussComments/:topicId`                        | get discussion comments              |
+| _Raw Daily Problem_    | `/dailyQuestion`                                   | get raw daily question               |
+
 ### ❓Questions Details
 
 | Details                     | Endpoint                                     | Description                                                                      | Demo                                                              |
@@ -65,15 +82,16 @@ During development, it's recommended to utilize the API locally. To do so, follo
 
 ## Contributor ✏️
 
-| Contributor                                        | Contribution              |
-| :------------------------------------------------- | :------------------------ |
-| [@aryanpingle](https://www.github.com/aryanpingle) | AC submission             |
-| [@jamesh48](https://www.github.com/jamesh48)       | TypeScript Refactoring    |
-| [@kvqn](https://www.github.com/kvqn)               | PORT environment variable |
+| Contributor                                        | Contribution                                                                     |
+| :------------------------------------------------- | :------------------------------------------------------------------------------- |
+| [@aryanpingle](https://www.github.com/aryanpingle) | AC submission                                                                    |
+| [@jamesh48](https://www.github.com/jamesh48)       | TypeScript Refactoring                                                           |
+| [@kvqn](https://www.github.com/kvqn)               | PORT environment variable                                                        |
+| [@changchunlei](https://github.com/changchunlei)   | New Endpoints - language stats, integrated user profile, contest and discussions |
 
 ## Connect with me 📲
 
 [![LinkedIn](https://img.shields.io/badge/linkedin-%2320232a.svg?style=normal&logo=linkedIn&logoColor=%230077B5)](https://linkedin.com/in/alfaarghya)
-[![Twitter](https://img.shields.io/badge/twitter-%2320232a.svg?style=normal&logo=twitter&logoColor=%230077B5)](https://twitter.com/alfa_arghya)
-[![Twitter](https://img.shields.io/badge/Instagram-%2320232a.svg?style=normal&logo=instagram&logoColor=white)](https://www.instagram.com/alfaarghya)
-[![LeetCode](https://img.shields.io/badge/LeetCode-%2320232a.svg?style=normal&logo=LeetCode&logoColor=%FFA116)](https://leetcode.com/alfa_arghya/)
+[![Twitter](https://img.shields.io/badge/twitter-%2320232a.svg?style=normal&logo=twitter&logoColor=%230077B5)](https://twitter.com/alfaarghya)
+[![Instagram](https://img.shields.io/badge/Instagram-%2320232a.svg?style=normal&logo=instagram&logoColor=white)](https://www.instagram.com/alfaarghya)
+[![LeetCode](https://img.shields.io/badge/LeetCode-%2320232a.svg?style=normal&logo=LeetCode&logoColor=%FFA116)](https://leetcode.com/alfaarghya/)
