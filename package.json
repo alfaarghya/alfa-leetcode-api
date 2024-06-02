@@ -1,11 +1,8 @@
 {
-  "name": "custom-leetcode-api",
-  "version": "1.0.0",
+  "name": "alfa-leetcode-api",
+  "version": "2.0.1",
   "description": "It's a leetcode custom api",
-  "main": "index.js",
-  "engines": {
-    "node": "18.x"
-  },
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "dev": "nodemon --exec ts-node src/index.ts",
