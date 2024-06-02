@@ -130,3 +130,24 @@ export interface DailyProblemData {
 export interface SelectProblemData {
   question: Question;
 }
+
+export interface TrendingDiscussionObject {
+  data: {
+    cachedTrendingCategoryTopics: {
+      id: number;
+      title: string;
+      post: {
+        id: number;
+        creationDate: number;
+        contentPreview: string;
+        author: {
+          username: string;
+          isActive: boolean;
+          profile: {
+            userAvatar: string;
+          };
+        };
+      };
+    }[];
+  };
+}
