@@ -5,7 +5,7 @@ import * as leetcode from './leetCode';
 import { FetchUserDataRequest } from './types';
 import apicache from 'apicache';
 import axios from 'axios';
-import { userContestRankingInfoQuery, discussCommentsQuery, discussTopicQuery, userProfileUserQuestionProgressV2Query, skillStatsQuery, getUserProfileQuery, userProfileCalendarQuery, officialSolutionQuery, questionOfTodayQuery, dailyQeustion } from './GQLQueries/newQueries';
+import { userContestRankingInfoQuery, discussCommentsQuery, discussTopicQuery, userProfileUserQuestionProgressV2Query, skillStatsQuery, getUserProfileQuery, userProfileCalendarQuery, officialSolutionQuery, dailyQeustion } from './GQLQueries/newQueries';
 
 
 const app = express();
