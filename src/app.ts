@@ -5,13 +5,21 @@ import * as leetcode from './leetCode';
 import { FetchUserDataRequest } from './types';
 import apicache from 'apicache';
 import axios from 'axios';
-import { userContestRankingInfoQuery, discussCommentsQuery, discussTopicQuery, userProfileUserQuestionProgressV2Query, skillStatsQuery, getUserProfileQuery, userProfileCalendarQuery, officialSolutionQuery, dailyQeustion } from './GQLQueries/newQueries';
-
+import {
+  userContestRankingInfoQuery,
+  discussCommentsQuery,
+  discussTopicQuery,
+  userProfileUserQuestionProgressV2Query,
+  skillStatsQuery,
+  getUserProfileQuery,
+  userProfileCalendarQuery,
+  officialSolutionQuery,
+  dailyQeustion,
+} from './GQLQueries/newQueries';
 
 const app = express();
 let cache = apicache.middleware;
 const API_URL = process.env.LEETCODE_API_URL || 'https://leetcode.com/graphql';
-
 
 const limiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
@@ -31,23 +39,21 @@ app.use((req: express.Request, _res: Response, next: NextFunction) => {
 
 async function queryLeetCodeAPI(query: string, variables: any) {
   try {
-      const response = await axios.post(API_URL, { query, variables });
-      if (response.data.errors) {
-          throw new Error(response.data.errors[0].message);
-      }
-      return response.data;
+    const response = await axios.post(API_URL, { query, variables });
+    if (response.data.errors) {
+      throw new Error(response.data.errors[0].message);
+    }
+    return response.data;
   } catch (error) {
-      if (error.response) {
-          throw new Error(`Error from LeetCode API: ${error.response.data}`);
-      } else if (error.request) {
-          throw new Error('No response received from LeetCode API');
-      } else {
-          throw new Error(`Error in setting up the request: ${error.message}`);
-      }
+    if (error.response) {
+      throw new Error(`Error from LeetCode API: ${error.response.data}`);
+    } else if (error.request) {
+      throw new Error('No response received from LeetCode API');
+    } else {
+      throw new Error(`Error in setting up the request: ${error.message}`);
+    }
   }
 }
-
-
 
 app.get('/', (_req, res) => {
   res.json({
@@ -63,11 +69,12 @@ app.get('/', (_req, res) => {
         '/:username/calendar': 'get your submission calendar',
         '/userProfile/:username': 'get full profile details in one call',
         '/userProfileCalendar?username=yourname&year=2024':
-        'get your calendar details with year',
+          'get your calendar details with year',
         '/languageStats?username=yourname': 'get the language stats of a user',
-        '/userProfileUserQuestionProgressV2/:userSlug': 'get your question progress',
+        '/userProfileUserQuestionProgressV2/:userSlug':
+          'get your question progress',
         '/skillStats/:username': 'get your skill stats',
-            },
+      },
       contest: {
         '/contest/:contestSlug': 'get contest details',
         '/contestRanking/:contestSlug': 'get contest ranking',
@@ -79,9 +86,10 @@ app.get('/', (_req, res) => {
         '/discussComments/:topicId': 'get discussion comments',
       },
       problems: {
-        singleProblem: { '/select?titleSlug=two-sum': 'get selected Problem' ,
-        '/daily': 'get daily Problem',
-        '/dailyQeustion': 'get raw daily question',
+        singleProblem: {
+          '/select?titleSlug=two-sum': 'get selected Problem',
+          '/daily': 'get daily Problem',
+          '/dailyQuestion': 'get raw daily question',
         },
         problemList: {
           '/problems': 'get list of 20 problems',
@@ -89,9 +97,9 @@ app.get('/', (_req, res) => {
           '/problems?tags=array+math': 'get list problems on selected topics',
           '/problems?tags=array+math+string&limit=5':
             'get list some problems on selected topics',
-            '/officialSolution?titleSlug=two-sum':
+          '/officialSolution?titleSlug=two-sum':
             'get official solution of selected problem',
-        },        
+        },
       },
     },
   });
@@ -111,23 +119,25 @@ app.get('/officialSolution', async (req, res) => {
   }
 });
 
-
 app.get('/userProfileCalendar', async (req, res) => {
   const { username, year } = req.query;
 
   if (!username || !year || typeof year !== 'string') {
-    return res.status(400).json({ error: 'Missing or invalid username or year query parameter' });
+    return res
+      .status(400)
+      .json({ error: 'Missing or invalid username or year query parameter' });
   }
 
   try {
-    const data = await queryLeetCodeAPI(userProfileCalendarQuery, { username, year: parseInt(year) });
+    const data = await queryLeetCodeAPI(userProfileCalendarQuery, {
+      username,
+      year: parseInt(year),
+    });
     return res.json(data);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
 });
-
-
 
 // Format data
 const formatData = (data: any) => {
@@ -146,16 +156,17 @@ const formatData = (data: any) => {
     reputation: data.matchedUser.profile.reputation,
     submissionCalendar: JSON.parse(data.matchedUser.submissionCalendar),
     recentSubmissions: data.recentSubmissionList,
-    matchedUserStats: data.matchedUser.submitStats
+    matchedUserStats: data.matchedUser.submitStats,
   };
-}
-
+};
 
 app.get('/userProfile/:id', async (req, res) => {
   const user = req.params.id;
 
   try {
-    const data = await queryLeetCodeAPI(getUserProfileQuery, { username: user });
+    const data = await queryLeetCodeAPI(getUserProfileQuery, {
+      username: user,
+    });
     if (data.errors) {
       res.send(data);
     } else {
@@ -166,7 +177,6 @@ app.get('/userProfile/:id', async (req, res) => {
   }
 });
 
-
 const handleRequest = async (res: Response, query: string, params: any) => {
   try {
     const data = await queryLeetCodeAPI(query, params);
@@ -175,7 +185,7 @@ const handleRequest = async (res: Response, query: string, params: any) => {
     res.status(500).json({ error: error.message });
   }
 };
-app.get('/dailyQeustion', (_, res) => {
+app.get('/dailyQuestion', (_, res) => {
   handleRequest(res, dailyQeustion, {});
 });
 
@@ -189,7 +199,6 @@ app.get('/userProfileUserQuestionProgressV2/:userSlug', (req, res) => {
   handleRequest(res, userProfileUserQuestionProgressV2Query, { userSlug });
 });
 
-
 app.get('/discussTopic/:topicId', (req, res) => {
   const topicId = parseInt(req.params.topicId);
   handleRequest(res, discussTopicQuery, { topicId });
@@ -197,15 +206,23 @@ app.get('/discussTopic/:topicId', (req, res) => {
 
 app.get('/discussComments/:topicId', (req, res) => {
   const topicId = parseInt(req.params.topicId);
-  const { orderBy = "newest_to_oldest", pageNo = 1, numPerPage = 10 } = req.query;
-  handleRequest(res, discussCommentsQuery, { topicId, orderBy, pageNo, numPerPage });
+  const {
+    orderBy = 'newest_to_oldest',
+    pageNo = 1,
+    numPerPage = 10,
+  } = req.query;
+  handleRequest(res, discussCommentsQuery, {
+    topicId,
+    orderBy,
+    pageNo,
+    numPerPage,
+  });
 });
 
 app.get('/userContestRankingInfo/:username', (req, res) => {
   const { username } = req.params;
   handleRequest(res, userContestRankingInfoQuery, { username });
 });
-
 
 //get the daily leetCode problem
 app.get('/daily', leetcode.dailyProblem);
@@ -220,7 +237,6 @@ app.get('/problems', leetcode.problems);
 app.get('/trendingDiscuss', leetcode.trendingCategoryTopics);
 
 app.get('/languageStats', leetcode.languageStats);
-
 
 // Construct options object on all user routes.
 app.use(
