@@ -76,8 +76,6 @@ app.get('/', (_req, res) => {
         '/skillStats/:username': 'get your skill stats',
       },
       contest: {
-        '/contest/:contestSlug': 'get contest details',
-        '/contestRanking/:contestSlug': 'get contest ranking',
         '/userContestRankingInfo/:username': 'get user contest ranking info',
       },
       discussion: {

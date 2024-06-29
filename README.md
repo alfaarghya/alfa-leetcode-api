@@ -63,9 +63,7 @@ During development, it's recommended to utilize the API locally. To do so, follo
 | _Lang Stats_           | `/languageStats?username=yourname`                 | get the language stats of a user     |
 | _Question Progress_    | `/userProfileUserQuestionProgressV2/:userSlug`     | get your question progress           |
 | _Skill Stats_          | `/skillStats/:username`                            | get your skill stats                 |
-| _Contest details_      | `/contest/:contestSlug`                            | get contest details                  |
-| _Contest Ranking_      | `/contestRanking/:contestSlug`                     | get contest ranking                  |
-| _Contest Ranking Info_ | `/userContestRankingInfo/:username`                | get user contest ranking info        |
+| _User Contest Ranking_ | `/userContestRankingInfo/:username`                | get contest ranking                  |
 | _Trending Discussion_  | `/trendingDiscuss?first=20`                        | get top 20 trending discussions      |
 | _Discussion Topic_     | `/discussTopic/:topicId`                           | get discussion topic                 |
 | _Discussion Comment_   | `/discussComments/:topicId`                        | get discussion comments              |
