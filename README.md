@@ -82,7 +82,7 @@ During development, it's recommended to utilize the API locally. To do so, follo
 
 ## Author ✒️
 
-- [@alfaArghya](https://www.github.com/alfaArghya)
+- [@alfaarghya](https://www.github.com/alfaarghya)
 
 ## Contributor ✏️
 
@@ -92,6 +92,7 @@ During development, it's recommended to utilize the API locally. To do so, follo
 | [@jamesh48](https://www.github.com/jamesh48)       | TypeScript Refactoring                                                           |
 | [@kvqn](https://www.github.com/kvqn)               | PORT environment variable                                                        |
 | [@changchunlei](https://github.com/changchunlei)   | New Endpoints - language stats, integrated user profile, contest and discussions |
+| [@merakesh99](https://github.com/merakesh99)       | Hot reload issue solved                                                          |
 
 ## Connect with me 📲
 
