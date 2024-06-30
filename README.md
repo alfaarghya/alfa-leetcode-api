@@ -31,9 +31,15 @@ https://alfa-leetcode-api.onrender.com/
 docker run -p 3000:3000 alfaarghya/alfa-leetcode-api:2.0.1
 ```
 
+## Wanna Contribute 🤔??
+
+follow this documentation => <a href="CONTRIBUTING.md" target="_blank">CONTRIBUTING.md</a>
+
 ### 💡 Rate Limit
 
 I've implemented a rate limit to prevent any potential server overload issues.
+
+### ‼️ Note
 
 During development, it's recommended to utilize the API locally. To do so, follow this documentation => <a href="CONTRIBUTING.md" target="_blank">Local Deploy</a>
 
