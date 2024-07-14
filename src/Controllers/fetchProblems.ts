@@ -2,7 +2,7 @@ import { Response } from 'express';
 import { ProblemSetQuestionListData } from '../types';
 
 const fetchProblems = async (
-  options: { limit: number; tags: string },
+  options: { limit: number; skip: number; tags: string },
   res: Response,
   formatData: (data: ProblemSetQuestionListData) => {},
   query: string
@@ -18,7 +18,7 @@ const fetchProblems = async (
         query: query,
         variables: {
           categorySlug: '',
-          skip: 0,
+          skip: options.skip || 0,
           limit: options.limit || 20, //by default get 20 question
           filters: { tags: options.tags ? options.tags.split(' ') : ' ' }, //filter by tags
         },

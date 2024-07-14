@@ -114,14 +114,15 @@ export const selectProblem = (req: Request, res: Response) => {
 };
 
 export const problems = (
-  req: Request<{}, {}, {}, { limit: number; tags: string }>,
+  req: Request<{}, {}, {}, { limit: number; skip: number; tags: string }>,
   res: Response
 ) => {
   const limit = req.query.limit;
+  const skip = req.query.skip;
   const tags = req.query.tags;
 
   controllers.fetchProblems(
-    { limit, tags },
+    { limit, skip, tags },
     res,
     formatUtils.formatProblemsData,
     gqlQueries.problemListQuery
