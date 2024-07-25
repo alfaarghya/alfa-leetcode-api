@@ -67,6 +67,6 @@
 
   Try to make a new branch relevant to your work. For example - `fix:xyz-issue`
 
-  📝Note - It's not Necessary for contribution but it will help me to marge it.
+  📝Note - It's not Necessary for contribution but it will help me to merge it.
 
 #
