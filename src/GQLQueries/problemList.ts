@@ -11,6 +11,7 @@ const query = `#graphql
                 acRate
                 difficulty
                 freqBar
+                questionId
                 questionFrontendId
                 isFavor
                 isPaidOnly
