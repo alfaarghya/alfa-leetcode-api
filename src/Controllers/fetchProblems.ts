@@ -2,12 +2,17 @@ import { Response } from 'express';
 import { ProblemSetQuestionListData } from '../types';
 
 const fetchProblems = async (
-  options: { limit: number; skip: number; tags: string },
+  options: { limit?: number; skip?: number; tags?: string }, // Mark parameters as optional
   res: Response,
   formatData: (data: ProblemSetQuestionListData) => {},
   query: string
 ) => {
   try {
+    // Set default limit to 1 if only skip is provided
+    const limit = options.skip !== undefined && options.limit === undefined ? 1 : options.limit || 20;
+    const skip = options.skip || 0; // Default to 0 if not provided
+    const tags = options.tags ? options.tags.split(' ') : []; // Split tags or default to empty array
+
     const response = await fetch('https://leetcode.com/graphql', {
       method: 'POST',
       headers: {
@@ -18,9 +23,9 @@ const fetchProblems = async (
         query: query,
         variables: {
           categorySlug: '',
-          skip: options.skip || 0,
-          limit: options.limit || 20, //by default get 20 question
-          filters: { tags: options.tags ? options.tags.split(' ') : ' ' }, //filter by tags
+          skip,
+          limit,
+          filters: { tags },
         },
       }),
     });
@@ -28,12 +33,12 @@ const fetchProblems = async (
     const result = await response.json();
 
     if (result.errors) {
-      return res.send(result);
+      return res.status(400).json(result.errors); // Return errors with a 400 status code
     }
     return res.json(formatData(result.data));
   } catch (err) {
     console.error('Error: ', err);
-    return res.send(err);
+    return res.status(500).json({ error: 'Internal server error' }); // Return a 500 status code for server errors
   }
 };
 
