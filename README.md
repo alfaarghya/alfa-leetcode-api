@@ -102,6 +102,7 @@ During development, it's recommended to utilize the API locally. To do so, follo
 | [@kvqn](https://www.github.com/kvqn)               | PORT environment variable                                                        |
 | [@changchunlei](https://github.com/changchunlei)   | New Endpoints - language stats, integrated user profile, contest and discussions |
 | [@merakesh99](https://github.com/merakesh99)       | Hot reload issue solved                                                          |
+| [@ajchili](https://github.com/ajchili)             | Skip param to fetch problems                                                     |
 
 ## Connect with me 📲
 
