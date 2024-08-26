@@ -39,7 +39,7 @@
   git clone https://github.com/username/alfa-leetcode-api.git
   ```
 
-- #### 👋🏽 Go to the project folder
+- #### 👋🏽 Go to the Project Folder
 
   ```bash
   cd alfa-leetcode-api
