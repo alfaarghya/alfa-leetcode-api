@@ -6,7 +6,7 @@
 <img src="https://img.shields.io/badge/License-MIT-green.svg"/>
 <img src="https://img.shields.io/npm/v/npm.svg?logo=nodedotjs"/>
 
-![TypeScript](https://img.shields.io/badge/typetcript-%2320232a.svg?style=for-the-badge&logo=typescript&logoColor=%fff)
+![TypeScript](https://img.shields.io/badge/typetscript-%2320232a.svg?style=for-the-badge&logo=typescript&logoColor=%fff)
 ![Node.js](https://img.shields.io/badge/Node.js-%2320232a?style=for-the-badge&logo=node.js&logoColor=43853D)
 ![Express.js](https://img.shields.io/badge/express-%2320232a.svg?style=for-the-badge&logo=express&logoColor=%23F7DF1E)
 ![REST API](https://img.shields.io/badge/RestApi-%2320232a.svg?style=for-the-badge&logo=restAPI&logoColor=%23F7DF1E)
@@ -103,6 +103,7 @@ During development, it's recommended to utilize the API locally. To do so, follo
 | [@changchunlei](https://github.com/changchunlei)   | New Endpoints - language stats, integrated user profile, contest and discussions |
 | [@merakesh99](https://github.com/merakesh99)       | Hot reload issue solved                                                          |
 | [@ajchili](https://github.com/ajchili)             | Skip param to fetch problems                                                     |
+| [@theinit01](https://github.com/theinit01)         | Temp fix for skip                                                                |
 
 ## Connect with me 📲
 
