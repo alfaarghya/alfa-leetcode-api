@@ -57,46 +57,59 @@ async function queryLeetCodeAPI(query: string, variables: any) {
 
 app.get('/', (_req, res) => {
   res.json({
+    apiOverview:
+      'Welcome to the Alfa-Leetcode-API! Alfa-Leetcode-Api is a custom solution born out of the need for a well-documented and detailed LeetCode API. This project is designed to provide developers with endpoints that offer insights into a user"s profile, badges, solved questions, contest details, contest history, submissions, and also daily questions, selected problem, list of problems.',
     routes: {
       userDetails: {
-        '/:username': 'get your leetcodevis profile Details',
-        '/:username/badges': 'get your badges',
-        '/:username/solved': 'get total number of question you solved',
-        '/:username/contest': 'get your contest details',
-        '/:username/contest/history': 'get all contest history',
-        '/:username/submission': 'get your last 20 submission',
-        '/:username/acSubmission': 'get your last 20 accepted submission',
-        '/:username/calendar': 'get your submission calendar',
-        '/userProfile/:username': 'get full profile details in one call',
+        description:
+          'Endpoints for retrieving detailed user profile information on Leetcode.',
+        Method: 'GET',
+        '/:username': 'Get your leetcodevis profile Details',
+        '/:username/badges': 'Get your badges',
+        '/:username/solved': 'Get total number of question you solved',
+        '/:username/contest': 'Get your contest details',
+        '/:username/contest/history': 'Get all contest history',
+        '/:username/submission': 'Get your last 20 submission',
+        '/:username/acSubmission': 'Get your last 20 accepted submission',
+        '/:username/calendar': 'Get your submission calendar',
+        '/userProfile/:username': 'Get full profile details in one call',
         '/userProfileCalendar?username=yourname&year=2024':
-          'get your calendar details with year',
-        '/languageStats?username=yourname': 'get the language stats of a user',
+          'Get your calendar details with year',
+        '/languageStats?username=yourname': 'Get the language stats of a user',
         '/userProfileUserQuestionProgressV2/:userSlug':
-          'get your question progress',
-        '/skillStats/:username': 'get your skill stats',
+          'Get your question progress',
+        '/skillStats/:username': 'Get your skill stats',
       },
       contest: {
-        '/userContestRankingInfo/:username': 'get user contest ranking info',
+        description:
+          'Endpoints for retrieving contest ranking and performance data.',
+        Method: 'GET',
+        '/userContestRankingInfo/:username': 'Get user contest ranking info',
       },
       discussion: {
-        '/trendingDiscuss?first=20': 'get top 20 trending discussions',
-        '/discussTopic/:topicId': 'get discussion topic',
-        '/discussComments/:topicId': 'get discussion comments',
+        description: 'Endpoints for fetching discussion topics and comments.',
+        Method: 'GET',
+        '/trendingDiscuss?first=20': 'Get top 20 trending discussions',
+        '/discussTopic/:topicId': 'Get discussion topic',
+        '/discussComments/:topicId': 'Get discussion comments',
       },
       problems: {
+        description:
+          'Endpoints for fetching problem-related data, including lists, details, and solutions.',
+        Method: 'GET',
         singleProblem: {
-          '/select?titleSlug=two-sum': 'get selected Problem',
-          '/daily': 'get daily Problem',
-          '/dailyQuestion': 'get raw daily question',
+          '/select?titleSlug=two-sum': 'Get selected Problem',
+          '/daily': 'Get daily Problem',
+          '/dailyQuestion': 'Get raw daily question',
         },
         problemList: {
-          '/problems': 'get list of 20 problems',
-          '/problems?limit=50': 'get list of some problems',
-          '/problems?tags=array+math': 'get list problems on selected topics',
+          '/problems': 'Get list of 20 problems',
+          '/problems?limit=50': 'Get list of some problems',
+          '/problems?tags=array+math': 'Get list problems on selected topics',
           '/problems?tags=array+math+string&limit=5':
-            'get list some problems on selected topics',
+            'Get list some problems on selected topics',
           '/officialSolution?titleSlug=two-sum':
-            'get official solution of selected problem',
+            'Get official solution of selected problem',
         },
       },
     },
