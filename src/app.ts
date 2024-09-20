@@ -59,6 +59,8 @@ app.get('/', (_req, res) => {
   res.json({
     apiOverview:
       'Welcome to the Alfa-Leetcode-API! Alfa-Leetcode-Api is a custom solution born out of the need for a well-documented and detailed LeetCode API. This project is designed to provide developers with endpoints that offer insights into a user"s profile, badges, solved questions, contest details, contest history, submissions, and also daily questions, selected problem, list of problems.',
+    apiEndpointsLink:
+      'https://github.com/alfaarghya/alfa-leetcode-api?tab=readme-ov-file#endpoints-',
     routes: {
       userDetails: {
         description:
