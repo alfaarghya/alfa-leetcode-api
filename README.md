@@ -104,6 +104,7 @@ During development, it's recommended to utilize the API locally. To do so, follo
 | [@merakesh99](https://github.com/merakesh99)       | Hot reload issue solved                                                          |
 | [@ajchili](https://github.com/ajchili)             | Skip param to fetch problems                                                     |
 | [@theinit01](https://github.com/theinit01)         | Temp fix for skip                                                                |
+| [@123xylem](https://github.com/123xylem)           | Add Descriptions and Methods to API route documentation.                         |
 
 ## Connect with me 📲
 
