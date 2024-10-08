@@ -2,7 +2,7 @@ import { Response } from 'express';
 import { ProblemSetQuestionListData } from '../types';
 
 const fetchProblems = async (
-  options: { limit?: number; skip?: number; tags?: string }, // Mark parameters as optional
+  options: { limit?: number; skip?: number; tags?: string; difficulty?: string}, // Mark parameters as optional
   res: Response,
   formatData: (data: ProblemSetQuestionListData) => {},
   query: string
@@ -12,6 +12,7 @@ const fetchProblems = async (
     const limit = options.skip !== undefined && options.limit === undefined ? 1 : options.limit || 20;
     const skip = options.skip || 0; // Default to 0 if not provided
     const tags = options.tags ? options.tags.split(' ') : []; // Split tags or default to empty array
+    const difficulty = options.difficulty || undefined; // difficulty has to be 'EASY', 'MEDIUM' or 'HARD'
 
     const response = await fetch('https://leetcode.com/graphql', {
       method: 'POST',
@@ -25,10 +26,13 @@ const fetchProblems = async (
           categorySlug: '',
           skip,
           limit,
-          filters: { tags },
+          filters: { tags,
+            difficulty
+           },
         },
       }),
     });
+    console.log(response)
 
     const result = await response.json();
 
