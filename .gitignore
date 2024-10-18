@@ -3,3 +3,5 @@ node_modules
 leetCode-api.txt
 
 dist
+
+.DS_Store
