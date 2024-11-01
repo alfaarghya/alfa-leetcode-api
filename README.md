@@ -85,6 +85,7 @@ During development, it's recommended to utilize the API locally. To do so, follo
 | _Limited Problems_                 | `/problems?limit=number`                                 | Get a list of a specified **_number_** of problems.                                                                          | <a href="./public/demo/demo13.png" target="_blank">click here</a> |
 | _Filter Problems_                  | `/problems?tags=tag1+tag2`                               | Get a list of problems based on selected **_tags_**.                                                                         | <a href="./public/demo/demo14.png" target="_blank">click here</a> |
 | _Skip Problems_                    | `/problems?skip=number`                                  | Get a list of 20 problems, skipping a specified **_number_** of problems.                                                    | TODO                                                              |
+| _Difficulty_                       | `/problems?difficulty=EASY`                              | Get a list of difficulty based problems, use **_MEDIUM_** to get medium level, **_HARD_** to get Hard level .                | TODO                                                              |
 | _Filter & Limited Problems_        | `/problems?tags=tag1+tag2+tag3&limit=number`             | Get a list of a specified **_number_** of problems based on selected **_tags_**.                                             | <a href="./public/demo/demo15.png" target="_blank">click here</a> |
 | _Skip & Limited Problems_          | `/problems?limit=number&skip=number`                     | Get a list of a specified **_number_** of problems skipping a specified **number** of problems.                              | TODO                                                              |
 | _Skip & Filter & Limited Problems_ | `/problems?tags=tag1+tag2+tag3&limit=number&skip=number` | Get a list of a specified **_number_** of problems based on selected **_tags_** skipping a specified **number** of problems. | TODO                                                              |
@@ -105,6 +106,7 @@ During development, it's recommended to utilize the API locally. To do so, follo
 | [@ajchili](https://github.com/ajchili)             | Skip param to fetch problems                                                     |
 | [@theinit01](https://github.com/theinit01)         | Temp fix for skip                                                                |
 | [@123xylem](https://github.com/123xylem)           | Add Descriptions and Methods to API route documentation.                         |
+| [@P-M-Manmohan](https://github.com/P-M-Manmohan)   | Added filtering based on difficulty                                              |
 
 ## Connect with me 📲
 
