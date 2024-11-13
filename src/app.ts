@@ -23,7 +23,7 @@ const API_URL = process.env.LEETCODE_API_URL || 'https://leetcode.com/graphql';
 
 const limiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  limit: 60,
+  limit: (process.env.RATELIMIT && parseInt(process.env.RATELIMIT)) || 60,
   standardHeaders: 'draft-7',
   legacyHeaders: false,
   message: 'Too many request from this IP, try again in 1 hour',
