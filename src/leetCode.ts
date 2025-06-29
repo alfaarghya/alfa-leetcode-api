@@ -113,11 +113,29 @@ export const selectProblem = (req: Request, res: Response) => {
   }
 };
 
+export const selectProblemRaw = (req: Request, res: Response) => {
+  const title = req.query.titleSlug as string;
+  if (title !== undefined) {
+    controllers.fetchSingleProblem(
+      res,
+      e => e,
+      gqlQueries.selectProblemQuery,
+      title
+    );
+  } else {
+    res.status(400).json({
+      error: 'Missing or invalid query parameter: titleSlug',
+      solution: 'put query after select',
+      example: 'localhost:3000/select?titleSlug=two-sum',
+    });
+  }
+}
+
 export const problems = (
   req: Request<{}, {}, {}, { limit: number; skip: number; tags: string; difficulty: string }>,
   res: Response
 ) => {
-  const difficulty=req.query.difficulty;
+  const difficulty = req.query.difficulty;
   const limit = req.query.limit;
   const skip = req.query.skip;
   const tags = req.query.tags;
@@ -148,7 +166,7 @@ export const trendingCategoryTopics = (_req: Request, res: Response) => {
       example: 'localhost:3000/trendingDiscuss?first=20',
     });
   }
- 
+
 };
 
 export const languageStats = (_req: Request, res: Response) => {
@@ -167,5 +185,5 @@ export const languageStats = (_req: Request, res: Response) => {
       example: 'localhost:3000/languageStats?username=uwi',
     });
   }
- 
+
 };

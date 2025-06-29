@@ -243,6 +243,9 @@ app.get('/daily', leetcode.dailyProblem);
 //get the selected question
 app.get('/select', leetcode.selectProblem);
 
+// get the selection question raw
+app.get('/selectQuestion', leetcode.selectProblemRaw);
+
 //get list of problems
 app.get('/problems', leetcode.problems);
 
