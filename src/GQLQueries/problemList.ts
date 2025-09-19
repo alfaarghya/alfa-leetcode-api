@@ -1,31 +1,42 @@
-const query = `#graphql
-    query getProblems($categorySlug: String, $limit: Int, $skip: Int, $filters: QuestionListFilterInput) {
-        problemsetQuestionList: questionList(
-            categorySlug: $categorySlug
-            limit: $limit
-            skip: $skip
-            filters: $filters
-        ) {
-            total: totalNum
-            questions: data {
-                acRate
-                difficulty
-                freqBar
-                questionFrontendId
-                isFavor
-                isPaidOnly
-                status
-                title
-                titleSlug
-                topicTags {
-                    name
-                    id
-                    slug
-                }
-                hasSolution
-                hasVideoSolution
-            }
+export const problemList = `
+  query problemsetQuestionListV2(
+    $filters: QuestionFilterInput,
+    $limit: Int,
+    $searchKeyword: String,
+    $skip: Int,
+    $sortBy: QuestionSortByInput,
+    $categorySlug: String
+  ) {
+    problemsetQuestionListV2(
+      filters: $filters
+      limit: $limit
+      searchKeyword: $searchKeyword
+      skip: $skip
+      sortBy: $sortBy
+      categorySlug: $categorySlug
+    ) {
+      questions {
+        id
+        titleSlug
+        title
+        translatedTitle
+        questionFrontendId
+        paidOnly
+        difficulty
+        topicTags {
+          name
+          slug
+          nameTranslated
         }
-}`;
-
-export default query;
+        status
+        isInMyFavorites
+        frequency
+        acRate
+        contestPoint
+      }
+      totalLength
+      finishedLength
+      hasMore
+    }
+  }
+`;

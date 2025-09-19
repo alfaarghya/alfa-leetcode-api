@@ -5,6 +5,7 @@ import * as leetcode from './leetCode';
 import { FetchUserDataRequest } from './types';
 import apicache from 'apicache';
 import axios from 'axios';
+import { problemList } from './GQLQueries/problemList';
 import {
   userContestRankingInfoQuery,
   discussCommentsQuery,
@@ -38,6 +39,7 @@ app.use((req: express.Request, _res: Response, next: NextFunction) => {
 });
 
 async function queryLeetCodeAPI(query: string, variables: any) {
+  console.log(variables)
   try {
     const response = await axios.post(API_URL, { query, variables });
     if (response.data.errors) {
@@ -126,6 +128,31 @@ app.get('/officialSolution', async (req, res) => {
   }
   try {
     const data = await queryLeetCodeAPI(officialSolutionQuery, { titleSlug });
+    return res.json(data);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
+app.get('/problemList', async (req, res) => {
+  const  skip  = req.query.skip?req.query.skip:0;
+  const limit=req.query.limit?req.query.limit:20;
+  const searchKeyword=req.query.searchKeyword?req.query.searchKeyword:"";
+  const difficulties = typeof req.query.difficulties === "string"
+  ? req.query.difficulties.split(",")
+  : [];
+  const tags=req.query.tags?req.query.tags:"all-code-essentials"
+  const sortBy= {
+    "sortField": "CUSTOM",
+    "sortOrder": "ASCENDING"
+  }
+  const  filters= {
+    "filterCombineType": "ALL",
+    "difficultyFilter": {
+      "difficulties": difficulties,
+      "operator": "IS"
+    }};
+  try {
+    const data = await queryLeetCodeAPI(problemList, { skip ,limit,searchKeyword,filters,categorySlug:tags,sortBy});
     return res.json(data);
   } catch (error) {
     return res.status(500).json({ error: error.message });
@@ -242,10 +269,6 @@ app.get('/daily', leetcode.dailyProblem);
 
 //get the selected question
 app.get('/select', leetcode.selectProblem);
-
-//get list of problems
-app.get('/problems', leetcode.problems);
-
 //get 20 trending Discuss
 app.get('/trendingDiscuss', leetcode.trendingCategoryTopics);
 
