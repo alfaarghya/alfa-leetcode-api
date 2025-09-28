@@ -74,6 +74,7 @@ During development, it's recommended to utilize the API locally. To do so, follo
 | _Discussion Topic_     | `/discussTopic/:topicId`                           | get discussion topic                 |
 | _Discussion Comment_   | `/discussComments/:topicId`                        | get discussion comments              |
 | _Raw Daily Problem_    | `/dailyQuestion`                                   | get raw daily question               |
+| _Raw Selected Problem_ | `/selectQuestion?titleSlug=selected-question`      | get raw selected question            |
 
 ### ❓Questions Details
 
