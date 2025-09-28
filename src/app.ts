@@ -110,8 +110,13 @@ app.get('/', (_req, res) => {
           '/problems?tags=array+math': 'Get list problems on selected topics',
           '/problems?tags=array+math+string&limit=5':
             'Get list some problems on selected topics',
+          '/problems?skip=500': 'Get list after skipping a given amount of problems',
+          '/problems?difficulty=EASY': 'Get list of problems having selected difficulty',
+          '/problems?limit=5&skip=100': 'Get list of size limit after skipping selected amount',
+          'problems?tags=array+maths&limit=5&skip=100': 'Get list of problems with selected tags having size limit after skipping selected amount',
           '/officialSolution?titleSlug=two-sum':
             'Get official solution of selected problem',
+
         },
       },
     },
