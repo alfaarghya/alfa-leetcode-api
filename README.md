@@ -108,6 +108,7 @@ During development, it's recommended to utilize the API locally. To do so, follo
 | [@theinit01](https://github.com/theinit01)         | Temp fix for skip                                                                |
 | [@123xylem](https://github.com/123xylem)           | Add Descriptions and Methods to API route documentation.                         |
 | [@P-M-Manmohan](https://github.com/P-M-Manmohan)   | Added filtering based on difficulty                                              |
+| [@Ahmed-Armaan](https://github.com/Ahmed-Armaan)   | Update DOCS example. Update function: set limit 20 if it's undefined                                          |
 
 ## Connect with me 📲
 
