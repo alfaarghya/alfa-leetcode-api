@@ -185,5 +185,75 @@ export const languageStats = (_req: Request, res: Response) => {
       example: 'localhost:3000/languageStats?username=uwi',
     });
   }
+};
 
+// New endpoint functions following the distributed pattern
+export const officialSolution = (req: Request, res: Response) => {
+  const { titleSlug } = req.query;
+
+  if (!titleSlug) {
+    return res.status(400).json({ error: 'Missing titleSlug query parameter' });
+  }
+  return controllers.handleRequest(res, gqlQueries.officialSolutionQuery, { titleSlug });
+};
+
+export const userProfileCalendar = (req: Request, res: Response) => {
+  const { username, year } = req.query;
+
+  if (!username || !year || typeof year !== 'string') {
+    return res
+      .status(400)
+      .json({ error: 'Missing or invalid username or year query parameter' });
+  }
+
+  return controllers.handleRequest(res, gqlQueries.userProfileCalendarQuery, {
+    username,
+    year: parseInt(year),
+  });
+};
+
+export const userProfile = (req: Request, res: Response) => {
+  const user = req.params.id;
+  controllers.fetchUserProfile(res, gqlQueries.getUserProfileQuery, {
+    username: user,
+  }, formatUtils.formatUserProfileData);
+};
+
+export const dailyQuestion = (_req: Request, res: Response) => {
+  controllers.handleRequest(res, gqlQueries.dailyProblemQuery, {});
+};
+
+export const skillStats = (req: Request, res: Response) => {
+  const { username } = req.params;
+  controllers.handleRequest(res, gqlQueries.skillStatsQuery, { username });
+};
+
+export const userProfileUserQuestionProgressV2 = (req: Request, res: Response) => {
+  const { userSlug } = req.params;
+  controllers.handleRequest(res, gqlQueries.userProfileUserQuestionProgressV2Query, { userSlug });
+};
+
+export const discussTopic = (req: Request, res: Response) => {
+  const topicId = parseInt(req.params.topicId);
+  controllers.handleRequest(res, gqlQueries.discussTopicQuery, { topicId });
+};
+
+export const discussComments = (req: Request, res: Response) => {
+  const topicId = parseInt(req.params.topicId);
+  const {
+    orderBy = 'newest_to_oldest',
+    pageNo = 1,
+    numPerPage = 10,
+  } = req.query;
+  controllers.handleRequest(res, gqlQueries.discussCommentsQuery, {
+    topicId,
+    orderBy,
+    pageNo,
+    numPerPage,
+  });
+};
+
+export const userContestRankingInfo = (req: Request, res: Response) => {
+  const { username } = req.params;
+  controllers.handleRequest(res, gqlQueries.userContestRankingInfoQuery, { username });
 };

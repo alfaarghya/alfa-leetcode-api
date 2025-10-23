@@ -4,22 +4,9 @@ import rateLimit from 'express-rate-limit';
 import * as leetcode from './leetCode';
 import { FetchUserDataRequest } from './types';
 import apicache from 'apicache';
-import axios from 'axios';
-import {
-  userContestRankingInfoQuery,
-  discussCommentsQuery,
-  discussTopicQuery,
-  userProfileUserQuestionProgressV2Query,
-  skillStatsQuery,
-  getUserProfileQuery,
-  userProfileCalendarQuery,
-  officialSolutionQuery,
-  dailyQeustion,
-} from './GQLQueries/newQueries';
 
 const app = express();
 let cache = apicache.middleware;
-const API_URL = process.env.LEETCODE_API_URL || 'https://leetcode.com/graphql';
 
 const limiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
@@ -36,24 +23,6 @@ app.use((req: express.Request, _res: Response, next: NextFunction) => {
   console.log('Requested URL:', req.originalUrl);
   next();
 });
-
-async function queryLeetCodeAPI(query: string, variables: any) {
-  try {
-    const response = await axios.post(API_URL, { query, variables });
-    if (response.data.errors) {
-      throw new Error(response.data.errors[0].message);
-    }
-    return response.data;
-  } catch (error) {
-    if (error.response) {
-      throw new Error(`Error from LeetCode API: ${error.response.data}`);
-    } else if (error.request) {
-      throw new Error('No response received from LeetCode API');
-    } else {
-      throw new Error(`Error in setting up the request: ${error.message}`);
-    }
-  }
-}
 
 app.get('/', (_req, res) => {
   res.json({
@@ -123,124 +92,32 @@ app.get('/', (_req, res) => {
   });
 });
 
-app.get('/officialSolution', async (req, res) => {
-  const { titleSlug } = req.query;
+//get official solution
+app.get('/officialSolution', leetcode.officialSolution);
 
-  if (!titleSlug) {
-    return res.status(400).json({ error: 'Missing titleSlug query parameter' });
-  }
-  try {
-    const data = await queryLeetCodeAPI(officialSolutionQuery, { titleSlug });
-    return res.json(data);
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
-  }
-});
+//get user profile calendar
+app.get('/userProfileCalendar', leetcode.userProfileCalendar);
 
-app.get('/userProfileCalendar', async (req, res) => {
-  const { username, year } = req.query;
+//get user profile details
+app.get('/userProfile/:id', leetcode.userProfile);
 
-  if (!username || !year || typeof year !== 'string') {
-    return res
-      .status(400)
-      .json({ error: 'Missing or invalid username or year query parameter' });
-  }
+//get daily question
+app.get('/dailyQuestion', leetcode.dailyQuestion);
 
-  try {
-    const data = await queryLeetCodeAPI(userProfileCalendarQuery, {
-      username,
-      year: parseInt(year),
-    });
-    return res.json(data);
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
-  }
-});
+//get skill stats
+app.get('/skillStats/:username', leetcode.skillStats);
 
-// Format data
-const formatData = (data: any) => {
-  return {
-    totalSolved: data.matchedUser.submitStats.acSubmissionNum[0].count,
-    totalSubmissions: data.matchedUser.submitStats.totalSubmissionNum,
-    totalQuestions: data.allQuestionsCount[0].count,
-    easySolved: data.matchedUser.submitStats.acSubmissionNum[1].count,
-    totalEasy: data.allQuestionsCount[1].count,
-    mediumSolved: data.matchedUser.submitStats.acSubmissionNum[2].count,
-    totalMedium: data.allQuestionsCount[2].count,
-    hardSolved: data.matchedUser.submitStats.acSubmissionNum[3].count,
-    totalHard: data.allQuestionsCount[3].count,
-    ranking: data.matchedUser.profile.ranking,
-    contributionPoint: data.matchedUser.contributions.points,
-    reputation: data.matchedUser.profile.reputation,
-    submissionCalendar: JSON.parse(data.matchedUser.submissionCalendar),
-    recentSubmissions: data.recentSubmissionList,
-    matchedUserStats: data.matchedUser.submitStats,
-  };
-};
+//get user profile question progress
+app.get('/userProfileUserQuestionProgressV2/:userSlug', leetcode.userProfileUserQuestionProgressV2);
 
-app.get('/userProfile/:id', async (req, res) => {
-  const user = req.params.id;
+//get discuss topic
+app.get('/discussTopic/:topicId', leetcode.discussTopic);
 
-  try {
-    const data = await queryLeetCodeAPI(getUserProfileQuery, {
-      username: user,
-    });
-    if (data.errors) {
-      res.send(data);
-    } else {
-      res.send(formatData(data.data));
-    }
-  } catch (error) {
-    res.send(error);
-  }
-});
+//get discuss comments
+app.get('/discussComments/:topicId', leetcode.discussComments);
 
-const handleRequest = async (res: Response, query: string, params: any) => {
-  try {
-    const data = await queryLeetCodeAPI(query, params);
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-app.get('/dailyQuestion', (_, res) => {
-  handleRequest(res, dailyQeustion, {});
-});
-
-app.get('/skillStats/:username', (req, res) => {
-  const { username } = req.params;
-  handleRequest(res, skillStatsQuery, { username });
-});
-
-app.get('/userProfileUserQuestionProgressV2/:userSlug', (req, res) => {
-  const { userSlug } = req.params;
-  handleRequest(res, userProfileUserQuestionProgressV2Query, { userSlug });
-});
-
-app.get('/discussTopic/:topicId', (req, res) => {
-  const topicId = parseInt(req.params.topicId);
-  handleRequest(res, discussTopicQuery, { topicId });
-});
-
-app.get('/discussComments/:topicId', (req, res) => {
-  const topicId = parseInt(req.params.topicId);
-  const {
-    orderBy = 'newest_to_oldest',
-    pageNo = 1,
-    numPerPage = 10,
-  } = req.query;
-  handleRequest(res, discussCommentsQuery, {
-    topicId,
-    orderBy,
-    pageNo,
-    numPerPage,
-  });
-});
-
-app.get('/userContestRankingInfo/:username', (req, res) => {
-  const { username } = req.params;
-  handleRequest(res, userContestRankingInfoQuery, { username });
-});
+//get user contest ranking info
+app.get('/userContestRankingInfo/:username', leetcode.userContestRankingInfo);
 
 //get the daily leetCode problem
 app.get('/daily', leetcode.dailyProblem);
