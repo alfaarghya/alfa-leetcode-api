@@ -31,7 +31,7 @@ https://alfa-leetcode-api.onrender.com/
 ## Run with docker 🐳
 
 ```
-docker run -p 3000:3000 alfaarghya/alfa-leetcode-api
+docker run -p 3000:3000 alfaarghya/alfa-leetcode-api:2.0.2
 ```
 
 ## Wanna Contribute 🤔??
