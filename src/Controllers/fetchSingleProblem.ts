@@ -3,9 +3,9 @@ import { DailyProblemData, SelectProblemData } from '../types';
 
 const fetchSingleProblem = async (
   res: Response,
-  formatData: (data: DailyProblemData & SelectProblemData) => void,
   query: string,
-  titleSlug: string | null
+  titleSlug: string | null,
+  formatData?: (data: DailyProblemData & SelectProblemData) => void,
 ) => {
   try {
     const response = await fetch('https://leetcode.com/graphql', {
@@ -26,6 +26,10 @@ const fetchSingleProblem = async (
 
     if (result.errors) {
       return res.send(result);
+    }
+
+    if(formatData == null) {
+      return res.json(result.data);
     }
 
     return res.json(formatData(result.data));

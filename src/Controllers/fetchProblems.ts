@@ -8,10 +8,10 @@ const fetchProblems = async (
   query: string
 ) => {
   try {
-    // always set limit to 20 if it is undefined, since the function is fetchProblems and expect multiple problems
-    const limit = options.limit === undefined ? 20 : options.limit
+    // Set default limit to 1 if only skip is provided
+    const limit = options.skip !== undefined && options.limit === undefined ? 1 : options.limit || 20;
     const skip = options.skip || 0; // Default to 0 if not provided
-    const tags = options.tags ? options.tags.split(' ') : ''; // Split tags or default to empty string as an empty array can cause a fallback to default
+    const tags = options.tags ? options.tags.split(' ') : []; // Split tags or default to empty array
     const difficulty = options.difficulty || undefined; // difficulty has to be 'EASY', 'MEDIUM' or 'HARD'
 
     const response = await fetch('https://leetcode.com/graphql', {
@@ -33,7 +33,6 @@ const fetchProblems = async (
         },
       }),
     });
-    console.log(response)
 
     const result = await response.json();
 

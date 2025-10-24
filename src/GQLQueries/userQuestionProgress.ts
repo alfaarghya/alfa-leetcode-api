@@ -1,6 +1,6 @@
-export const userProfileUserQuestionProgressV2Query = `
-    query userProfileUserQuestionProgressV2($userSlug: String!) {
-        userProfileUserQuestionProgressV2(userSlug: $userSlug) {
+export const userQuestionProgressQuery = `
+    query userProfileUserQuestionProgressV2($username: String!) {
+        userProfileUserQuestionProgressV2(userSlug: $username) {
             numAcceptedQuestions {
                 count
                 difficulty

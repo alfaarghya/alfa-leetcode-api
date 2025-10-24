@@ -92,23 +92,9 @@ app.get('/', (_req, res) => {
   });
 });
 
-//get official solution
-app.get('/officialSolution', leetcode.officialSolution);
 
-//get user profile calendar
-app.get('/userProfileCalendar', leetcode.userProfileCalendar);
-
-//get user profile details
-app.get('/userProfile/:id', leetcode.userProfile);
-
-//get daily question
-app.get('/dailyQuestion', leetcode.dailyQuestion);
-
-//get skill stats
-app.get('/skillStats/:username', leetcode.skillStats);
-
-//get user profile question progress
-app.get('/userProfileUserQuestionProgressV2/:userSlug', leetcode.userProfileUserQuestionProgressV2);
+//get trending Discuss
+app.get('/trendingDiscuss', leetcode.trendingCategoryTopics);
 
 //get discuss topic
 app.get('/discussTopic/:topicId', leetcode.discussTopic);
@@ -116,25 +102,20 @@ app.get('/discussTopic/:topicId', leetcode.discussTopic);
 //get discuss comments
 app.get('/discussComments/:topicId', leetcode.discussComments);
 
-//get user contest ranking info
-app.get('/userContestRankingInfo/:username', leetcode.userContestRankingInfo);
-
 //get the daily leetCode problem
 app.get('/daily', leetcode.dailyProblem);
+app.get('/daily/raw', leetcode.dailyProblemRaw);
 
 //get the selected question
 app.get('/select', leetcode.selectProblem);
+app.get('/select/raw', leetcode.selectProblemRaw);
 
-// get the selection question raw
-app.get('/selectQuestion', leetcode.selectProblemRaw);
+//get official solution
+app.get('/officialSolution', leetcode.officialSolution);
 
 //get list of problems
 app.get('/problems', leetcode.problems);
 
-//get 20 trending Discuss
-app.get('/trendingDiscuss', leetcode.trendingCategoryTopics);
-
-app.get('/languageStats', leetcode.languageStats);
 
 // Construct options object on all user routes.
 app.use(
@@ -143,6 +124,7 @@ app.use(
     req.body = {
       username: req.params.username,
       limit: req.query.limit,
+      year: req.query.year === undefined ? 0 : req.query.year,
     };
     next();
   }
@@ -157,5 +139,36 @@ app.get('/:username/contest/history', leetcode.userContestHistory);
 app.get('/:username/submission', leetcode.submission);
 app.get('/:username/acSubmission', leetcode.acSubmission);
 app.get('/:username/calendar', leetcode.calendar);
+app.get('/:username/skill/', leetcode.skillStats);
+app.get('/:username/profile/', leetcode.userProfile);
+app.get('/:username/language', leetcode.languageStats);
+app.get('/:username/progress/', leetcode.progress);
+
+
+
+/* ----- Migrated to new routes -> these will be deleted -----*/
+//get user profile calendar
+app.get('/userProfileCalendar', leetcode.userProfileCalendar_);
+
+//get user profile details
+app.get('/userProfile/:id', leetcode.userProfile_);
+
+//get daily question
+app.get('/dailyQuestion', leetcode.dailyQuestion_);
+
+// get the selection question raw
+app.get('/selectQuestion', leetcode.selectProblemRaw);
+
+//get skill stats
+app.get('/skillStats/:username', leetcode.skillStats_);
+
+//get user profile question progress
+app.get('/userProfileUserQuestionProgressV2/:userSlug', leetcode.userProfileUserQuestionProgressV2_);
+
+app.get('/languageStats', leetcode.languageStats_);
+
+//get user contest ranking info
+app.get('/userContestRankingInfo/:username', leetcode.userContestRankingInfo_);
+
 
 export default app;

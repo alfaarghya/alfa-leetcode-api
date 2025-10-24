@@ -62,5 +62,23 @@ export const formatAcSubmissionData = (data: UserData) => ({
 });
 
 export const formatSubmissionCalendarData = (data: UserData) => ({
-  submissionCalendar: data.matchedUser.submissionCalendar,
+  activeYears: data.matchedUser.userCalendar.activeYears,
+  streak: data.matchedUser.userCalendar.streak,
+  totalActiveDays: data.matchedUser.userCalendar.totalActiveDays,
+  dccBadges: data.matchedUser.userCalendar.dccBadge,
+  submissionCalendar: data.matchedUser.userCalendar.submissionCalendar,
+});
+
+export const formatSkillStats = (data: UserData) => ({
+fundamental: data.matchedUser.tagProblemCounts.fundamental,
+intermediate: data.matchedUser.tagProblemCounts.intermediate,
+advanced: data.matchedUser.tagProblemCounts.advanced,
+});
+
+export const formatLanguageStats = (data: UserData) => ({
+languageProblemCount: data.matchedUser.languageProblemCount,
+});
+
+export const formatProgressStats = (data: UserData) => ({
+numAcceptedQuestions: data.userProfileUserQuestionProgressV2
 });
