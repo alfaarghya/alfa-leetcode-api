@@ -4,12 +4,13 @@ import * as formatUtils from './FormatUtils';
 import * as controllers from './Controllers';
 import { TransformedUserDataRequest } from './types';
 
+//User profile details
 export const userData = (req: TransformedUserDataRequest, res: Response) => {
   controllers.fetchUserDetails(
     req.body,
     res,
+    gqlQueries.userProfileQuery,
     formatUtils.formatUserData,
-    gqlQueries.userProfileQuery
   );
 };
 
@@ -17,8 +18,8 @@ export const userBadges = (req: TransformedUserDataRequest, res: Response) => {
   controllers.fetchUserDetails(
     req.body,
     res,
+    gqlQueries.userProfileQuery,
     formatUtils.formatBadgesData,
-    gqlQueries.userProfileQuery
   );
 };
 
@@ -26,8 +27,8 @@ export const userContest = (req: TransformedUserDataRequest, res: Response) => {
   controllers.fetchUserDetails(
     req.body,
     res,
+    gqlQueries.contestQuery,
     formatUtils.formatContestData,
-    gqlQueries.contestQuery
   );
 };
 
@@ -38,8 +39,8 @@ export const userContestHistory = (
   controllers.fetchUserDetails(
     req.body,
     res,
+    gqlQueries.contestQuery,
     formatUtils.formatContestHistoryData,
-    gqlQueries.contestQuery
   );
 };
 
@@ -50,8 +51,8 @@ export const solvedProblem = (
   controllers.fetchUserDetails(
     req.body,
     res,
+    gqlQueries.userProfileQuery,
     formatUtils.formatSolvedProblemsData,
-    gqlQueries.userProfileQuery
   );
 };
 
@@ -59,8 +60,8 @@ export const submission = (req: TransformedUserDataRequest, res: Response) => {
   controllers.fetchUserDetails(
     req.body,
     res,
+    gqlQueries.submissionQuery,
     formatUtils.formatSubmissionData,
-    gqlQueries.submissionQuery
   );
 };
 
@@ -71,8 +72,8 @@ export const acSubmission = (
   controllers.fetchUserDetails(
     req.body,
     res,
+    gqlQueries.AcSubmissionQuery,
     formatUtils.formatAcSubmissionData,
-    gqlQueries.AcSubmissionQuery
   );
 };
 
@@ -80,18 +81,62 @@ export const calendar = (req: TransformedUserDataRequest, res: Response) => {
   controllers.fetchUserDetails(
     req.body,
     res,
-    formatUtils.formatSubmissionCalendarData,
-    gqlQueries.userProfileQuery
+    gqlQueries.userProfileCalendarQuery,
+    formatUtils.formatSubmissionCalendarData
   );
+};
+
+export const skillStats = (req: TransformedUserDataRequest, res: Response) => {
+  controllers.fetchUserDetails(
+    req.body,
+    res,
+    gqlQueries.skillStatsQuery,
+    formatUtils.formatSkillStats
+  );
+};
+
+export const userProfile = (req: Request, res: Response) => {
+  controllers.fetchUserDetails(
+    req.body,
+    res,
+    gqlQueries.getUserProfileQuery,
+    formatUtils.formatUserProfileData
+  )
+};
+
+export const languageStats = (req: Request, res: Response) => {
+  controllers.fetchUserDetails(
+    req.body,
+    res,
+    gqlQueries.languageStatsQuery,
+    formatUtils.formatLanguageStats
+  )
+};
+
+export const progress = (req: Request, res: Response) => {
+  controllers.fetchUserDetails(
+    req.body,
+    res,
+    gqlQueries.userQuestionProgressQuery,
+    formatUtils.formatProgressStats
+  )
 };
 
 //Problems Details
 export const dailyProblem = (_req: Request, res: Response) => {
   controllers.fetchSingleProblem(
     res,
-    formatUtils.formatDailyData,
     gqlQueries.dailyProblemQuery,
-    null
+    null,
+    formatUtils.formatDailyData,
+  );
+};
+
+export const dailyProblemRaw = (_req: Request, res: Response) => {
+  controllers.fetchSingleProblem(
+    res,
+    gqlQueries.dailyProblemQuery,
+    null,
   );
 };
 
@@ -100,9 +145,9 @@ export const selectProblem = (req: Request, res: Response) => {
   if (title !== undefined) {
     controllers.fetchSingleProblem(
       res,
-      formatUtils.formatQuestionData,
       gqlQueries.selectProblemQuery,
-      title
+      title,
+      formatUtils.formatQuestionData,
     );
   } else {
     res.status(400).json({
@@ -118,9 +163,8 @@ export const selectProblemRaw = (req: Request, res: Response) => {
   if (title !== undefined) {
     controllers.fetchSingleProblem(
       res,
-      e => e,
       gqlQueries.selectProblemQuery,
-      title
+      title,
     );
   } else {
     res.status(400).json({
@@ -148,7 +192,16 @@ export const problems = (
   );
 };
 
+export const officialSolution = (req: Request, res: Response) => {
+  const { titleSlug } = req.query;
 
+  if (!titleSlug) {
+    return res.status(400).json({ error: 'Missing titleSlug query parameter' });
+  }
+  return controllers.handleRequest(res, gqlQueries.officialSolutionQuery, { titleSlug });
+};
+
+// Discussion
 export const trendingCategoryTopics = (_req: Request, res: Response) => {
   const first = parseInt(_req.query.first as string);
   if (!isNaN(first)) {
@@ -169,7 +222,30 @@ export const trendingCategoryTopics = (_req: Request, res: Response) => {
 
 };
 
-export const languageStats = (_req: Request, res: Response) => {
+export const discussTopic = (req: Request, res: Response) => {
+  const topicId = parseInt(req.params.topicId);
+  controllers.handleRequest(res, gqlQueries.discussTopicQuery, { topicId });
+};
+
+export const discussComments = (req: Request, res: Response) => {
+  const topicId = parseInt(req.params.topicId);
+  const {
+    orderBy = 'newest_to_oldest',
+    pageNo = 1,
+    numPerPage = 10,
+  } = req.query;
+  controllers.handleRequest(res, gqlQueries.discussCommentsQuery, {
+    topicId,
+    orderBy,
+    pageNo,
+    numPerPage,
+  });
+};
+
+
+
+/* ----- Migrated to new functions -> these will be deleted -----*/
+export const languageStats_ = (_req: Request, res: Response) => {
   const username = _req.query.username as string;
   if (username) {
     controllers.fetchDataRawFormat(
@@ -185,5 +261,46 @@ export const languageStats = (_req: Request, res: Response) => {
       example: 'localhost:3000/languageStats?username=uwi',
     });
   }
+};
 
+
+export const userProfileCalendar_ = (req: Request, res: Response) => {
+  const { username, year } = req.query;
+
+  if (!username || !year || typeof year !== 'string') {
+    return res
+      .status(400)
+      .json({ error: 'Missing or invalid username or year query parameter' });
+  }
+
+  return controllers.handleRequest(res, gqlQueries.userProfileCalendarQuery, {
+    username,
+    year: parseInt(year),
+  });
+};
+
+export const userProfile_ = (req: Request, res: Response) => {
+  const user = req.params.id;
+  controllers.fetchUserProfile(res, gqlQueries.getUserProfileQuery, {
+    username: user,
+  }, formatUtils.formatUserProfileData);
+};
+
+export const dailyQuestion_ = (_req: Request, res: Response) => {
+  controllers.handleRequest(res, gqlQueries.dailyProblemQuery, {});
+};
+
+export const skillStats_ = (req: Request, res: Response) => {
+  const { username } = req.params;
+  controllers.handleRequest(res, gqlQueries.skillStatsQuery, { username });
+};
+
+export const userProfileUserQuestionProgressV2_ = (req: Request, res: Response) => {
+  const username = req.params.username;
+  controllers.handleRequest(res, gqlQueries.userQuestionProgressQuery, { username });
+};
+
+export const userContestRankingInfo_ = (req: Request, res: Response) => {
+  const { username } = req.params;
+  controllers.handleRequest(res, gqlQueries.userContestRankingInfoQuery, { username });
 };

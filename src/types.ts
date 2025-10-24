@@ -23,7 +23,19 @@ interface MatchedUser {
   upcomingBadges: Badge[];
   username: string;
   twitterUrl?: string;
-  submissionCalendar: string;
+  userCalendar: {
+    activeYears: number[];
+    streak: number;
+    totalActiveDays: number;
+    dccBadge: {
+      timestamp: number;
+      badge: {
+        name: string;
+        icon: string;
+      };
+    }[];
+    submissionCalendar: string;
+  };
   submitStats: {
     totalSubmissionNum: {
       difficulty: Difficulty;
@@ -37,6 +49,12 @@ interface MatchedUser {
     }[];
     count: number;
   };
+  tagProblemCounts: {
+    fundamental: skillStats[];
+    intermediate: skillStats[];
+    advanced: skillStats[];
+  };
+  languageProblemCount: { languageName: string; problemsSolved: number }[];
 }
 
 export interface UserData {
@@ -64,6 +82,7 @@ export interface UserData {
   matchedUser: MatchedUser;
   recentAcSubmissionList: {}[];
   recentSubmissionList: Submission[];
+  userProfileUserQuestionProgressV2: {count: number, difficulty: string}[]
 }
 
 interface Badge {
@@ -71,19 +90,25 @@ interface Badge {
   icon: string;
 }
 
+interface skillStats {
+  tagName: string;
+  tagSlug: string;
+  problemsSolved: number;
+}
+
 type Difficulty = 'All' | 'Easy' | 'Medium' | 'Hard';
 //User Details
 export type FetchUserDataRequest = Request<
   { username: string },
   {},
-  { username: string; limit: number },
-  { limit: number }
+  { username: string; limit: number; year: number },
+  { limit: number; year: number }
 >;
 
 export type TransformedUserDataRequest = Request<
   {},
   {},
-  { username: string; limit: number }
+  { username: string; limit: number; year: number }
 >;
 
 //  ProblemData
