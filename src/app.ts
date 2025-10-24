@@ -35,27 +35,22 @@ app.get('/', (_req, res) => {
         description:
           'Endpoints for retrieving detailed user profile information on Leetcode.',
         Method: 'GET',
-        '/:username': 'Get your leetcodevis profile Details',
+        '/:username': 'Get your leetcode profile Details',
+        '/:username/profile': 'Get full profile details',
         '/:username/badges': 'Get your badges',
         '/:username/solved': 'Get total number of question you solved',
         '/:username/contest': 'Get your contest details',
         '/:username/contest/history': 'Get all contest history',
         '/:username/submission': 'Get your last 20 submission',
+        '/:username/submission?limit=7': 'Get a specified number of last submissions.',
         '/:username/acSubmission': 'Get your last 20 accepted submission',
+        '/:username/acSubmission?limit=7': 'Get a specified number of last acSubmissions.',
         '/:username/calendar': 'Get your submission calendar',
-        '/userProfile/:username': 'Get full profile details in one call',
-        '/userProfileCalendar?username=yourname&year=2024':
-          'Get your calendar details with year',
-        '/languageStats?username=yourname': 'Get the language stats of a user',
-        '/userProfileUserQuestionProgressV2/:userSlug':
-          'Get your question progress',
-        '/skillStats/:username': 'Get your skill stats',
-      },
-      contest: {
-        description:
-          'Endpoints for retrieving contest ranking and performance data.',
-        Method: 'GET',
-        '/userContestRankingInfo/:username': 'Get user contest ranking info',
+        '/:username/calendar?year=2025': 'Get your year submission calendar',
+        '/:username/skill': 'Get your skill stats',
+        '/:username/language': 'Get your language stats',
+        '/:username/progress': 'Get your progress stats',
+        
       },
       discussion: {
         description: 'Endpoints for fetching discussion topics and comments.',
@@ -70,8 +65,9 @@ app.get('/', (_req, res) => {
         Method: 'GET',
         singleProblem: {
           '/select?titleSlug=two-sum': 'Get selected Problem',
+          '/select/raw?titleSlug=two-sum': 'Get raw selected Problem',
           '/daily': 'Get daily Problem',
-          '/dailyQuestion': 'Get raw daily question',
+          '/daily/raw': 'Get raw daily Problem',
         },
         problemList: {
           '/problems': 'Get list of 20 problems',
