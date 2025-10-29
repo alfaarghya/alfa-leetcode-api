@@ -304,3 +304,24 @@ export const userContestRankingInfo_ = (req: Request, res: Response) => {
   const { username } = req.params;
   controllers.handleRequest(res, gqlQueries.userContestRankingInfoQuery, { username });
 };
+
+//limiting is not supported in the contests unlike problems
+export const allContests = (
+  _req: Request,
+  res: Response
+) => {
+  controllers.fetchAllContests(
+    res,
+    gqlQueries.allContestQuery
+  );
+};
+
+export const upcomingContests = (
+  _req: Request,
+  res: Response
+) => {
+  controllers.fetchUpcomingContests(
+    res,
+    gqlQueries.allContestQuery
+  );
+};
