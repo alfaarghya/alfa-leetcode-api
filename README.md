@@ -86,6 +86,15 @@ During development, it's recommended to utilize the API locally. To do so, follo
 | _Skip & Filter & Limited Problems_ | `/problems?tags=tag1+tag2+tag3&limit=number&skip=number` | Get a list of a specified **_number_** of problems based on selected **_tags_** skipping a specified **number** of problems. | <a href="./public/demo/demo21.png" target="_blank">click here</a> |
 | _Official Solution_                | `/officialSolution?titleSlug=selected-question`          | Get Get the official solution(leetcode) for a question                                                                       | TODO                                                              |
 
+### Contests
+
+| Details                            | Endpoint                                                 | Description                                                                                                                  | Demo                                                              |
+| :--------------------------------- | :------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| _All Contests_                    | `/contests`                                                 | Get all the contests                                                                                                       | TODO |
+| _Upcoming Contests_                | `/contests/upcoming`                                             | Get the upcoming contests.                                                                                               | TODO |                  
+
+
+
 ### Discussion
 
 | Details               | Endpoint                    | Description                     |
@@ -107,6 +116,7 @@ During development, it's recommended to utilize the API locally. To do so, follo
 | [@kvqn](https://www.github.com/kvqn)               | PORT environment variable                                                        |
 | [@changchunlei](https://github.com/changchunlei)   | New Endpoints - language stats, integrated user profile, contest and discussions |
 | [@merakesh99](https://github.com/merakesh99)       | Hot reload issue solved                                                          |
+| [@Ayushman2004](https://github.com/Ayushman2004)   | Added Endpoints: all-contests, upcoming-contests                                 |
 | [@ajchili](https://github.com/ajchili)             | Skip param to fetch problems                                                     |
 | [@theinit01](https://github.com/theinit01)         | Temp fix for skip                                                                |
 | [@123xylem](https://github.com/123xylem)           | Add Descriptions and Methods to API route documentation.                         |
