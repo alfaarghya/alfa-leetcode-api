@@ -112,6 +112,9 @@ app.get('/officialSolution', leetcode.officialSolution);
 //get list of problems
 app.get('/problems', leetcode.problems);
 
+//get contests
+app.get('/contests', leetcode.allContests);
+app.get('/contests/upcoming', leetcode.upcomingContests);
 
 // Construct options object on all user routes.
 app.use(
