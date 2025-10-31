@@ -9,9 +9,11 @@ import {
   getSelectProblem,
   getSelectProblemRaw,
 } from '../leetCodeService';
-import { runTool, ToolModule } from '../serverUtils';
+import { runTool } from '../serverUtils';
+import { ToolModule } from '../types';
 
 export class ProblemToolsModule implements ToolModule {
+  // Registers problem-related tools with the MCP server.
   register(server: McpServer): void {
     server.registerTool(
       'leetcode_problem_daily',

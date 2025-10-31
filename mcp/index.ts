@@ -1,14 +1,8 @@
 import { DiscussionToolsModule } from './modules/discussionTools';
 import { ProblemToolsModule } from './modules/problemTools';
 import { UserToolsModule } from './modules/userTools';
-import { SERVER_VERSION, startServer, ToolModule } from './serverUtils';
-
-type Mode = 'all' | 'users' | 'problems' | 'discussions';
-
-type ModuleConfig = {
-  modules: ToolModule[];
-  name: string;
-};
+import { SERVER_VERSION, startServer } from './serverUtils';
+import { Mode, ModuleConfig, ToolModule } from './types';
 
 const modulesByKey: Record<Exclude<Mode, 'all'>, ToolModule> = {
   users: new UserToolsModule(),
@@ -16,6 +10,7 @@ const modulesByKey: Record<Exclude<Mode, 'all'>, ToolModule> = {
   discussions: new DiscussionToolsModule(),
 };
 
+// Normalizes the input mode string to a valid Mode type.
 function normalizeMode(input: string | undefined): Mode {
   if (!input) {
     return 'all';
@@ -36,6 +31,7 @@ function normalizeMode(input: string | undefined): Mode {
   process.exit(1);
 }
 
+// Resolves the modules and server name based on the selected mode.
 function resolveModules(mode: Mode): ModuleConfig {
   if (mode === 'all') {
     return {
@@ -50,6 +46,7 @@ function resolveModules(mode: Mode): ModuleConfig {
   };
 }
 
+// Main entry point for the MCP server. Parses command line arguments, sets up modules, and starts the server.
 async function main() {
   const modeInput = process.env.MCP_SERVER_MODE ?? process.argv[2];
   const mode = normalizeMode(modeInput);

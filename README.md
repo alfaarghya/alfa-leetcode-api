@@ -47,10 +47,17 @@ npm run build
 
 The build step produces `dist/mcp/index.js`, the entry point used by MCP clients.
 
-### Claude Desktop setup
+### MCP client setup
 
-1. Open `%AppData%/Claude/claude_desktop_config.json`.
-2. Add a server entry pointing at the built file. Example:
+1. The configuration is the same across operating systems as long as your MCP client is installed and supports external servers (Claude Desktop, Cursor, Windsurf, etc.).
+
+2. Add a server entry pointing at the built file by pasting the JSON below into your MCP client's config file — for example:
+
+   - `claude_desktop_config.json` for Claude Desktop
+   - `mcp.json` for Cursor
+   - the equivalent JSON config file for other MCP clients
+
+   Example (paste into the appropriate file):
 
    ```json
    {
@@ -63,7 +70,7 @@ The build step produces `dist/mcp/index.js`, the entry point used by MCP clients
    }
    ```
 
-3. Restart Claude Desktop. A "Search & tools" toggle appears once the server launches successfully.
+3. Restart your MCP client. A "Search & tools" toggle (or similar UI element) should appear once the server launches successfully.
 
 To run only a subset of tools, append the module name (`users`, `problems`, or `discussions`) as an extra argument or set the `MCP_SERVER_MODE` environment variable.
 

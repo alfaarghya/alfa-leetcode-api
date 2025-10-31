@@ -20,12 +20,14 @@ import {
   getUserProgress,
   getUserProgressRaw,
 } from '../leetCodeService';
-import { runTool, ToolModule } from '../serverUtils';
+import { runTool } from '../serverUtils';
+import { ToolModule } from '../types';
 
 const usernameSchema = z.string();
 const limitSchema = z.number().int().positive().max(50).optional();
 
 export class UserToolsModule implements ToolModule {
+  // Registers user-related tools with the MCP server.
   register(server: McpServer): void {
     server.registerTool(
       'leetcode_user_data',

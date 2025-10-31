@@ -1,9 +1,11 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { getDiscussComments, getDiscussTopic, getTrendingTopics } from '../leetCodeService';
-import { runTool, ToolModule } from '../serverUtils';
+import { runTool } from '../serverUtils';
+import { ToolModule } from '../types';
 
 export class DiscussionToolsModule implements ToolModule {
+  // Registers discussion-related tools with the MCP server.
   register(server: McpServer): void {
     server.registerTool(
         'leetcode_discuss_trending',

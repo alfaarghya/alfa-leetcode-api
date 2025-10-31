@@ -1,22 +1,11 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-
-type GraphQLParams = Record<string, unknown>;
+import { GraphQLParams, GraphQLClientError, ToolResponse, ToolExecutor, ToolModule } from './types';
 
 const GRAPHQL_ENDPOINT = 'https://leetcode.com/graphql';
-export const SERVER_VERSION = '2.0.1';
+export const SERVER_VERSION = '1.0.0';
 
-export class GraphQLClientError extends Error {
-  readonly status: number;
-  readonly body: unknown;
-
-  constructor(message: string, status: number, body: unknown) {
-    super(message);
-    this.status = status;
-    this.body = body;
-  }
-}
-
+// Executes a GraphQL query against the LeetCode API.
 export async function executeGraphQL(query: string, variables: GraphQLParams = {}): Promise<unknown> {
   const requestInit: RequestInit = {
     method: 'POST',
@@ -41,10 +30,12 @@ export async function executeGraphQL(query: string, variables: GraphQLParams = {
   return payload.data;
 }
 
+// Converts data to tool content format.
 export function toToolContent(data: unknown): { type: 'text'; text: string }[] {
   return [{ type: 'text', text: JSON.stringify(data, null, 2) }];
 }
 
+// Creates a tool result from data.
 export function createToolResult(data: unknown): {
   content: { type: 'text'; text: string }[];
 } {
@@ -53,6 +44,7 @@ export function createToolResult(data: unknown): {
   };
 }
 
+// Creates an error tool result from an error.
 export function createErrorResult(error: unknown): {
   content: { type: 'text'; text: string }[];
 } {
@@ -72,10 +64,7 @@ export function createErrorResult(error: unknown): {
   return createToolResult({ message: 'Unknown error', detail: error });
 }
 
-export type ToolResponse = { content: { type: 'text'; text: string }[] };
-
-export type ToolExecutor = () => Promise<unknown>;
-
+// Runs a tool executor and handles errors.
 export async function runTool(executor: ToolExecutor): Promise<ToolResponse> {
   try {
     const data = await executor();
@@ -85,10 +74,7 @@ export async function runTool(executor: ToolExecutor): Promise<ToolResponse> {
   }
 }
 
-export interface ToolModule {
-  register(server: McpServer): void;
-}
-
+// Starts the MCP server with the given modules.
 export async function startServer(
   serverInfo: { name: string; version?: string },
   modules: ToolModule[],
