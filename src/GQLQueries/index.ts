@@ -16,3 +16,4 @@ export { userQuestionProgressQuery } from './userQuestionProgress';
 export { discussTopicQuery } from './discussTopic';
 export { discussCommentsQuery } from './discussComments';
 export { userContestRankingInfoQuery } from './userContestRanking';
+export { allContestQuery } from './allContests';
