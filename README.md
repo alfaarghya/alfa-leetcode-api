@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/alfaarghya-alfa-leetcode-api-badge.png)](https://mseep.ai/app/alfaarghya-alfa-leetcode-api)
+
 <h1 align="center">alfa-leetcode-api</h1>
 
 <p align="center">
