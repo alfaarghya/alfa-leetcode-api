@@ -34,6 +34,69 @@ https://alfa-leetcode-api.onrender.com/
 docker run -p 3000:3000 alfaarghya/alfa-leetcode-api:2.0.2
 ```
 
+## Endpoints 🚀
+
+### 👤User Details
+
+| Details                       | Endpoint                             | Description                                                          | Demo                                                              |
+| :---------------------------- | :----------------------------------- | :------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| _Profile_                     | `/:username`                         | Get details about a user's profile.                                  | <a href="./public/demo/demo2.png" target="_blank">click here</a>  |
+| _Full Profile_                | `/:username/profile`                 | Get full profile details in one call                                 | TODO                                                              |
+| _Badges_                      | `/:username/badges`                  | Get the badges earned by the user.                                   | <a href="./public/demo/demo3.png" target="_blank">click here</a>  |
+| _Solved_                      | `/:username/solved`                  | Get the total number of questions solved by the user.                | <a href="./public/demo/demo4.png" target="_blank">click here</a>  |
+| _Contest_                     | `/:username/contest`                 | Get details about the user's contest participation.                  | <a href="./public/demo/demo5.png" target="_blank">click here</a>  |
+| _Contest History_             | `/:username/contest/history`         | Get all contest history.                                             | <a href="./public/demo/demo6.png" target="_blank">click here</a>  |
+| _Submission_                  | `/:username/submission`              | Get the last 20 submissions of the user.                             | <a href="./public/demo/demo7.png" target="_blank">click here</a>  |
+| _Limited Submission_          | `/:username/submission?limit=number` | Get a specified **_number_** of the user's last submissions.         | <a href="./public/demo/demo8.png" target="_blank">click here</a>  |
+| _Accepted Submission_         | `/:username/acSubmission`            | Get the last 20 accepted submission of the user.                     | <a href="./public/demo/demo16.png" target="_blank">click here</a> |
+| _Limited Accepted Submission_ | `/:username/acSubmission?limit=7`    | Get a specified **_number_** of the user's last accepted submission. | <a href="./public/demo/demo17.png" target="_blank">click here</a> |
+| _Calendar_                    | `/:username/calendar`                | Get the user's submission calendar.                                  | <a href="./public/demo/demo9.png" target="_blank">click here</a>  |
+| _Calendar with year_          | `/:username/calendar?year=2025`      | Get the user's submission calendar with `year` query                 | TODO                                                              |
+| _Skill Stats_                 | `/:username/skill`                   | Get the user's skill stats.                                          | TODO                                                              |
+| _Lang Stats_                  | `/:username/language`                | get the language stats of a user                                     | TODO                                                              |
+| _Question Progress_           | `/:username/progress`                | get your question progress                                           | TODO                                                              |
+
+### ❓Questions Details
+
+| Details                            | Endpoint                                                 | Description                                                                                                                  | Demo                                                              |
+| :--------------------------------- | :------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| _Daily Problem_                    | `/daily`                                                 | Get the daily question.                                                                                                      | <a href="./public/demo/demo10.png" target="_blank">click here</a> |
+| _Daily Problem Raw_                | `/daily/raw`                                             | Get the daily question in raw.                                                                                               | TODO                                                              |
+| _Selected Problem_                 | `/select?titleSlug=selected-question`                    | Get details about a **_selected-question_**.                                                                                 | <a href="./public/demo/demo11.png" target="_blank">click here</a> |
+| _Raw Selected Problem_             | `/select/raw?titleSlug=selected-question`                | Get raw selected question                                                                                                    | TODO                                                              |
+| _Problems_                         | `/problems`                                              | Get a list of 20 problems.                                                                                                   | <a href="./public/demo/demo12.png" target="_blank">click here</a> |
+| _Limited Problems_                 | `/problems?limit=number`                                 | Get a list of a specified **_number_** of problems.                                                                          | <a href="./public/demo/demo13.png" target="_blank">click here</a> |
+| _Filter Problems_                  | `/problems?tags=tag1+tag2`                               | Get a list of problems based on selected **_tags_**.                                                                         | <a href="./public/demo/demo14.png" target="_blank">click here</a> |
+| _Skip Problems_                    | `/problems?skip=number`                                  | Get a list of 20 problems, skipping a specified **_number_** of problems.                                                    | <a href="./public/demo/demo18.png" target="_blank">click here</a> |
+| _Difficulty_                       | `/problems?difficulty=EASY`                              | Get a list of difficulty based problems, use **_MEDIUM_** to get medium level, **_HARD_** to get Hard level .                | <a href="./public/demo/demo19.png" target="_blank">click here</a> |
+| _Filter & Limited Problems_        | `/problems?tags=tag1+tag2+tag3&limit=number`             | Get a list of a specified **_number_** of problems based on selected **_tags_**.                                             | <a href="./public/demo/demo15.png" target="_blank">click here</a> |
+| _Skip & Limited Problems_          | `/problems?limit=number&skip=number`                     | Get a list of a specified **_number_** of problems skipping a specified **number** of problems.                              | <a href="./public/demo/demo20.png" target="_blank">click here</a> |
+| _Skip & Filter & Limited Problems_ | `/problems?tags=tag1+tag2+tag3&limit=number&skip=number` | Get a list of a specified **_number_** of problems based on selected **_tags_** skipping a specified **number** of problems. | <a href="./public/demo/demo21.png" target="_blank">click here</a> |
+| _Official Solution_                | `/officialSolution?titleSlug=selected-question`          | Get Get the official solution(leetcode) for a question                                                                       | TODO                                                              |
+
+### 🏆 Contests
+
+| Details             | Endpoint             | Description                | Demo |
+| :------------------ | :------------------- | :------------------------- | ---- |
+| _All Contests_      | `/contests`          | Get all the contests       | TODO |
+| _Upcoming Contests_ | `/contests/upcoming` | Get the upcoming contests. | TODO |
+
+### 🗪 Discussion
+
+| Details               | Endpoint                    | Description                     |
+| :-------------------- | :-------------------------- | :------------------------------ |
+| _Trending Discussion_ | `/trendingDiscuss?first=20` | get top 20 trending discussions |
+| _Discussion Topic_    | `/discussTopic/:topicId`    | get discussion topic            |
+| _Discussion Comment_  | `/discussComments/:topicId` | get discussion comments         |
+
+### 💡 Rate Limit
+
+I've implemented a rate limit to prevent any potential server overload issues.
+
+### ‼️ Note
+
+During development, it's recommended to utilize the API locally. To do so, you can use docker image of our api.
+
 ## MCP server integration 🤖
 
 The repository also ships a Model Context Protocol (MCP) server that exposes the same LeetCode data as interactive tools for Claude Desktop or the MCP Inspector.
@@ -88,76 +151,11 @@ For TypeScript-on-the-fly development:
 npx @modelcontextprotocol/inspector npx ts-node mcp/index.ts
 ```
 
-Choose the *Tools* tab in the Inspector UI to invoke individual operations and confirm responses before wiring them into Claude.
+Choose the _Tools_ tab in the Inspector UI to invoke individual operations and confirm responses before wiring them into Claude.
 
 ## Wanna Contribute 🤔??
 
-follow this documentation => <a href="CONTRIBUTING.md" target="_blank">CONTRIBUTING.md</a>
-
-### 💡 Rate Limit
-
-I've implemented a rate limit to prevent any potential server overload issues.
-
-### ‼️ Note
-
-During development, it's recommended to utilize the API locally. To do so, follow this documentation => <a href="CONTRIBUTING.md" target="_blank">Local Deploy</a>
-
-## Endpoints 🚀
-
-### 👤User Details
-
-| Details                       | Endpoint                             | Description                                                          | Demo                                                              |
-| :---------------------------- | :----------------------------------- | :------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| _Profile_                     | `/:username`                         | Get details about a user's profile.                                  | <a href="./public/demo/demo2.png" target="_blank">click here</a>  |
-| _Full Profile_                | `/:username/profile`                 | Get full profile details in one call                                 | TODO                                                              |
-| _Badges_                      | `/:username/badges`                  | Get the badges earned by the user.                                   | <a href="./public/demo/demo3.png" target="_blank">click here</a>  |
-| _Solved_                      | `/:username/solved`                  | Get the total number of questions solved by the user.                | <a href="./public/demo/demo4.png" target="_blank">click here</a>  |
-| _Contest_                     | `/:username/contest`                 | Get details about the user's contest participation.                  | <a href="./public/demo/demo5.png" target="_blank">click here</a>  |
-| _Contest History_             | `/:username/contest/history`         | Get all contest history.                                             | <a href="./public/demo/demo6.png" target="_blank">click here</a>  |
-| _Submission_                  | `/:username/submission`              | Get the last 20 submissions of the user.                             | <a href="./public/demo/demo7.png" target="_blank">click here</a>  |
-| _Limited Submission_          | `/:username/submission?limit=number` | Get a specified **_number_** of the user's last submissions.         | <a href="./public/demo/demo8.png" target="_blank">click here</a>  |
-| _Accepted Submission_         | `/:username/acSubmission`            | Get the last 20 accepted submission of the user.                     | <a href="./public/demo/demo16.png" target="_blank">click here</a> |
-| _Limited Accepted Submission_ | `/:username/acSubmission?limit=7`    | Get a specified **_number_** of the user's last accepted submission. | <a href="./public/demo/demo17.png" target="_blank">click here</a> |
-| _Calendar_                    | `/:username/calendar`                | Get the user's submission calendar.                                  | <a href="./public/demo/demo9.png" target="_blank">click here</a>  |
-| _Calendar with year_          | `/:username/calendar?year=2025`      | Get the user's submission calendar with `year` query                 | TODO                                                              |
-| _Skill Stats_                 | `/:username/skill`                   | Get the user's skill stats.                                          | TODO                                                              |
-| _Lang Stats_                  | `/:username/language`                | get the language stats of a user                                     | TODO                                                              |
-| _Question Progress_           | `/:username/progress`                | get your question progress                                           | TODO                                                              |
-
-### ❓Questions Details
-
-| Details                            | Endpoint                                                 | Description                                                                                                                  | Demo                                                              |
-| :--------------------------------- | :------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| _Daily Problem_                    | `/daily`                                                 | Get the daily question.                                                                                                      | <a href="./public/demo/demo10.png" target="_blank">click here</a> |
-| _Daily Problem Raw_                | `/daily/raw`                                             | Get the daily question in raw.                                                                                               | TODO                                                              |
-| _Selected Problem_                 | `/select?titleSlug=selected-question`                    | Get details about a **_selected-question_**.                                                                                 | <a href="./public/demo/demo11.png" target="_blank">click here</a> |
-| _Raw Selected Problem_             | `/select/raw?titleSlug=selected-question`                | Get raw selected question                                                                                                    | TODO                                                              |
-| _Problems_                         | `/problems`                                              | Get a list of 20 problems.                                                                                                   | <a href="./public/demo/demo12.png" target="_blank">click here</a> |
-| _Limited Problems_                 | `/problems?limit=number`                                 | Get a list of a specified **_number_** of problems.                                                                          | <a href="./public/demo/demo13.png" target="_blank">click here</a> |
-| _Filter Problems_                  | `/problems?tags=tag1+tag2`                               | Get a list of problems based on selected **_tags_**.                                                                         | <a href="./public/demo/demo14.png" target="_blank">click here</a> |
-| _Skip Problems_                    | `/problems?skip=number`                                  | Get a list of 20 problems, skipping a specified **_number_** of problems.                                                    | <a href="./public/demo/demo18.png" target="_blank">click here</a> |
-| _Difficulty_                       | `/problems?difficulty=EASY`                              | Get a list of difficulty based problems, use **_MEDIUM_** to get medium level, **_HARD_** to get Hard level .                | <a href="./public/demo/demo19.png" target="_blank">click here</a> |
-| _Filter & Limited Problems_        | `/problems?tags=tag1+tag2+tag3&limit=number`             | Get a list of a specified **_number_** of problems based on selected **_tags_**.                                             | <a href="./public/demo/demo15.png" target="_blank">click here</a> |
-| _Skip & Limited Problems_          | `/problems?limit=number&skip=number`                     | Get a list of a specified **_number_** of problems skipping a specified **number** of problems.                              | <a href="./public/demo/demo20.png" target="_blank">click here</a> |
-| _Skip & Filter & Limited Problems_ | `/problems?tags=tag1+tag2+tag3&limit=number&skip=number` | Get a list of a specified **_number_** of problems based on selected **_tags_** skipping a specified **number** of problems. | <a href="./public/demo/demo21.png" target="_blank">click here</a> |
-| _Official Solution_                | `/officialSolution?titleSlug=selected-question`          | Get Get the official solution(leetcode) for a question                                                                       | TODO                                                              |
-
-### Contests
-
-| Details                            | Endpoint                                                 | Description                                                                                                                  | Demo                                                              |
-| :--------------------------------- | :------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| _All Contests_                    | `/contests`                                                 | Get all the contests                                                                                                       | TODO |
-| _Upcoming Contests_                | `/contests/upcoming`                                             | Get the upcoming contests.                                                                                               | TODO |                  
-
-
-
-### Discussion
-
-| Details               | Endpoint                    | Description                     |
-| :-------------------- | :-------------------------- | :------------------------------ |
-| _Trending Discussion_ | `/trendingDiscuss?first=20` | get top 20 trending discussions |
-| _Discussion Topic_    | `/discussTopic/:topicId`    | get discussion topic            |
-| _Discussion Comment_  | `/discussComments/:topicId` | get discussion comments         |
+follow this documentation <a href="CONTRIBUTING.md" target="_blank">CONTRIBUTING.md</a>
 
 ## Author ✒️
 
@@ -165,19 +163,21 @@ During development, it's recommended to utilize the API locally. To do so, follo
 
 ## Contributor ✏️
 
-| Contributor                                        | Contribution                                                                     |
-| :------------------------------------------------- | :------------------------------------------------------------------------------- |
-| [@aryanpingle](https://www.github.com/aryanpingle) | AC submission                                                                    |
-| [@jamesh48](https://www.github.com/jamesh48)       | TypeScript Refactoring                                                           |
-| [@kvqn](https://www.github.com/kvqn)               | PORT environment variable                                                        |
-| [@changchunlei](https://github.com/changchunlei)   | New Endpoints - language stats, integrated user profile, contest and discussions |
-| [@merakesh99](https://github.com/merakesh99)       | Hot reload issue solved                                                          |
-| [@Ayushman2004](https://github.com/Ayushman2004)   | Added Endpoints: all-contests, upcoming-contests                                 |
-| [@ajchili](https://github.com/ajchili)             | Skip param to fetch problems                                                     |
-| [@theinit01](https://github.com/theinit01)         | Temp fix for skip                                                                |
-| [@123xylem](https://github.com/123xylem)           | Add Descriptions and Methods to API route documentation.                         |
-| [@P-M-Manmohan](https://github.com/P-M-Manmohan)   | Added filtering based on difficulty                                              |
-| [@Ahmed-Armaan](https://github.com/Ahmed-Armaan)   | Update DOCS example with images                                                  |
+| Contributor                                          | Contribution                                                                     |
+| :--------------------------------------------------- | :------------------------------------------------------------------------------- |
+| [@aryanpingle](https://www.github.com/aryanpingle)   | AC submission                                                                    |
+| [@jamesh48](https://www.github.com/jamesh48)         | TypeScript Refactoring                                                           |
+| [@kvqn](https://www.github.com/kvqn)                 | PORT environment variable                                                        |
+| [@changchunlei](https://github.com/changchunlei)     | New Endpoints - language stats, integrated user profile, contest and discussions |
+| [@merakesh99](https://github.com/merakesh99)         | Hot reload issue solved                                                          |
+| [@Ayushman2004](https://github.com/Ayushman2004)     | Added Endpoints: all-contests, upcoming-contests                                 |
+| [@ajchili](https://github.com/ajchili)               | Skip param to fetch problems                                                     |
+| [@theinit01](https://github.com/theinit01)           | Temp fix for skip                                                                |
+| [@123xylem](https://github.com/123xylem)             | Add Descriptions and Methods to API route documentation.                         |
+| [@P-M-Manmohan](https://github.com/P-M-Manmohan)     | Added filtering based on difficulty                                              |
+| [@Ahmed-Armaan](https://github.com/Ahmed-Armaan)     | Update DOCS example with images                                                  |
+| [@Ayushman2004](https://github.com/Ayushman2004)     | Contest API endpoints                                                            |
+| [@devroopsaha744](https://github.com/devroopsaha744) | MCP server                                                                       |
 
 ## Connect with me 📲
 
