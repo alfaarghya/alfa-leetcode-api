@@ -36,7 +36,7 @@ const fetchUserDetails = async <T, U>(
     return res.json(formatData(result.data));
   } catch (err) {
     console.error('Error: ', err);
-    return res.send(err);
+    return res.send(err.message);
   }
 };
 

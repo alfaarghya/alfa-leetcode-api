@@ -3,7 +3,7 @@ import { badge } from './common';
 
 const userContestRanking = z.object({
   attendedContestsCount: z.number().nonnegative(),
-  badge,
+  badge: badge.nullable(),
   globalRanking: z.number().nonnegative(),
   rating: z.number().nonnegative(),
   totalParticipants: z.number().nonnegative(),
@@ -20,7 +20,7 @@ const userContestRankingHistory = z.object({
   finishTimeInSeconds: z.number().nonnegative(),
   contest: z.object({
     title: z.string(),
-    startTime: z.string(),
+    startTime: z.number(),
   }),
 });
 
