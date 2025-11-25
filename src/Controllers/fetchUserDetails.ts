@@ -1,11 +1,10 @@
 import { Response } from 'express';
-import { UserData } from '../types';
 
-const fetchUserDetails = async (
+const fetchUserDetails = async <T, U>(
   options: { username: string; limit: number; year: number },
   res: Response,
   query: string,
-  formatData?: (data: UserData) => {},
+  formatData?: (data: T) => U
 ) => {
   try {
     const response = await fetch('https://leetcode.com/graphql', {
@@ -19,7 +18,7 @@ const fetchUserDetails = async (
         variables: {
           username: options.username, //username required
           limit: options.limit, //only for submission
-          year: options.year
+          year: options.year,
         },
       }),
     });
@@ -30,10 +29,9 @@ const fetchUserDetails = async (
       return res.send(result);
     }
 
-    if(formatData == null) {
+    if (formatData == null) {
       return res.json(result.data);
     }
-    
 
     return res.json(formatData(result.data));
   } catch (err) {

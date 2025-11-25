@@ -1,3 +1,4 @@
+import { UserContest } from 'src/schema';
 import { UserData } from '../types';
 
 export const formatUserData = (data: UserData) => ({
@@ -25,7 +26,7 @@ export const formatBadgesData = (data: UserData) => ({
   activeBadge: data.matchedUser.activeBadge,
 });
 
-export const formatContestData = (data: UserData) => ({
+export const formatContestData = (data: UserContest) => ({
   contestAttend: data.userContestRanking?.attendedContestsCount,
   contestRating: data.userContestRanking?.rating,
   contestGlobalRanking: data.userContestRanking?.globalRanking,
@@ -70,15 +71,15 @@ export const formatSubmissionCalendarData = (data: UserData) => ({
 });
 
 export const formatSkillStats = (data: UserData) => ({
-fundamental: data.matchedUser.tagProblemCounts.fundamental,
-intermediate: data.matchedUser.tagProblemCounts.intermediate,
-advanced: data.matchedUser.tagProblemCounts.advanced,
+  fundamental: data.matchedUser.tagProblemCounts.fundamental,
+  intermediate: data.matchedUser.tagProblemCounts.intermediate,
+  advanced: data.matchedUser.tagProblemCounts.advanced,
 });
 
 export const formatLanguageStats = (data: UserData) => ({
-languageProblemCount: data.matchedUser.languageProblemCount,
+  languageProblemCount: data.matchedUser.languageProblemCount,
 });
 
 export const formatProgressStats = (data: UserData) => ({
-numAcceptedQuestions: data.userProfileUserQuestionProgressV2
+  numAcceptedQuestions: data.userProfileUserQuestionProgressV2,
 });
