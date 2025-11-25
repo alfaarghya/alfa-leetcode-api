@@ -1,4 +1,4 @@
-import { UserContest } from 'src/schema';
+import { UserContest } from '../schema';
 import { UserData } from '../types';
 
 export const formatUserData = (data: UserData) => ({
