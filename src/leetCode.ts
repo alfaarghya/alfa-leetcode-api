@@ -10,7 +10,7 @@ export const userData = (req: TransformedUserDataRequest, res: Response) => {
     req.body,
     res,
     gqlQueries.userProfileQuery,
-    formatUtils.formatUserData
+    formatUtils.formatUserData,
   );
 };
 
@@ -19,7 +19,7 @@ export const userBadges = (req: TransformedUserDataRequest, res: Response) => {
     req.body,
     res,
     gqlQueries.userProfileQuery,
-    formatUtils.formatBadgesData
+    formatUtils.formatBadgesData,
   );
 };
 
@@ -28,7 +28,7 @@ export const userContest = (req: TransformedUserDataRequest, res: Response) => {
     req.body,
     res,
     gqlQueries.contestQuery,
-    formatUtils.formatContestData
+    formatUtils.formatContestData,
   );
 };
 
@@ -40,7 +40,7 @@ export const userContestHistory = (
     req.body,
     res,
     gqlQueries.contestQuery,
-    formatUtils.formatContestHistoryData
+    formatUtils.formatContestHistoryData,
   );
 };
 
@@ -52,7 +52,7 @@ export const solvedProblem = (
     req.body,
     res,
     gqlQueries.userProfileQuery,
-    formatUtils.formatSolvedProblemsData
+    formatUtils.formatSolvedProblemsData,
   );
 };
 
@@ -61,7 +61,7 @@ export const submission = (req: TransformedUserDataRequest, res: Response) => {
     req.body,
     res,
     gqlQueries.submissionQuery,
-    formatUtils.formatSubmissionData
+    formatUtils.formatSubmissionData,
   );
 };
 
@@ -73,7 +73,7 @@ export const acSubmission = (
     req.body,
     res,
     gqlQueries.AcSubmissionQuery,
-    formatUtils.formatAcSubmissionData
+    formatUtils.formatAcSubmissionData,
   );
 };
 
@@ -101,7 +101,7 @@ export const userProfile = (req: Request, res: Response) => {
     res,
     gqlQueries.getUserProfileQuery,
     formatUtils.formatUserProfileData
-  );
+  )
 };
 
 export const languageStats = (req: Request, res: Response) => {
@@ -110,7 +110,7 @@ export const languageStats = (req: Request, res: Response) => {
     res,
     gqlQueries.languageStatsQuery,
     formatUtils.formatLanguageStats
-  );
+  )
 };
 
 export const progress = (req: Request, res: Response) => {
@@ -119,7 +119,7 @@ export const progress = (req: Request, res: Response) => {
     res,
     gqlQueries.userQuestionProgressQuery,
     formatUtils.formatProgressStats
-  );
+  )
 };
 
 //Problems Details
@@ -128,12 +128,16 @@ export const dailyProblem = (_req: Request, res: Response) => {
     res,
     gqlQueries.dailyProblemQuery,
     null,
-    formatUtils.formatDailyData
+    formatUtils.formatDailyData,
   );
 };
 
 export const dailyProblemRaw = (_req: Request, res: Response) => {
-  controllers.fetchSingleProblem(res, gqlQueries.dailyProblemQuery, null);
+  controllers.fetchSingleProblem(
+    res,
+    gqlQueries.dailyProblemQuery,
+    null,
+  );
 };
 
 export const selectProblem = (req: Request, res: Response) => {
@@ -143,7 +147,7 @@ export const selectProblem = (req: Request, res: Response) => {
       res,
       gqlQueries.selectProblemQuery,
       title,
-      formatUtils.formatQuestionData
+      formatUtils.formatQuestionData,
     );
   } else {
     res.status(400).json({
@@ -157,7 +161,11 @@ export const selectProblem = (req: Request, res: Response) => {
 export const selectProblemRaw = (req: Request, res: Response) => {
   const title = req.query.titleSlug as string;
   if (title !== undefined) {
-    controllers.fetchSingleProblem(res, gqlQueries.selectProblemQuery, title);
+    controllers.fetchSingleProblem(
+      res,
+      gqlQueries.selectProblemQuery,
+      title,
+    );
   } else {
     res.status(400).json({
       error: 'Missing or invalid query parameter: titleSlug',
@@ -165,15 +173,10 @@ export const selectProblemRaw = (req: Request, res: Response) => {
       example: 'localhost:3000/select?titleSlug=two-sum',
     });
   }
-};
+}
 
 export const problems = (
-  req: Request<
-    {},
-    {},
-    {},
-    { limit: number; skip: number; tags: string; difficulty: string }
-  >,
+  req: Request<{}, {}, {}, { limit: number; skip: number; tags: string; difficulty: string }>,
   res: Response
 ) => {
   const difficulty = req.query.difficulty;
@@ -195,9 +198,7 @@ export const officialSolution = (req: Request, res: Response) => {
   if (!titleSlug) {
     return res.status(400).json({ error: 'Missing titleSlug query parameter' });
   }
-  return controllers.handleRequest(res, gqlQueries.officialSolutionQuery, {
-    titleSlug,
-  });
+  return controllers.handleRequest(res, gqlQueries.officialSolutionQuery, { titleSlug });
 };
 
 // Discussion
@@ -210,13 +211,15 @@ export const trendingCategoryTopics = (_req: Request, res: Response) => {
       formatUtils.formatTrendingCategoryTopicData,
       gqlQueries.trendingDiscussQuery
     );
-  } else {
+  }
+  else {
     res.status(400).json({
       error: 'Missing or invalid query parameter: limit',
       solution: 'put query after discussion',
       example: 'localhost:3000/trendingDiscuss?first=20',
     });
   }
+
 };
 
 export const discussTopic = (req: Request, res: Response) => {
@@ -239,6 +242,8 @@ export const discussComments = (req: Request, res: Response) => {
   });
 };
 
+
+
 /* ----- Migrated to new functions -> these will be deleted -----*/
 export const languageStats_ = (_req: Request, res: Response) => {
   const username = _req.query.username as string;
@@ -248,7 +253,8 @@ export const languageStats_ = (_req: Request, res: Response) => {
       res,
       gqlQueries.languageStatsQuery
     );
-  } else {
+  }
+  else {
     res.status(400).json({
       error: 'Missing or invalid query parameter: username',
       solution: 'put query after discussion',
@@ -256,6 +262,7 @@ export const languageStats_ = (_req: Request, res: Response) => {
     });
   }
 };
+
 
 export const userProfileCalendar_ = (req: Request, res: Response) => {
   const { username, year } = req.query;
@@ -274,14 +281,9 @@ export const userProfileCalendar_ = (req: Request, res: Response) => {
 
 export const userProfile_ = (req: Request, res: Response) => {
   const user = req.params.id;
-  controllers.fetchUserProfile(
-    res,
-    gqlQueries.getUserProfileQuery,
-    {
-      username: user,
-    },
-    formatUtils.formatUserProfileData
-  );
+  controllers.fetchUserProfile(res, gqlQueries.getUserProfileQuery, {
+    username: user,
+  }, formatUtils.formatUserProfileData);
 };
 
 export const dailyQuestion_ = (_req: Request, res: Response) => {
@@ -293,28 +295,33 @@ export const skillStats_ = (req: Request, res: Response) => {
   controllers.handleRequest(res, gqlQueries.skillStatsQuery, { username });
 };
 
-export const userProfileUserQuestionProgressV2_ = (
-  req: Request,
-  res: Response
-) => {
+export const userProfileUserQuestionProgressV2_ = (req: Request, res: Response) => {
   const username = req.params.username;
-  controllers.handleRequest(res, gqlQueries.userQuestionProgressQuery, {
-    username,
-  });
+  controllers.handleRequest(res, gqlQueries.userQuestionProgressQuery, { username });
 };
 
 export const userContestRankingInfo_ = (req: Request, res: Response) => {
   const { username } = req.params;
-  controllers.handleRequest(res, gqlQueries.userContestRankingInfoQuery, {
-    username,
-  });
+  controllers.handleRequest(res, gqlQueries.userContestRankingInfoQuery, { username });
 };
 
 //limiting is not supported in the contests unlike problems
-export const allContests = (_req: Request, res: Response) => {
-  controllers.fetchAllContests(res, gqlQueries.allContestQuery);
+export const allContests = (
+  _req: Request,
+  res: Response
+) => {
+  controllers.fetchAllContests(
+    res,
+    gqlQueries.allContestQuery
+  );
 };
 
-export const upcomingContests = (_req: Request, res: Response) => {
-  controllers.fetchUpcomingContests(res, gqlQueries.allContestQuery);
+export const upcomingContests = (
+  _req: Request,
+  res: Response
+) => {
+  controllers.fetchUpcomingContests(
+    res,
+    gqlQueries.allContestQuery
+  );
 };
