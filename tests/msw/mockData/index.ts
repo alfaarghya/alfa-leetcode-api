@@ -5,3 +5,4 @@ export { default as singleUserContests } from './singleUserContests.json';
 export { default as dailyProblem } from './dailyProblem.json';
 export { default as problems } from './problems.json';
 export { default as selectProblem } from './selectProblem.json';
+export { default as userCalendar } from './userCalendar.json';

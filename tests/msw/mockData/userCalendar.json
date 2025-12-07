@@ -1,0 +1,21 @@
+{
+  "data": {
+    "matchedUser": {
+      "userCalendar": {
+        "activeYears": [2023, 2024],
+        "streak": 5,
+        "totalActiveDays": 120,
+        "dccBadges": [
+          {
+            "timestamp": 1704153600,
+            "badge": {
+              "name": "Jan LeetCoding Challenge",
+              "icon": "/static/images/badges/dcc-2024-1.png"
+            }
+          }
+        ],
+        "submissionCalendar": "{\"1704153600\": 24, \"1704240000\": 9, \"1704326400\": 5, \"1704412800\": 3, \"1705017600\": 1, \"1705104000\": 6, \"1699315200\": 46, \"1701302400\": 6, \"1701648000\": 24, \"1701734400\": 11, \"1702339200\": 29, \"1702425600\": 7}"
+      }
+    }
+  }
+}

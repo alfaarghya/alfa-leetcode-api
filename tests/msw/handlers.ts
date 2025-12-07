@@ -7,6 +7,7 @@ import {
   dailyProblem,
   problems,
   selectProblem,
+  userCalendar,
 } from './mockData';
 
 export const handlers = [
@@ -39,6 +40,10 @@ export const handlers = [
 
     if (typed.query.indexOf('selectProblem') !== -1) {
       return msw.HttpResponse.json(selectProblem);
+    }
+
+    if (typed.query.indexOf('UserProfileCalendar') !== -1) {
+      return msw.HttpResponse.json(userCalendar);
     }
 
     return msw.HttpResponse.json({});

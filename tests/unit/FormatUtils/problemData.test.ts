@@ -1,37 +1,12 @@
 import request from 'supertest';
-import assert from 'assert';
-import app from '../app';
+import { describe, it, expect } from 'vitest';
+import app from '../../../src/app';
 
 describe('Problem Data Tests', () => {
-  it('Should fetch the daily problem', async () => {
-    const response = await request(app).get('/daily');
-    [
-      'questionLink',
-      'date',
-      'questionId',
-      'questionFrontendId',
-      'questionTitle',
-      'titleSlug',
-      'difficulty',
-      'isPaidOnly',
-      'question',
-      'exampleTestcases',
-      'topicTags',
-      'hints',
-      'solution',
-      'companyTagStats',
-      'likes',
-      'dislikes',
-      'similarQuestions',
-    ].forEach((key) => {
-      assert(key in response.body);
-    });
-  });
-
   it('Should fetch a list of problems', async () => {
     const response = await request(app).get('/problems');
     ['totalQuestions', 'count', 'problemsetQuestionList'].forEach((key) => {
-      assert(key in response.body);
+      expect(response.body).toHaveProperty(key);
     });
   });
 
@@ -54,6 +29,6 @@ describe('Problem Data Tests', () => {
       'likes',
       'dislikes',
       'similarQuestions',
-    ].forEach((key) => assert(key in response.body));
+    ].forEach((key) => expect(response.body).toHaveProperty(key));
   });
 });

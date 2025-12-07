@@ -5,3 +5,12 @@ leetCode-api.txt
 dist
 
 .DS_Store
+
+# Vitest
+coverage/
+.vitest/
+
+CLAUDE.md
+.claude/
+.specify/
+specs/
