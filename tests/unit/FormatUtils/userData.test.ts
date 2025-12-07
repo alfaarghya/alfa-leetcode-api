@@ -1,6 +1,6 @@
 import request from 'supertest';
-import app from '../app';
-import assert from 'assert';
+import { describe, it, expect } from 'vitest';
+import app from '../../../src/app';
 
 describe('User Data Tests', () => {
   it('should fetch a single user', async () => {
@@ -23,7 +23,7 @@ describe('User Data Tests', () => {
       'skillTags',
       'about',
     ].forEach((key) => {
-      assert(key in response.body);
+      expect(response.body).toHaveProperty(key);
     });
   });
 
@@ -32,7 +32,7 @@ describe('User Data Tests', () => {
 
     ['badgesCount', 'badges', 'upcomingBadges', 'activeBadge'].forEach(
       (key) => {
-        assert(key in response.body);
+        expect(response.body).toHaveProperty(key);
       }
     );
   });
@@ -47,28 +47,28 @@ describe('User Data Tests', () => {
       'totalSubmissionNum',
       'acSubmissionNum',
     ].forEach((key) => {
-      assert(key in response.body);
+      expect(response.body).toHaveProperty(key);
     });
   });
 
   it('Should fetch users contests', async () => {
     const response = await request(app).get('/jambobjones/contest');
     ['contestParticipation'].forEach((key) => {
-      assert(key in response.body);
+      expect(response.body).toHaveProperty(key);
     });
   });
 
   it('Should fetch user contest history', async () => {
     const response = await request(app).get('/jambobjones/contest/history');
     ['count', 'contestHistory'].forEach((key) => {
-      assert(key in response.body);
+      expect(response.body).toHaveProperty(key);
     });
   });
 
   it('Should fetch users recent submissions returning 20 by default', async () => {
     const response = await request(app).get('/jambobjones/submission');
     ['count', 'submission'].forEach((key) => {
-      assert(key in response.body);
+      expect(response.body).toHaveProperty(key);
     });
 
     expect(response.body.count).toBeLessThanOrEqual(20);
@@ -79,14 +79,14 @@ describe('User Data Tests', () => {
     const response = await request(app).get('/jambobjones/acSubmission');
 
     ['count', 'submission'].forEach((key) => {
-      assert(key in response.body);
+      expect(response.body).toHaveProperty(key);
     });
     expect(response.body.count).toBeLessThanOrEqual(20);
   });
 
   it('Should fetch Users Submission Calendar', async () => {
     const response = await request(app).get('/jambobjones/calendar');
-    assert('submissionCalendar' in response.body);
+    expect(response.body).toHaveProperty('submissionCalendar');
     expect(typeof response.body.submissionCalendar).toBe('string');
   });
 });
