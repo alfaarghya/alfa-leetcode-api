@@ -1,0 +1,70 @@
+{
+  "data": {
+    "topicComments": {
+      "data": [
+        {
+          "id": 11111,
+          "pinned": false,
+          "pinnedBy": null,
+          "post": {
+            "id": "22222",
+            "voteCount": 15,
+            "voteStatus": 0,
+            "content": "Great explanation! This helped me understand the concept better.",
+            "updationDate": 1659201000,
+            "creationDate": 1659200800,
+            "status": "PUBLISHED",
+            "isHidden": false,
+            "coinRewards": [],
+            "author": {
+              "isDiscussAdmin": false,
+              "isDiscussStaff": false,
+              "username": "learner123",
+              "nameColor": null,
+              "activeBadge": null,
+              "profile": {
+                "userAvatar": "https://assets.leetcode.com/users/default_avatar.jpg",
+                "reputation": 450
+              },
+              "isActive": true
+            },
+            "authorIsModerator": false,
+            "isOwnPost": false
+          },
+          "numChildren": 2
+        },
+        {
+          "id": 11112,
+          "pinned": false,
+          "pinnedBy": null,
+          "post": {
+            "id": "22223",
+            "voteCount": 8,
+            "voteStatus": 0,
+            "content": "Thanks for sharing this approach!",
+            "updationDate": 1659201200,
+            "creationDate": 1659201100,
+            "status": "PUBLISHED",
+            "isHidden": false,
+            "coinRewards": [],
+            "author": {
+              "isDiscussAdmin": false,
+              "isDiscussStaff": false,
+              "username": "developer456",
+              "nameColor": null,
+              "activeBadge": null,
+              "profile": {
+                "userAvatar": "https://assets.leetcode.com/users/default_avatar.jpg",
+                "reputation": 320
+              },
+              "isActive": true
+            },
+            "authorIsModerator": false,
+            "isOwnPost": false
+          },
+          "numChildren": 0
+        }
+      ]
+    }
+  }
+}

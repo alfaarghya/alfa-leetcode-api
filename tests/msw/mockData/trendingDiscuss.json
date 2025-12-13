@@ -1,0 +1,38 @@
+{
+  "data": {
+    "cachedTrendingCategoryTopics": [
+      {
+        "id": "12345",
+        "title": "How to solve Two Sum efficiently?",
+        "post": {
+          "id": "67890",
+          "creationDate": 1659200400,
+          "contentPreview": "I found an interesting way to solve the Two Sum problem using hash maps...",
+          "author": {
+            "username": "codingmaster",
+            "isActive": true,
+            "profile": {
+              "userAvatar": "https://assets.leetcode.com/users/default_avatar.jpg"
+            }
+          }
+        }
+      },
+      {
+        "id": "12346",
+        "title": "Dynamic Programming Tips and Tricks",
+        "post": {
+          "id": "67891",
+          "creationDate": 1659200500,
+          "contentPreview": "Here are some useful patterns for DP problems...",
+          "author": {
+            "username": "algoexpert",
+            "isActive": true,
+            "profile": {
+              "userAvatar": "https://assets.leetcode.com/users/default_avatar.jpg"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "data": {
+    "topic": {
+      "id": 12345,
+      "viewCount": 5432,
+      "topLevelCommentCount": 45,
+      "subscribed": false,
+      "title": "How to solve Two Sum efficiently?",
+      "pinned": false,
+      "tags": ["Array", "Hash Table"],
+      "hideFromTrending": false,
+      "post": {
+        "id": "67890",
+        "voteCount": 120,
+        "voteStatus": 0,
+        "content": "# Two Sum Solution\n\nI found an interesting way to solve the Two Sum problem using hash maps...",
+        "updationDate": 1659200500,
+        "creationDate": 1659200400,
+        "status": "PUBLISHED",
+        "isHidden": false,
+        "coinRewards": [],
+        "author": {
+          "isDiscussAdmin": false,
+          "isDiscussStaff": false,
+          "username": "codingmaster",
+          "nameColor": null,
+          "activeBadge": null,
+          "profile": {
+            "userAvatar": "https://assets.leetcode.com/users/default_avatar.jpg",
+            "reputation": 1250
+          },
+          "isActive": true
+        },
+        "authorIsModerator": false,
+        "isOwnPost": false
+      }
+    }
+  }
+}

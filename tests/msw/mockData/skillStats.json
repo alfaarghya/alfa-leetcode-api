@@ -1,0 +1,44 @@
+{
+  "data": {
+    "matchedUser": {
+      "tagProblemCounts": {
+        "advanced": [
+          {
+            "tagName": "Dynamic Programming",
+            "tagSlug": "dynamic-programming",
+            "problemsSolved": 12
+          },
+          {
+            "tagName": "Tree",
+            "tagSlug": "tree",
+            "problemsSolved": 8
+          }
+        ],
+        "intermediate": [
+          {
+            "tagName": "Array",
+            "tagSlug": "array",
+            "problemsSolved": 45
+          },
+          {
+            "tagName": "Hash Table",
+            "tagSlug": "hash-table",
+            "problemsSolved": 30
+          }
+        ],
+        "fundamental": [
+          {
+            "tagName": "String",
+            "tagSlug": "string",
+            "problemsSolved": 55
+          },
+          {
+            "tagName": "Math",
+            "tagSlug": "math",
+            "problemsSolved": 40
+          }
+        ]
+      }
+    }
+  }
+}

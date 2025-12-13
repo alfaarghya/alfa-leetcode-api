@@ -1,0 +1,53 @@
+{
+  "data": {
+    "question": {
+      "solution": {
+        "id": "12345",
+        "title": "Two Sum - Official Solution",
+        "content": "## Approach 1: Brute Force\n\nThe brute force approach is simple...",
+        "contentTypeId": "1",
+        "paidOnly": false,
+        "hasVideoSolution": true,
+        "paidOnlyVideo": false,
+        "canSeeDetail": true,
+        "rating": {
+          "count": 1245,
+          "average": 4.5,
+          "userRating": {
+            "score": 5
+          }
+        },
+        "topic": {
+          "id": "54321",
+          "commentCount": 156,
+          "topLevelCommentCount": 45,
+          "viewCount": 125000,
+          "subscribed": false,
+          "solutionTags": [
+            {
+              "name": "Array",
+              "slug": "array"
+            },
+            {
+              "name": "Hash Table",
+              "slug": "hash-table"
+            }
+          ],
+          "post": {
+            "id": "98765",
+            "status": "PUBLISHED",
+            "creationDate": 1577836800,
+            "author": {
+              "username": "LeetCode",
+              "isActive": true,
+              "profile": {
+                "userAvatar": "https://assets.leetcode.com/users/default_avatar.jpg",
+                "reputation": 10000
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
