@@ -42,15 +42,16 @@ app.get('/', (_req, res) => {
         '/:username/contest': 'Get your contest details',
         '/:username/contest/history': 'Get all contest history',
         '/:username/submission': 'Get your last 20 submission',
-        '/:username/submission?limit=7': 'Get a specified number of last submissions.',
+        '/:username/submission?limit=7':
+          'Get a specified number of last submissions.',
         '/:username/acSubmission': 'Get your last 20 accepted submission',
-        '/:username/acSubmission?limit=7': 'Get a specified number of last acSubmissions.',
+        '/:username/acSubmission?limit=7':
+          'Get a specified number of last acSubmissions.',
         '/:username/calendar': 'Get your submission calendar',
         '/:username/calendar?year=2025': 'Get your year submission calendar',
         '/:username/skill': 'Get your skill stats',
         '/:username/language': 'Get your language stats',
         '/:username/progress': 'Get your progress stats',
-        
       },
       discussion: {
         description: 'Endpoints for fetching discussion topics and comments.',
@@ -75,19 +76,21 @@ app.get('/', (_req, res) => {
           '/problems?tags=array+math': 'Get list problems on selected topics',
           '/problems?tags=array+math+string&limit=5':
             'Get list some problems on selected topics',
-          '/problems?skip=500': 'Get list after skipping a given amount of problems',
-          '/problems?difficulty=EASY': 'Get list of problems having selected difficulty',
-          '/problems?limit=5&skip=100': 'Get list of size limit after skipping selected amount',
-          'problems?tags=array+maths&limit=5&skip=100': 'Get list of problems with selected tags having size limit after skipping selected amount',
+          '/problems?skip=500':
+            'Get list after skipping a given amount of problems',
+          '/problems?difficulty=EASY':
+            'Get list of problems having selected difficulty',
+          '/problems?limit=5&skip=100':
+            'Get list of size limit after skipping selected amount',
+          'problems?tags=array+maths&limit=5&skip=100':
+            'Get list of problems with selected tags having size limit after skipping selected amount',
           '/officialSolution?titleSlug=two-sum':
             'Get official solution of selected problem',
-
         },
       },
     },
   });
 });
-
 
 //get trending Discuss
 app.get('/trendingDiscuss', leetcode.trendingCategoryTopics);
@@ -122,8 +125,8 @@ app.use(
   (req: FetchUserDataRequest, _res: Response, next: NextFunction) => {
     req.body = {
       username: req.params.username,
-      limit: req.query.limit,
-      year: req.query.year === undefined ? 0 : req.query.year,
+      limit: req.query.limit ? parseInt(req.query.limit as string) : 20,
+      year: req.query.year ? parseInt(req.query.year as string) : 0,
     };
     next();
   }
@@ -143,8 +146,6 @@ app.get('/:username/profile/', leetcode.userProfile);
 app.get('/:username/language', leetcode.languageStats);
 app.get('/:username/progress/', leetcode.progress);
 
-
-
 /* ----- Migrated to new routes -> these will be deleted -----*/
 //get user profile calendar
 app.get('/userProfileCalendar', leetcode.userProfileCalendar_);
@@ -162,12 +163,14 @@ app.get('/selectQuestion', leetcode.selectProblemRaw);
 app.get('/skillStats/:username', leetcode.skillStats_);
 
 //get user profile question progress
-app.get('/userProfileUserQuestionProgressV2/:userSlug', leetcode.userProfileUserQuestionProgressV2_);
+app.get(
+  '/userProfileUserQuestionProgressV2/:userSlug',
+  leetcode.userProfileUserQuestionProgressV2_
+);
 
 app.get('/languageStats', leetcode.languageStats_);
 
 //get user contest ranking info
 app.get('/userContestRankingInfo/:username', leetcode.userContestRankingInfo_);
-
 
 export default app;

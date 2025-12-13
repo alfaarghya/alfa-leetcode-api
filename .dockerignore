@@ -1,2 +1,15 @@
 node_modules
 dist
+.git
+Dockerfile*
+.dockerignore
+*.log*
+.env*
+coverage/
+.vitest/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp

@@ -1,0 +1,24 @@
+{
+  "data": {
+    "allContests": [
+      {
+        "title": "Weekly Contest 300",
+        "titleSlug": "weekly-contest-300",
+        "startTime": 1659200400,
+        "duration": 5400,
+        "originStartTime": 1659200400,
+        "isVirtual": false,
+        "containsPremium": false
+      },
+      {
+        "title": "Biweekly Contest 82",
+        "titleSlug": "biweekly-contest-82",
+        "startTime": 1659286800,
+        "duration": 5400,
+        "originStartTime": 1659286800,
+        "isVirtual": false,
+        "containsPremium": false
+      }
+    ]
+  }
+}

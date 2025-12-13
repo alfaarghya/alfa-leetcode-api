@@ -1,5 +1,11 @@
 {
   "data": {
+    "allQuestionsCount": [
+      { "difficulty": "All", "count": 3273 },
+      { "difficulty": "Easy", "count": 823 },
+      { "difficulty": "Medium", "count": 1717 },
+      { "difficulty": "Hard", "count": 733 }
+    ],
     "matchedUser": {
       "submissionCalendar": "{\"1704153600\": 24, \"1704240000\": 9, \"1704326400\": 5, \"1704412800\": 3, \"1705017600\": 1, \"1705104000\": 6, \"1699315200\": 46, \"1701302400\": 6, \"1701648000\": 24, \"1701734400\": 11, \"1702339200\": 29, \"1702425600\": 7}",
       "submitStats": {
@@ -47,6 +53,22 @@
         }
       ],
       "activeBadge": null
-    }
+    },
+    "recentSubmissionList": [
+      {
+        "title": "Two Sum",
+        "titleSlug": "two-sum",
+        "timestamp": "1704153600",
+        "statusDisplay": "Accepted",
+        "lang": "python3"
+      },
+      {
+        "title": "Add Two Numbers",
+        "titleSlug": "add-two-numbers",
+        "timestamp": "1704067200",
+        "statusDisplay": "Accepted",
+        "lang": "javascript"
+      }
+    ]
   }
 }

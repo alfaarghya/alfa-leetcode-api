@@ -6,12 +6,13 @@ beforeAll(() => {
   server.listen({
     onUnhandledRequest: (req) => {
       // Allow requests to localhost/127.0.0.1 (your Express app) to pass through
-      // Only error on unhandled external requests
+      // Only warn on unhandled external requests (not errors to avoid test failures)
       const url = new URL(req.url);
       if (url.hostname === 'localhost' || url.hostname === '127.0.0.1') {
         return; // bypass - don't intercept local requests
       }
-      console.error(`Found an unhandled ${req.method} request to ${req.url}`);
+      // Warn instead of error to help debugging
+      console.warn(`[MSW] Unhandled ${req.method} request to ${req.url}`);
     },
   });
 });

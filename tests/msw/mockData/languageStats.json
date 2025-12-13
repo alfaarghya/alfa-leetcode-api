@@ -1,0 +1,24 @@
+{
+  "data": {
+    "matchedUser": {
+      "languageProblemCount": [
+        {
+          "languageName": "JavaScript",
+          "problemsSolved": 45
+        },
+        {
+          "languageName": "Python",
+          "problemsSolved": 32
+        },
+        {
+          "languageName": "TypeScript",
+          "problemsSolved": 28
+        },
+        {
+          "languageName": "Java",
+          "problemsSolved": 15
+        }
+      ]
+    }
+  }
+}
