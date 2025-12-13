@@ -102,7 +102,7 @@ export type FetchUserDataRequest = Request<
   { username: string },
   {},
   { username: string; limit: number; year: number },
-  { limit: number; year: number }
+  { limit?: string; year?: string }
 >;
 
 export type TransformedUserDataRequest = Request<
