@@ -4,6 +4,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
+    pool: 'forks', // Use process forking for better MSW compatibility
     setupFiles: ['./tests/msw/setup.ts'],
     coverage: {
       provider: 'v8',
