@@ -1,12 +1,11 @@
-import {
+import type {
   DailyProblemData,
   ProblemSetQuestionListData,
   SelectProblemData,
 } from '../types';
 
 export const formatDailyData = (data: DailyProblemData) => ({
-  questionLink:
-    `https://leetcode.com` + data.activeDailyCodingChallengeQuestion.link,
+  questionLink: `https://leetcode.com${data.activeDailyCodingChallengeQuestion.link}`,
   date: data.activeDailyCodingChallengeQuestion.date,
   questionId: data.activeDailyCodingChallengeQuestion.question.questionId,
   questionFrontendId:
@@ -30,7 +29,7 @@ export const formatDailyData = (data: DailyProblemData) => ({
 });
 
 export const formatQuestionData = (data: SelectProblemData) => ({
-  link: `https://leetcode.com/problems/` + data.question.titleSlug,
+  link: `https://leetcode.com/problems/${data.question.titleSlug}`,
   questionId: data.question.questionId,
   questionFrontendId: data.question.questionFrontendId,
   questionTitle: data.question.title,
@@ -53,4 +52,3 @@ export const formatProblemsData = (data: ProblemSetQuestionListData) => ({
   count: data.problemsetQuestionList.questions.length,
   problemsetQuestionList: data.problemsetQuestionList.questions,
 });
-

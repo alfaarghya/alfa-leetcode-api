@@ -1,12 +1,12 @@
-import express, { NextFunction, Response } from 'express';
+import apicache from 'apicache';
 import cors from 'cors';
+import express, { type NextFunction, type Response } from 'express';
 import rateLimit from 'express-rate-limit';
 import * as leetcode from './leetCode';
-import { FetchUserDataRequest } from './types';
-import apicache from 'apicache';
+import type { FetchUserDataRequest } from './types';
 
 const app = express();
-let cache = apicache.middleware;
+const cache = apicache.middleware;
 
 const limiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
@@ -125,11 +125,11 @@ app.use(
   (req: FetchUserDataRequest, _res: Response, next: NextFunction) => {
     req.body = {
       username: req.params.username,
-      limit: req.query.limit ? parseInt(req.query.limit as string) : 20,
-      year: req.query.year ? parseInt(req.query.year as string) : 0,
+      limit: req.query.limit ? parseInt(req.query.limit as string, 10) : 20,
+      year: req.query.year ? parseInt(req.query.year as string, 10) : 0,
     };
     next();
-  }
+  },
 );
 
 //get user profile details
@@ -148,7 +148,7 @@ app.get('/:username/progress/', leetcode.progress);
 
 /* ----- Migrated to new routes -> these will be deleted -----*/
 //get user profile calendar
-app.get('/userProfileCalendar', leetcode.userProfileCalendar_);
+// app.get('/userProfileCalendar', leetcode.userProfileCalendar_);
 
 //get user profile details
 app.get('/userProfile/:id', leetcode.userProfile_);
@@ -165,7 +165,7 @@ app.get('/skillStats/:username', leetcode.skillStats_);
 //get user profile question progress
 app.get(
   '/userProfileUserQuestionProgressV2/:userSlug',
-  leetcode.userProfileUserQuestionProgressV2_
+  leetcode.userProfileUserQuestionProgressV2_,
 );
 
 app.get('/languageStats', leetcode.languageStats_);

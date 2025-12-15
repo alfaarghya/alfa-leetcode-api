@@ -1,15 +1,23 @@
-import { Response } from 'express';
-import { ProblemSetQuestionListData } from '../types';
+import type { Response } from 'express';
+import type { ProblemSetQuestionListData } from '../types';
 
 const fetchProblems = async (
-  options: { limit?: number; skip?: number; tags?: string; difficulty?: string }, // Mark parameters as optional
+  options: {
+    limit?: number;
+    skip?: number;
+    tags?: string;
+    difficulty?: string;
+  }, // Mark parameters as optional
   res: Response,
-  formatData: (data: ProblemSetQuestionListData) => {},
-  query: string
+  formatData: (data: ProblemSetQuestionListData) => object,
+  query: string,
 ) => {
   try {
     // Set default limit to 1 if only skip is provided
-    const limit = options.skip !== undefined && options.limit === undefined ? 1 : options.limit || 20;
+    const limit =
+      options.skip !== undefined && options.limit === undefined
+        ? 1
+        : options.limit || 20;
     const skip = options.skip || 0; // Default to 0 if not provided
     const tags = options.tags ? options.tags.split(' ') : []; // Split tags or default to empty array
     const difficulty = options.difficulty || undefined; // difficulty has to be 'EASY', 'MEDIUM' or 'HARD'
@@ -28,7 +36,7 @@ const fetchProblems = async (
           limit,
           filters: {
             tags,
-            difficulty
+            difficulty,
           },
         },
       }),

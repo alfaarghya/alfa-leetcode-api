@@ -1,91 +1,54 @@
 import * as msw from 'msw';
 import {
+  allContests,
+  dailyProblem,
+  discussComments,
+  discussTopic,
+  languageStats,
+  officialSolution,
+  problems,
+  recentACSubmissions,
+  recentSubmissions,
+  selectProblem,
   singleUser,
   singleUserContests,
-  recentSubmissions,
-  recentACSubmissions,
-  dailyProblem,
-  problems,
-  selectProblem,
-  userCalendar,
-  languageStats,
   skillStats,
-  userQuestionProgress,
-  officialSolution,
-  allContests,
   trendingDiscuss,
-  discussTopic,
-  discussComments,
+  userCalendar,
+  userQuestionProgress,
 } from './mockData';
+
+const queryResponseMap = [
+  { identifier: 'getUserProfile', response: singleUser },
+  { identifier: 'getUserContestRanking', response: singleUserContests },
+  { identifier: 'getRecentSubmissions', response: recentSubmissions },
+  { identifier: 'getACSubmissions', response: recentACSubmissions },
+  { identifier: 'getDailyProblem', response: dailyProblem },
+  { identifier: 'getProblems', response: problems },
+  { identifier: 'selectProblem', response: selectProblem },
+  { identifier: 'UserProfileCalendar', response: userCalendar },
+  { identifier: 'languageStats', response: languageStats },
+  { identifier: 'skillStats', response: skillStats },
+  {
+    identifier: 'userProfileUserQuestionProgressV2',
+    response: userQuestionProgress,
+  },
+  { identifier: 'OfficialSolution', response: officialSolution },
+  { identifier: 'allContests', response: allContests },
+  { identifier: 'trendingDiscuss', response: trendingDiscuss },
+  { identifier: 'DiscussTopic', response: discussTopic },
+  { identifier: 'discussComments', response: discussComments },
+];
 
 export const handlers = [
   msw.http.post('https://leetcode.com/graphql', async (ctx) => {
     const test = await ctx.request.json();
     const typed = test as { query: string };
-    if (typed.query.indexOf('getUserProfile') !== -1) {
-      return msw.HttpResponse.json(singleUser);
-    }
 
-    if (typed.query.indexOf('getUserContestRanking') !== -1) {
-      return msw.HttpResponse.json(singleUserContests);
-    }
+    const matchedQuery = queryResponseMap.find((mapping) =>
+      typed.query.includes(mapping.identifier),
+    );
 
-    if (typed.query.indexOf('getRecentSubmissions') !== -1) {
-      return msw.HttpResponse.json(recentSubmissions);
-    }
-
-    if (typed.query.indexOf('getACSubmissions') !== -1) {
-      return msw.HttpResponse.json(recentACSubmissions);
-    }
-
-    if (typed.query.indexOf('getDailyProblem') !== -1) {
-      return msw.HttpResponse.json(dailyProblem);
-    }
-
-    if (typed.query.indexOf('getProblems') !== -1) {
-      return msw.HttpResponse.json(problems);
-    }
-
-    if (typed.query.indexOf('selectProblem') !== -1) {
-      return msw.HttpResponse.json(selectProblem);
-    }
-
-    if (typed.query.indexOf('UserProfileCalendar') !== -1) {
-      return msw.HttpResponse.json(userCalendar);
-    }
-
-    if (typed.query.indexOf('languageStats') !== -1) {
-      return msw.HttpResponse.json(languageStats);
-    }
-
-    if (typed.query.indexOf('skillStats') !== -1) {
-      return msw.HttpResponse.json(skillStats);
-    }
-
-    if (typed.query.indexOf('userProfileUserQuestionProgressV2') !== -1) {
-      return msw.HttpResponse.json(userQuestionProgress);
-    }
-
-    if (typed.query.indexOf('OfficialSolution') !== -1) {
-      return msw.HttpResponse.json(officialSolution);
-    }
-
-    if (typed.query.indexOf('allContests') !== -1) {
-      return msw.HttpResponse.json(allContests);
-    }
-
-    if (typed.query.indexOf('trendingDiscuss') !== -1) {
-      return msw.HttpResponse.json(trendingDiscuss);
-    }
-
-    if (typed.query.indexOf('DiscussTopic') !== -1) {
-      return msw.HttpResponse.json(discussTopic);
-    }
-
-    if (typed.query.indexOf('discussComments') !== -1) {
-      return msw.HttpResponse.json(discussComments);
-    }
-
-    return msw.HttpResponse.json({});
+    return msw.HttpResponse.json(matchedQuery?.response ?? {});
   }),
 ];

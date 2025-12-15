@@ -1,6 +1,7 @@
-import { describe, it, expect, beforeAll, afterAll, afterEach } from 'vitest';
 import request from 'supertest';
+import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 import app from '../../src/app';
+import type { Contest } from '../../src/types';
 import { server } from '../msw/server';
 
 describe('Contest Routes Integration Tests', () => {
@@ -63,7 +64,7 @@ describe('Contest Routes Integration Tests', () => {
       const now = Math.floor(Date.now() / 1000);
 
       if (response.body.contests.length > 0) {
-        response.body.contests.forEach((contest: any) => {
+        response.body.contests.forEach((contest: Contest) => {
           expect(contest.startTime).toBeGreaterThan(now - 86400);
         });
       }

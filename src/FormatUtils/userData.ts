@@ -1,5 +1,5 @@
-import { UserContest } from '../schema';
-import { UserData } from '../types';
+import type { UserContest } from '../schema';
+import type { UserData } from '../types';
 
 export const formatUserData = (data: UserData) => ({
   username: data.matchedUser.username,
@@ -34,7 +34,7 @@ export const formatContestData = (data: UserContest) => ({
   contestTopPercentage: data.userContestRanking?.topPercentage,
   contestBadges: data.userContestRanking?.badge,
   contestParticipation: data.userContestRankingHistory.filter(
-    (obj) => obj.attended === true
+    (obj) => obj.attended === true,
   ),
 });
 

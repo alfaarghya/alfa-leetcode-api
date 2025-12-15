@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { Response } from 'express';
+import type { Response } from 'express';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import fetchUserProfile from '../../../src/Controllers/fetchUserProfile';
 
 describe('fetchUserProfile', () => {
@@ -44,7 +44,7 @@ describe('fetchUserProfile', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatFunction = vi.fn((data: any) => ({
+    const formatFunction = vi.fn((data: never) => ({
       username: data.matchedUser.username,
       name: data.matchedUser.profile.realName,
       rank: data.matchedUser.profile.ranking,
@@ -96,7 +96,7 @@ describe('fetchUserProfile', () => {
       json: vi.fn().mockResolvedValue(mockErrorResponse),
     });
 
-    const formatFunction = vi.fn((data: any) => data);
+    const formatFunction = vi.fn((data: never) => data);
 
     await fetchUserProfile(
       mockRes as Response,
@@ -128,7 +128,7 @@ describe('fetchUserProfile', () => {
       .spyOn(console, 'error')
       .mockImplementation(() => {});
 
-    const formatFunction = vi.fn((data: any) => data.matchedUser);
+    const formatFunction = vi.fn((data: never) => data.matchedUser);
 
     await fetchUserProfile(
       mockRes as Response,
@@ -149,7 +149,7 @@ describe('fetchUserProfile', () => {
       .spyOn(console, 'error')
       .mockImplementation(() => {});
 
-    const formatFunction = vi.fn((data: any) => data);
+    const formatFunction = vi.fn((data: never) => data);
 
     await fetchUserProfile(
       mockRes as Response,
@@ -177,7 +177,7 @@ describe('fetchUserProfile', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatFunction = vi.fn((data: any) => data.userProfile);
+    const formatFunction = vi.fn((data: never) => data.userProfile);
 
     const complexParams = {
       username: 'testuser',
@@ -215,7 +215,7 @@ describe('fetchUserProfile', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatFunction = vi.fn((data: any) => ({ empty: true }));
+    const formatFunction = vi.fn(() => ({ empty: true }));
 
     await fetchUserProfile(
       mockRes as Response,
@@ -253,13 +253,13 @@ describe('fetchUserProfile', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatFunction = vi.fn((data: any) => ({
+    const formatFunction = vi.fn((data: never) => ({
       totalQuestions: data.allQuestionsCount.reduce(
-        (sum: number, item: any) => sum + item.count,
+        (sum: number, item: never) => sum + item.count,
         0,
       ),
       solvedQuestions: data.matchedUser.submitStats.acSubmissionNum.reduce(
-        (sum: number, item: any) => sum + item.count,
+        (sum: number, item: never) => sum + item.count,
         0,
       ),
     }));
@@ -289,7 +289,7 @@ describe('fetchUserProfile', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatFunction = vi.fn((data: any) => data);
+    const formatFunction = vi.fn((data: never) => data);
 
     await fetchUserProfile(
       mockRes as Response,

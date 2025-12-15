@@ -1,16 +1,15 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import {
-  formatUserData,
+  formatAcSubmissionData,
   formatBadgesData,
   formatContestData,
   formatContestHistoryData,
-  formatSolvedProblemsData,
-  formatSubmissionData,
-  formatAcSubmissionData,
-  formatSubmissionCalendarData,
-  formatSkillStats,
   formatLanguageStats,
-  formatProgressStats,
+  formatSkillStats,
+  formatSolvedProblemsData,
+  formatSubmissionCalendarData,
+  formatSubmissionData,
+  formatUserData,
 } from '../../../src/FormatUtils/userData';
 
 describe('userData FormatUtils', () => {
@@ -38,7 +37,7 @@ describe('userData FormatUtils', () => {
         },
       };
 
-      const result = formatUserData(input as any);
+      const result = formatUserData(input as never);
 
       expect(result).toEqual({
         username: 'testuser',
@@ -82,7 +81,7 @@ describe('userData FormatUtils', () => {
         },
       };
 
-      const result = formatUserData(input as any);
+      const result = formatUserData(input as never);
 
       expect(result.username).toBe('testuser');
       expect(result.name).toBeNull();
@@ -112,7 +111,7 @@ describe('userData FormatUtils', () => {
         },
       };
 
-      const result = formatUserData(input as any);
+      const result = formatUserData(input as never);
 
       expect(result.name).toBe('');
       expect(result.company).toBe('');
@@ -133,7 +132,7 @@ describe('userData FormatUtils', () => {
         },
       };
 
-      const result = formatBadgesData(input as any);
+      const result = formatBadgesData(input as never);
 
       expect(result).toEqual({
         badgesCount: 2,
@@ -152,7 +151,7 @@ describe('userData FormatUtils', () => {
         },
       };
 
-      const result = formatBadgesData(input as any);
+      const result = formatBadgesData(input as never);
 
       expect(result.badgesCount).toBe(0);
       expect(result.badges).toEqual([]);
@@ -177,12 +176,12 @@ describe('userData FormatUtils', () => {
         ],
       };
 
-      const result = formatContestData(input as any);
+      const result = formatContestData(input as never);
 
       expect(result.contestAttend).toBe(10);
       expect(result.contestRating).toBe(1500.5);
       expect(result.contestParticipation).toHaveLength(2);
-      expect(result.contestParticipation.every((c: any) => c.attended)).toBe(
+      expect(result.contestParticipation.every((c: never) => c.attended)).toBe(
         true,
       );
     });
@@ -193,7 +192,7 @@ describe('userData FormatUtils', () => {
         userContestRankingHistory: [],
       };
 
-      const result = formatContestData(input as any);
+      const result = formatContestData(input as never);
 
       expect(result.contestAttend).toBeUndefined();
       expect(result.contestParticipation).toEqual([]);
@@ -210,7 +209,7 @@ describe('userData FormatUtils', () => {
         ],
       };
 
-      const result = formatContestHistoryData(input as any);
+      const result = formatContestHistoryData(input as never);
 
       expect(result.count).toBe(3);
       expect(result.contestHistory).toEqual(input.userContestRankingHistory);
@@ -221,7 +220,7 @@ describe('userData FormatUtils', () => {
         userContestRankingHistory: [],
       };
 
-      const result = formatContestHistoryData(input as any);
+      const result = formatContestHistoryData(input as never);
 
       expect(result.count).toBe(0);
       expect(result.contestHistory).toEqual([]);
@@ -244,7 +243,7 @@ describe('userData FormatUtils', () => {
         },
       };
 
-      const result = formatSolvedProblemsData(input as any);
+      const result = formatSolvedProblemsData(input as never);
 
       expect(result.solvedProblem).toBe(500);
       expect(result.easySolved).toBe(200);
@@ -270,7 +269,7 @@ describe('userData FormatUtils', () => {
         },
       };
 
-      const result = formatSolvedProblemsData(input as any);
+      const result = formatSolvedProblemsData(input as never);
 
       expect(result.solvedProblem).toBe(0);
       expect(result.easySolved).toBe(0);
@@ -286,7 +285,7 @@ describe('userData FormatUtils', () => {
         ],
       };
 
-      const result = formatSubmissionData(input as any);
+      const result = formatSubmissionData(input as never);
 
       expect(result.count).toBe(2);
       expect(result.submission).toEqual(input.recentSubmissionList);
@@ -297,7 +296,7 @@ describe('userData FormatUtils', () => {
         recentSubmissionList: [],
       };
 
-      const result = formatSubmissionData(input as any);
+      const result = formatSubmissionData(input as never);
 
       expect(result.count).toBe(0);
       expect(result.submission).toEqual([]);
@@ -313,7 +312,7 @@ describe('userData FormatUtils', () => {
         ],
       };
 
-      const result = formatAcSubmissionData(input as any);
+      const result = formatAcSubmissionData(input as never);
 
       expect(result.count).toBe(2);
       expect(result.submission).toEqual(input.recentAcSubmissionList);
@@ -324,7 +323,7 @@ describe('userData FormatUtils', () => {
         recentAcSubmissionList: [],
       };
 
-      const result = formatAcSubmissionData(input as any);
+      const result = formatAcSubmissionData(input as never);
 
       expect(result.count).toBe(0);
       expect(result.submission).toEqual([]);
@@ -345,7 +344,7 @@ describe('userData FormatUtils', () => {
         },
       };
 
-      const result = formatSubmissionCalendarData(input as any);
+      const result = formatSubmissionCalendarData(input as never);
 
       expect(result.activeYears).toEqual([2023, 2024]);
       expect(result.streak).toBe(15);
@@ -366,7 +365,7 @@ describe('userData FormatUtils', () => {
         },
       };
 
-      const result = formatSubmissionCalendarData(input as any);
+      const result = formatSubmissionCalendarData(input as never);
 
       expect(result.activeYears).toEqual([]);
       expect(result.streak).toBe(0);
@@ -391,7 +390,7 @@ describe('userData FormatUtils', () => {
         },
       };
 
-      const result = formatSkillStats(input as any);
+      const result = formatSkillStats(input as never);
 
       expect(result.fundamental).toHaveLength(2);
       expect(result.intermediate).toHaveLength(1);
@@ -409,7 +408,7 @@ describe('userData FormatUtils', () => {
         },
       };
 
-      const result = formatSkillStats(input as any);
+      const result = formatSkillStats(input as never);
 
       expect(result.fundamental).toEqual([]);
       expect(result.intermediate).toEqual([]);
@@ -428,7 +427,7 @@ describe('userData FormatUtils', () => {
         },
       };
 
-      const result = formatLanguageStats(input as any);
+      const result = formatLanguageStats(input as never);
 
       expect(result.languageProblemCount).toHaveLength(2);
       expect(result.languageProblemCount[0].languageName).toBe('JavaScript');
@@ -441,7 +440,7 @@ describe('userData FormatUtils', () => {
         },
       };
 
-      const result = formatLanguageStats(input as any);
+      const result = formatLanguageStats(input as never);
 
       expect(result.languageProblemCount).toEqual([]);
     });

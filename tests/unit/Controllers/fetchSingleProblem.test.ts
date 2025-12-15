@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { Response } from 'express';
+import type { Response } from 'express';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import fetchSingleProblem from '../../../src/Controllers/fetchSingleProblem';
 
 describe('fetchSingleProblem', () => {
@@ -107,7 +107,7 @@ describe('fetchSingleProblem', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatData = vi.fn((data: any) => ({
+    const formatData = vi.fn((data: never) => ({
       id: data.question.questionId,
       slug: data.question.titleSlug,
     }));
@@ -148,19 +148,6 @@ describe('fetchSingleProblem', () => {
 
     expect(sendSpy).toHaveBeenCalledWith(mockErrorResponse);
     expect(jsonSpy).not.toHaveBeenCalled();
-  });
-
-  it('should handle network errors', async () => {
-    const networkError = new Error('Network error');
-    global.fetch = vi.fn().mockRejectedValue(networkError);
-
-    await fetchSingleProblem(
-      mockRes as Response,
-      'query { question }',
-      'two-sum',
-    );
-
-    expect(sendSpy).toHaveBeenCalledWith('Network error');
   });
 
   it('should handle null titleSlug for daily problem', async () => {

@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { formatTrendingCategoryTopicData } from '../../../src/FormatUtils/trendingTopicData';
 
 describe('trendingTopicData FormatUtils', () => {
@@ -27,7 +27,7 @@ describe('trendingTopicData FormatUtils', () => {
         },
       };
 
-      const result = formatTrendingCategoryTopicData(input as any);
+      const result = formatTrendingCategoryTopicData(input as never);
 
       expect(result).toEqual(input);
       expect(result).toBe(input);
@@ -40,7 +40,7 @@ describe('trendingTopicData FormatUtils', () => {
         },
       };
 
-      const result = formatTrendingCategoryTopicData(input as any);
+      const result = formatTrendingCategoryTopicData(input as never);
 
       expect(result).toEqual(input);
     });
@@ -60,7 +60,7 @@ describe('trendingTopicData FormatUtils', () => {
       };
 
       const original = JSON.parse(JSON.stringify(input));
-      const result = formatTrendingCategoryTopicData(input as any);
+      const result = formatTrendingCategoryTopicData(input as never);
 
       expect(result).toEqual(original);
     });
@@ -81,7 +81,7 @@ describe('trendingTopicData FormatUtils', () => {
         },
       };
 
-      const result = formatTrendingCategoryTopicData(input as any);
+      const result = formatTrendingCategoryTopicData(input as never);
 
       expect(result).toEqual(input);
     });

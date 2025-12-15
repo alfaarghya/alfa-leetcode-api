@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { Response } from 'express';
+import type { Response } from 'express';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import fetchUserDetails from '../../../src/Controllers/fetchUserDetails';
 
 describe('fetchUserDetails', () => {
@@ -30,7 +30,7 @@ describe('fetchUserDetails', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatData = vi.fn((data: any) => ({
+    const formatData = vi.fn((data: never) => ({
       username: data.matchedUser.username,
       name: data.matchedUser.profile.realName,
     }));
@@ -154,7 +154,7 @@ describe('fetchUserDetails', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatData = vi.fn((data: any) => data);
+    const formatData = vi.fn((data: never) => data);
 
     await fetchUserDetails(
       { username: 'testuser', limit: 20, year: 2024 },
