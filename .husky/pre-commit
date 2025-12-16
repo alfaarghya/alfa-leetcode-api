@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Check package manager (must use npm)
+.husky/check-package-manager
+
+# Lint and format staged files
+npx lint-staged

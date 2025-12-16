@@ -1,10 +1,10 @@
-import { Response } from 'express';
+import type { Response } from 'express';
 
 const fetchUserDetails = async <T, U>(
   options: { username: string; limit: number; year: number },
   res: Response,
   query: string,
-  formatData?: (data: T) => U
+  formatData?: (data: T) => U,
 ) => {
   try {
     const response = await fetch('https://leetcode.com/graphql', {

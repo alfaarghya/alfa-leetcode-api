@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { Response } from 'express';
+import type { Response } from 'express';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import handleRequest from '../../../src/Controllers/handleRequest';
 
 describe('handleRequest', () => {

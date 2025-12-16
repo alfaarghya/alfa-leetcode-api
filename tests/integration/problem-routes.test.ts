@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeAll, afterAll, afterEach } from 'vitest';
 import request from 'supertest';
+import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 import app from '../../src/app';
 import { server } from '../msw/server';
 

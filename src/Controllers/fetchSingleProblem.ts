@@ -1,5 +1,5 @@
-import { Response } from 'express';
-import { DailyProblemData, SelectProblemData } from '../types';
+import type { Response } from 'express';
+import type { DailyProblemData, SelectProblemData } from '../types';
 
 const fetchSingleProblem = async (
   res: Response,
@@ -28,7 +28,7 @@ const fetchSingleProblem = async (
       return res.send(result);
     }
 
-    if(formatData == null) {
+    if (formatData == null) {
       return res.json(result.data);
     }
 

@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { Response } from 'express';
+import type { Response } from 'express';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import fetchDiscussion from '../../../src/Controllers/fetchDiscussion';
 
 describe('fetchDiscussion', () => {
@@ -32,7 +32,7 @@ describe('fetchDiscussion', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatData = vi.fn((data: any) => data);
+    const formatData = vi.fn((data: never) => data);
 
     await fetchDiscussion(
       { first: 10 },
@@ -72,7 +72,7 @@ describe('fetchDiscussion', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatData = vi.fn((data: any) => data);
+    const formatData = vi.fn((data: never) => data);
 
     await fetchDiscussion(
       { first: 0 },
@@ -115,9 +115,11 @@ describe('fetchDiscussion', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatData = vi.fn((data: any) => ({
+    const formatData = vi.fn((data: never) => ({
       count: data.categoryTopicList.edges.length,
-      topics: data.categoryTopicList.edges.map((edge: any) => edge.node.title),
+      topics: data.categoryTopicList.edges.map(
+        (edge: never) => edge.node.title,
+      ),
     }));
 
     await fetchDiscussion(
@@ -148,7 +150,7 @@ describe('fetchDiscussion', () => {
       json: vi.fn().mockResolvedValue(mockErrorResponse),
     });
 
-    const formatData = vi.fn((data: any) => data);
+    const formatData = vi.fn((data: never) => data);
 
     await fetchDiscussion(
       { first: 10 },
@@ -165,7 +167,7 @@ describe('fetchDiscussion', () => {
     const networkError = new Error('Network error');
     global.fetch = vi.fn().mockRejectedValue(networkError);
 
-    const formatData = vi.fn((data: any) => data);
+    const formatData = vi.fn((data: never) => data);
 
     await fetchDiscussion(
       { first: 10 },
@@ -190,7 +192,7 @@ describe('fetchDiscussion', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatData = vi.fn((data: any) => ({
+    const formatData = vi.fn((data: never) => ({
       count: data.categoryTopicList.edges.length,
     }));
 
@@ -221,7 +223,7 @@ describe('fetchDiscussion', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatData = vi.fn((data: any) => data);
+    const formatData = vi.fn((data: never) => data);
 
     await fetchDiscussion(
       { first: 100 },
@@ -258,7 +260,7 @@ describe('fetchDiscussion', () => {
       json: vi.fn().mockResolvedValue(mockData),
     });
 
-    const formatData = vi.fn((data: any) => data);
+    const formatData = vi.fn((data: never) => data);
 
     await fetchDiscussion(
       { first: 1 },

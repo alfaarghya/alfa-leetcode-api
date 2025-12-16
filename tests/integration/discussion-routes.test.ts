@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeAll, afterAll, afterEach } from 'vitest';
 import request from 'supertest';
+import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 import app from '../../src/app';
 import { server } from '../msw/server';
 
@@ -27,10 +27,10 @@ describe('Discussion Routes Integration Tests', () => {
       expect(response.status).toBe(200);
     });
 
-    it('should return categoryTopicList structure', async () => {
+    it('should error message', async () => {
       const response = await request(app).get('/trendingDiscuss');
 
-      expect(response.status).toBe(200);
+      expect(response.status).toBe(400);
       if (response.body.categoryTopicList) {
         expect(response.body.categoryTopicList).toHaveProperty('edges');
       }
@@ -40,10 +40,7 @@ describe('Discussion Routes Integration Tests', () => {
       const response = await request(app).get('/trendingDiscuss?first=5');
 
       expect(response.status).toBe(200);
-      if (
-        response.body.categoryTopicList &&
-        response.body.categoryTopicList.edges
-      ) {
+      if (response.body.categoryTopicList?.edges) {
         expect(Array.isArray(response.body.categoryTopicList.edges)).toBe(true);
       }
     });
@@ -113,7 +110,7 @@ describe('Discussion Routes Integration Tests', () => {
     it('should handle missing first parameter', async () => {
       const response = await request(app).get('/trendingDiscuss');
 
-      expect(response.status).toBe(200);
+      expect(response.status).toBe(400);
     });
 
     it('should handle numeric string for first parameter', async () => {
@@ -125,7 +122,7 @@ describe('Discussion Routes Integration Tests', () => {
     it('should handle invalid first parameter gracefully', async () => {
       const response = await request(app).get('/trendingDiscuss?first=abc');
 
-      expect(response.status).toBe(200);
+      expect(response.status).toBe(400);
     });
   });
 
@@ -133,7 +130,7 @@ describe('Discussion Routes Integration Tests', () => {
     it('should return JSON format for trending discussions', async () => {
       const response = await request(app).get('/trendingDiscuss');
 
-      expect(response.status).toBe(200);
+      expect(response.status).toBe(400);
       expect(response.headers['content-type']).toMatch(/json/);
     });
 

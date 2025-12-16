@@ -1,8 +1,8 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import {
   formatDailyData,
-  formatQuestionData,
   formatProblemsData,
+  formatQuestionData,
 } from '../../../src/FormatUtils/problemData';
 
 describe('problemData FormatUtils', () => {
@@ -35,7 +35,7 @@ describe('problemData FormatUtils', () => {
         },
       };
 
-      const result = formatDailyData(input as any);
+      const result = formatDailyData(input as never);
 
       expect(result).toEqual({
         questionLink: 'https://leetcode.com/problems/two-sum/',
@@ -86,7 +86,7 @@ describe('problemData FormatUtils', () => {
         },
       };
 
-      const result = formatDailyData(input as any);
+      const result = formatDailyData(input as never);
 
       expect(result.isPaidOnly).toBe(true);
       expect(result.questionTitle).toBe('Premium Problem');
@@ -117,7 +117,7 @@ describe('problemData FormatUtils', () => {
         },
       };
 
-      const result = formatDailyData(input as any);
+      const result = formatDailyData(input as never);
 
       expect(result.topicTags).toEqual([]);
       expect(result.hints).toEqual([]);
@@ -149,7 +149,7 @@ describe('problemData FormatUtils', () => {
         },
       };
 
-      const result = formatDailyData(input as any);
+      const result = formatDailyData(input as never);
 
       expect(result.questionLink).toBe(
         'https://leetcode.com/problems/test-problem',
@@ -182,7 +182,7 @@ describe('problemData FormatUtils', () => {
         },
       };
 
-      const result = formatQuestionData(input as any);
+      const result = formatQuestionData(input as never);
 
       expect(result).toEqual({
         link: 'https://leetcode.com/problems/two-sum',
@@ -228,7 +228,7 @@ describe('problemData FormatUtils', () => {
         },
       };
 
-      const result = formatQuestionData(input as any);
+      const result = formatQuestionData(input as never);
 
       expect(result.link).toBe('https://leetcode.com/problems/add-two-numbers');
     });
@@ -254,7 +254,7 @@ describe('problemData FormatUtils', () => {
         },
       };
 
-      const result = formatQuestionData(input as any);
+      const result = formatQuestionData(input as never);
 
       expect(result.solution).toBeNull();
       expect(result.difficulty).toBe('Hard');
@@ -285,7 +285,7 @@ describe('problemData FormatUtils', () => {
         },
       };
 
-      const result = formatQuestionData(input as any);
+      const result = formatQuestionData(input as never);
 
       expect(result.topicTags).toHaveLength(3);
     });
@@ -319,7 +319,7 @@ describe('problemData FormatUtils', () => {
         },
       };
 
-      const result = formatProblemsData(input as any);
+      const result = formatProblemsData(input as never);
 
       expect(result).toEqual({
         totalQuestions: 100,
@@ -336,7 +336,7 @@ describe('problemData FormatUtils', () => {
         },
       };
 
-      const result = formatProblemsData(input as any);
+      const result = formatProblemsData(input as never);
 
       expect(result.totalQuestions).toBe(0);
       expect(result.count).toBe(0);
@@ -358,7 +358,7 @@ describe('problemData FormatUtils', () => {
         },
       };
 
-      const result = formatProblemsData(input as any);
+      const result = formatProblemsData(input as never);
 
       expect(result.totalQuestions).toBe(2000);
       expect(result.count).toBe(1);
@@ -379,7 +379,7 @@ describe('problemData FormatUtils', () => {
         },
       };
 
-      const result = formatProblemsData(input as any);
+      const result = formatProblemsData(input as never);
 
       expect(result.totalQuestions).toBe(2000);
       expect(result.count).toBe(50);

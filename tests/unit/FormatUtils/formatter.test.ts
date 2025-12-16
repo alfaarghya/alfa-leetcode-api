@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 import { withSchema } from '../../../src/FormatUtils/formatter';
 
@@ -41,7 +41,7 @@ describe('formatter utils', () => {
 
       const input = { name: 'John', age: 'thirty' };
 
-      expect(() => validate(input as any)).toThrow();
+      expect(() => validate(input as never)).toThrow();
     });
 
     it('should work with complex nested schemas', () => {
@@ -55,7 +55,7 @@ describe('formatter utils', () => {
         }),
       });
 
-      const formatter = (data: any) => ({
+      const formatter = (data: never) => ({
         username: data.user.username,
         age: data.user.profile.age,
         country: data.user.profile.country,
@@ -178,7 +178,7 @@ describe('formatter utils', () => {
     it('should handle empty objects', () => {
       const schema = z.object({});
 
-      const formatter = (data: {}) => ({
+      const formatter = () => ({
         isEmpty: true,
       });
 
@@ -198,7 +198,7 @@ describe('formatter utils', () => {
         z.object({ type: z.literal('admin'), adminId: z.number() }),
       ]);
 
-      const formatter = (data: any) => ({
+      const formatter = (data: never) => ({
         accountType: data.type,
         identifier: data.username || data.adminId,
       });
@@ -261,8 +261,8 @@ describe('formatter utils', () => {
       const input = { name: 123, age: 'invalid' };
 
       try {
-        validate(input as any);
-      } catch (error) {
+        validate(input as never);
+      } catch (_error) {
         expect(formatterCalled).toBe(false);
       }
     });

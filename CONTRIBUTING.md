@@ -11,7 +11,6 @@ If you find a bug, please check the Issues to see if it has already been reporte
 - Expected behavior.
 - Screenshots or a video if applicable.
 
-
 ## Suggesting Enhancements
 
 All ideas for new features or improvements are welcome. If you have a suggestion, please create a new topic on the [discussions page](https://github.com/alfaarghya/alfa-leetcode-api/discussions). Describe your idea and why you think it would be a good addition to the project.
@@ -38,13 +37,44 @@ Also, not properly communicating that you're using generated code in your PR is 
 2. Clone your forked repository to your local machine.
 3. Implement your changes. Please ensure your code is:
    - well-written
-   - well formatted 
+   - well formatted (see [Code Quality and Formatting](#code-quality-and-formatting) section below)
 4. Write clear, concise commit messages.
-5. Push your changes to your fork.
+5. run tests with `npm run test` before pushing
+6. Push your changes to your fork.
 
 Open a new pull request from your branch to the `main` branch of **alfa-leetcode-api**.
 
 Provide a clear description of the changes in your pull request. If your PR addresses an existing issue, please reference it. Images and videos are always appreciated, for a quicker understanding of what has been implemented.
+
+## Code Quality and Formatting
+
+This project uses [BiomeJS](https://biomejs.dev/) for code linting and formatting. All contributions must pass linting and formatting checks before being merged.
+
+### Before Submitting Your PR
+
+Run the following command to check and fix any linting or formatting issues:
+
+```bash
+npm run check:fix
+```
+
+This will:
+
+- Auto-fix linting issues where possible
+- Apply consistent code formatting across your changes
+
+### Available Scripts
+
+- `npm run lint` - Check for linting issues without fixing
+- `npm run lint:fix` - Auto-fix linting issues
+- `npm run format` - Check code formatting without fixing
+- `npm run format:fix` - Apply code formatting
+- `npm run check` - Run both lint and format checks
+- `npm run check:fix` - Fix all issues (recommended before commits)
+
+### Pre-commit Hooks
+
+The project uses Husky and lint-staged to automatically format your code when you commit. Staged files will be automatically linted and formatted before each commit, ensuring consistent code style throughout the project.
 
 ## Setting up Your Development Environment
 
@@ -53,7 +83,7 @@ To start contributing, you'll need to set up your local environment.
 Clone the repository:
 
 ```bash
-git clone https://github.com/<username>/alfa-leetcode-api.git 
+git clone https://github.com/<username>/alfa-leetcode-api.git
 cd alfa-leetcode-api # go to the project
 npm install # install required modules
 npm run dev # run the project

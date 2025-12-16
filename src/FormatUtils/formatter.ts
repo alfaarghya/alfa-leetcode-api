@@ -1,4 +1,4 @@
-import { ZodType } from 'zod';
+import type { ZodType } from 'zod';
 
 export const withSchema =
   <T, U>(schema: ZodType<T>, formatter: (data: T) => U) =>

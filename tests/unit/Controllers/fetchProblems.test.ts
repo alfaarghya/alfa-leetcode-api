@@ -1,7 +1,7 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { Response } from 'express';
+import type { Response } from 'express';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import fetchProblems from '../../../src/Controllers/fetchProblems';
-import { ProblemSetQuestionListData } from '../../../src/types';
+import type { ProblemSetQuestionListData } from '../../../src/types';
 
 describe('fetchProblems', () => {
   let mockRes: Partial<Response>;

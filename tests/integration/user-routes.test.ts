@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeAll, afterAll, afterEach } from 'vitest';
 import request from 'supertest';
+import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 import app from '../../src/app';
 import { server } from '../msw/server';
 
@@ -91,7 +91,7 @@ describe('User Routes Integration Tests', () => {
       if (response.body.contestParticipation.length > 0) {
         expect(
           response.body.contestParticipation.every(
-            (c: any) => c.attended === true,
+            (c: never) => c.attended === true,
           ),
         ).toBe(true);
       }
@@ -245,7 +245,11 @@ describe('User Routes Integration Tests', () => {
 
       expect(response.status).toBe(200);
       if (response.body.numAcceptedQuestions) {
-        expect(Array.isArray(response.body.numAcceptedQuestions)).toBe(true);
+        expect(
+          Array.isArray(
+            response.body.numAcceptedQuestions.numAcceptedQuestions,
+          ),
+        ).toBe(true);
       }
     });
   });
