@@ -318,3 +318,11 @@ export const userContestRankingInfo_ = (req: Request, res: Response) => {
     username,
   });
 };
+
+export const fetchUserCalendarData_ = (req: Request, res: Response) => {
+  controllers.fetchUserProgressCalendar(
+    req.body,
+    res,
+    gqlQueries.userProgressCalendarQuery,
+  );
+};

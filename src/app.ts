@@ -173,4 +173,6 @@ app.get('/languageStats', leetcode.languageStats_);
 //get user contest ranking info
 app.get('/userContestRankingInfo/:username', leetcode.userContestRankingInfo_);
 
+app.get('/userCalendarData', leetcode.fetchUserCalendarData_);
+
 export default app;

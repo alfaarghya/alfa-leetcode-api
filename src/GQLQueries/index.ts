@@ -15,4 +15,5 @@ export { default as trendingDiscussQuery } from './trendingDiscuss';
 export { userContestRankingInfoQuery } from './userContestRanking';
 export { default as userProfileQuery } from './userProfile';
 export { userProfileCalendarQuery } from './userProfileCalendar';
+export { userProgressCalendarQuery } from './userProgressCalendar';
 export { userQuestionProgressQuery } from './userQuestionProgress';
