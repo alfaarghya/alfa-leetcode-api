@@ -21,7 +21,8 @@
     "check:fix": "biome check --write . && biome format --write .",
     "mcp": "ts-node mcp/index.ts",
     "mcp:dist": "npm run build && node dist/mcp/index.js",
-    "mcp:inspect": "ts-node mcp/runInspector.ts"
+    "mcp:inspect": "ts-node mcp/runInspector.ts",
+    "extract-cookies": "npx playwright install chromium && ts-node scripts/extract-cookies.ts"
   },
   "keywords": [],
   "author": "alfaarghya",
@@ -51,6 +52,9 @@
     "typescript": "^5.9.3",
     "vite": "^6.0.5",
     "vitest": "^4.0.15"
+  },
+  "optionalDependencies": {
+    "playwright": "^1.52.0"
   },
   "lint-staged": {
     "*.{ts,js}": [
