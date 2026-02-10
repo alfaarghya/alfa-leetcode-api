@@ -1,13 +1,19 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import {
+  addProblemToFavorite,
   getDailyProblem,
   getDailyProblemLegacy,
   getDailyProblemRaw,
   getOfficialSolution,
+  getProblemNote,
   getProblemSet,
+  getProblemStatus,
   getSelectProblem,
   getSelectProblemRaw,
+  getSubmissionDetails,
+  removeProblemFromFavorite,
+  updateProblemNote,
 } from '../leetCodeService';
 import { runTool } from '../serverUtils';
 import { ToolModule } from '../types';
@@ -91,6 +97,85 @@ export class ProblemToolsModule implements ToolModule {
         description: 'Retrieves the legacy daily challenge payload',
       },
       async () => runTool(() => getDailyProblemLegacy()),
+    );
+
+    // ── Auth-required tools ───────────────────────────────────────────
+
+    server.registerTool(
+      'leetcode_submission_details',
+      {
+        title: 'Submission Details',
+        description: '[Auth Required] Full submission: source code, runtime, memory, percentiles, errors',
+        inputSchema: {
+          submissionId: z.number().int().positive(),
+        },
+      },
+      async ({ submissionId }) => runTool(() => getSubmissionDetails({ submissionId })),
+    );
+
+    server.registerTool(
+      'leetcode_problem_note',
+      {
+        title: 'Problem Note',
+        description: "[Auth Required] User's personal note on a problem",
+        inputSchema: {
+          titleSlug: z.string(),
+        },
+      },
+      async ({ titleSlug }) => runTool(() => getProblemNote(titleSlug)),
+    );
+
+    server.registerTool(
+      'leetcode_problem_note_update',
+      {
+        title: 'Update Problem Note',
+        description: '[Auth Required] Create/update personal note on a problem',
+        inputSchema: {
+          titleSlug: z.string(),
+          note: z.string(),
+        },
+      },
+      async ({ titleSlug, note }) => runTool(() => updateProblemNote({ titleSlug, note })),
+    );
+
+    server.registerTool(
+      'leetcode_problem_favorite_add',
+      {
+        title: 'Add to Favorites',
+        description: '[Auth Required] Add problem to a favorites list',
+        inputSchema: {
+          favoriteIdHash: z.string(),
+          questionId: z.string(),
+        },
+      },
+      async ({ favoriteIdHash, questionId }) =>
+        runTool(() => addProblemToFavorite({ favoriteIdHash, questionId })),
+    );
+
+    server.registerTool(
+      'leetcode_problem_favorite_remove',
+      {
+        title: 'Remove from Favorites',
+        description: '[Auth Required] Remove problem from a favorites list',
+        inputSchema: {
+          favoriteIdHash: z.string(),
+          questionId: z.string(),
+        },
+      },
+      async ({ favoriteIdHash, questionId }) =>
+        runTool(() => removeProblemFromFavorite({ favoriteIdHash, questionId })),
+    );
+
+    server.registerTool(
+      'leetcode_problem_status',
+      {
+        title: 'Problem Status',
+        description: '[Auth Required] Solve status for a specific problem (ac/notac/null) — lighter than full select',
+        inputSchema: {
+          titleSlug: z.string(),
+        },
+      },
+      async ({ titleSlug }) => runTool(() => getProblemStatus(titleSlug)),
     );
   }
 }
