@@ -141,7 +141,16 @@ To run only a subset of tools, append the module name (`users`, `problems`, or `
 
 By default, the MCP server makes unauthenticated requests to the LeetCode GraphQL API. To access user-specific data (submission history, private problem lists, contest participation, etc.), you can provide session cookies via a JSON file:
 
-1. Create a JSON file with your LeetCode session cookies:
+1. Extract your LeetCode session cookies using the included helper script:
+
+   ```bash
+   npx playwright install chromium   # first time only
+   npx ts-node scripts/extract-cookies.ts ./leetcode-cookies.json
+   ```
+
+   This opens a browser window — log in to LeetCode and the script will automatically detect your session and save the cookies. The output file is set to `600` permissions (owner-only read/write).
+
+   Alternatively, create the JSON file manually with cookies from your browser's developer tools:
 
    ```json
    {
@@ -169,7 +178,7 @@ By default, the MCP server makes unauthenticated requests to the LeetCode GraphQ
 
 When the env var is set, the server injects `Cookie` and `x-csrftoken` headers into all GraphQL requests. When unset, it falls back to unauthenticated mode silently.
 
-> **Tip:** You can extract `LEETCODE_SESSION` and `csrftoken` from your browser's developer tools after logging in to leetcode.com. The session cookie typically expires after ~14 days.
+> **Note:** The `LEETCODE_SESSION` cookie typically expires after ~14 days. Re-run the extraction script to refresh it.
 
 ### MCP Inspector
 
