@@ -1,18 +1,41 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { readFileSync } from 'fs';
 import { GraphQLParams, GraphQLClientError, ToolResponse, ToolExecutor, ToolModule } from './types';
 
 const GRAPHQL_ENDPOINT = 'https://leetcode.com/graphql';
 export const SERVER_VERSION = '1.0.0';
 
+// Loads auth cookies from LEETCODE_COOKIES_FILE env var.
+function loadAuthData(): { cookie: string; csrftoken: string } {
+  const cookieFile = process.env.LEETCODE_COOKIES_FILE;
+  if (!cookieFile) return { cookie: '', csrftoken: '' };
+  try {
+    const data = JSON.parse(readFileSync(cookieFile, 'utf-8'));
+    const parts: string[] = [];
+    if (data.LEETCODE_SESSION) parts.push(`LEETCODE_SESSION=${data.LEETCODE_SESSION}`);
+    if (data.csrftoken) parts.push(`csrftoken=${data.csrftoken}`);
+    if (data.cf_clearance) parts.push(`cf_clearance=${data.cf_clearance}`);
+    return { cookie: parts.join('; '), csrftoken: data.csrftoken || '' };
+  } catch {
+    return { cookie: '', csrftoken: '' };
+  }
+}
+
 // Executes a GraphQL query against the LeetCode API.
 export async function executeGraphQL(query: string, variables: GraphQLParams = {}): Promise<unknown> {
+  const auth = loadAuthData();
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    Referer: 'https://leetcode.com',
+  };
+  if (auth.cookie) {
+    headers['Cookie'] = auth.cookie;
+    headers['x-csrftoken'] = auth.csrftoken;
+  }
   const requestInit: RequestInit = {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Referer: 'https://leetcode.com',
-    },
+    headers,
     body: JSON.stringify({ query, variables }),
   };
 
