@@ -13,12 +13,15 @@ import {
   getUserContest,
   getUserContestHistory,
   getUserContestRankingInfo,
+  getUserFavorites,
   getUserProfileAggregate,
   getUserProfileCalendarRaw,
   getUserProfileRaw,
   getUserProfileSummary,
   getUserProgress,
   getUserProgressRaw,
+  getUserStatus,
+  getUserStreak,
 } from '../leetCodeService';
 import { runTool } from '../serverUtils';
 import { ToolModule } from '../types';
@@ -247,6 +250,35 @@ export class UserToolsModule implements ToolModule {
         },
       },
       async ({ username }) => runTool(() => getUserProgressRaw(username)),
+    );
+
+    // ── Auth-required tools ───────────────────────────────────────────
+
+    server.registerTool(
+      'leetcode_user_status',
+      {
+        title: 'Authenticated User Status',
+        description: '[Auth Required] Authenticated user info: username, isPremium, checkedInToday, notifications',
+      },
+      async () => runTool(() => getUserStatus()),
+    );
+
+    server.registerTool(
+      'leetcode_user_streak',
+      {
+        title: 'Daily Streak',
+        description: '[Auth Required] Daily streak: currentStreak, daysSkipped, todayCompleted',
+      },
+      async () => runTool(() => getUserStreak()),
+    );
+
+    server.registerTool(
+      'leetcode_user_favorites',
+      {
+        title: 'Favorite Lists',
+        description: "[Auth Required] User's favorite/bookmark problem lists with problem IDs",
+      },
+      async () => runTool(() => getUserFavorites()),
     );
   }
 }

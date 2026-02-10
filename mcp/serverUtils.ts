@@ -6,6 +6,16 @@ import { GraphQLParams, GraphQLClientError, ToolResponse, ToolExecutor, ToolModu
 const GRAPHQL_ENDPOINT = 'https://leetcode.com/graphql';
 export const SERVER_VERSION = '1.0.0';
 
+// Asserts that auth cookies are configured. Throws a clear error if not.
+export function requireAuth(): void {
+  const auth = loadAuthData();
+  if (!auth.cookie) {
+    throw new Error(
+      'This tool requires authentication. Set LEETCODE_COOKIES_FILE env var with a path to your cookies JSON file.',
+    );
+  }
+}
+
 // Loads auth cookies from LEETCODE_COOKIES_FILE env var.
 function loadAuthData(): { cookie: string; csrftoken: string } {
   const cookieFile = process.env.LEETCODE_COOKIES_FILE;
