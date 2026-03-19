@@ -28,6 +28,11 @@ At First, I struggled to find proper documentation for the `leetcode.com/graphql
 https://alfa-leetcode-api.onrender.com/
 ```
 
+## Swagger Docs 📘
+
+- Swagger UI: <a href="https://alfa-leetcode-api.onrender.com/docs" target="_blank">https://alfa-leetcode-api.onrender.com/docs</a>
+- OpenAPI JSON: <a href="https://alfa-leetcode-api.onrender.com/openapi.json" target="_blank">https://alfa-leetcode-api.onrender.com/openapi.json</a>
+
 ## Run with docker 🐳
 
 ```

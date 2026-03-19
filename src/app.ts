@@ -2,6 +2,7 @@ import apicache from 'apicache';
 import cors from 'cors';
 import express, { type NextFunction, type Response } from 'express';
 import rateLimit from 'express-rate-limit';
+import { openApiSpec, swaggerUiHtml } from './docs/openapi';
 import * as leetcode from './leetCode';
 import type { FetchUserDataRequest } from './types';
 
@@ -90,6 +91,14 @@ app.get('/', (_req, res) => {
       },
     },
   });
+});
+
+app.get('/openapi.json', (_req, res) => {
+  res.json(openApiSpec);
+});
+
+app.get(['/docs', '/docs/'], (_req, res) => {
+  res.type('html').send(swaggerUiHtml);
 });
 
 //get trending Discuss
