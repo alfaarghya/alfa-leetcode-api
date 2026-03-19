@@ -3,6 +3,8 @@ export { default as contestQuery } from './contest';
 export { default as dailyProblemQuery } from './dailyProblem';
 export { discussCommentsQuery } from './discussComments';
 export { discussTopicQuery } from './discussTopic';
+export { followersQuery } from './followers';
+export { followingQuery } from './following';
 export { getUserProfileQuery } from './getUserProfile';
 export { default as languageStatsQuery } from './languageStats';
 export { officialSolutionQuery } from './officialSolution';

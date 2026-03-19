@@ -1,0 +1,24 @@
+{
+  "data": {
+    "followers": {
+      "users": [
+        {
+          "realName": "Yash_Chouhan",
+          "userAvatar": "https://assets.leetcode.com/users/default_avatar.jpg",
+          "userSlug": "Yash_Chouhan",
+          "aboutMe": "yee",
+          "isFollowingMe": true,
+          "isFollowedByMe": false
+        },
+        {
+          "realName": "aadesh",
+          "userAvatar": "https://assets.leetcode.com/users/Aadesh_Phadake/avatar_1763877778.png",
+          "userSlug": "Aadesh_Phadake",
+          "aboutMe": "MERN stack developer",
+          "isFollowingMe": true,
+          "isFollowedByMe": true
+        }
+      ]
+    }
+  }
+}

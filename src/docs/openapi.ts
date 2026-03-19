@@ -16,6 +16,10 @@ export const openApiSpec = {
   },
   servers: [
     {
+      url: 'http://localhost:3000',
+      description: 'Local development',
+    },
+    {
       url: 'https://alfa-leetcode-api.onrender.com/',
       description: 'Production',
     },
@@ -866,6 +870,56 @@ export const openApiSpec = {
         },
       },
     },
+    '/{username}/followers': {
+      get: {
+        tags: ['User'],
+        summary: 'Get followers list',
+        operationId: 'getUserFollowers',
+        parameters: [
+          {
+            name: 'username',
+            in: 'path',
+            required: true,
+            schema: { type: 'string' },
+          },
+        ],
+        responses: {
+          '200': {
+            description: 'Followers payload',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/SocialUsersResponse' },
+              },
+            },
+          },
+        },
+      },
+    },
+    '/{username}/followings': {
+      get: {
+        tags: ['User'],
+        summary: 'Get following list',
+        operationId: 'getUserFollowings',
+        parameters: [
+          {
+            name: 'username',
+            in: 'path',
+            required: true,
+            schema: { type: 'string' },
+          },
+        ],
+        responses: {
+          '200': {
+            description: 'Following payload',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/SocialUsersResponse' },
+              },
+            },
+          },
+        },
+      },
+    },
     '/userProfile/{id}': {
       get: {
         tags: ['Legacy'],
@@ -1401,6 +1455,36 @@ export const openApiSpec = {
           },
         },
         required: ['numAcceptedQuestions'],
+      },
+      SocialUser: {
+        type: 'object',
+        properties: {
+          realName: { type: 'string' },
+          userAvatar: { type: 'string' },
+          userSlug: { type: 'string' },
+          aboutMe: { type: 'string' },
+          isFollowingMe: { type: 'boolean' },
+          isFollowedByMe: { type: 'boolean' },
+        },
+        required: [
+          'realName',
+          'userAvatar',
+          'userSlug',
+          'aboutMe',
+          'isFollowingMe',
+          'isFollowedByMe',
+        ],
+      },
+      SocialUsersResponse: {
+        type: 'object',
+        properties: {
+          count: { type: 'integer' },
+          users: {
+            type: 'array',
+            items: { $ref: '#/components/schemas/SocialUser' },
+          },
+        },
+        required: ['count', 'users'],
       },
       FullUserProfileResponse: {
         type: 'object',

@@ -122,6 +122,24 @@ export const progress = (req: Request, res: Response) => {
   );
 };
 
+export const followers = (req: TransformedUserDataRequest, res: Response) => {
+  controllers.fetchUserDetails(
+    req.body,
+    res,
+    gqlQueries.followersQuery,
+    formatUtils.formatFollowersData,
+  );
+};
+
+export const followings = (req: TransformedUserDataRequest, res: Response) => {
+  controllers.fetchUserDetails(
+    req.body,
+    res,
+    gqlQueries.followingQuery,
+    formatUtils.formatFollowingData,
+  );
+};
+
 //Problems Details
 export const dailyProblem = (_req: Request, res: Response) => {
   controllers.fetchSingleProblem(

@@ -214,3 +214,24 @@ export interface UserProfileResponse {
   allQuestionsCount: Array<{ count: number }>;
   recentSubmissionList: unknown[];
 }
+
+export interface SocialUser {
+  realName: string;
+  userAvatar: string;
+  userSlug: string;
+  aboutMe: string;
+  isFollowingMe: boolean;
+  isFollowedByMe: boolean;
+}
+
+export interface FollowersData {
+  followers: {
+    users: SocialUser[];
+  };
+}
+
+export interface FollowingData {
+  following: {
+    users: SocialUser[];
+  };
+}

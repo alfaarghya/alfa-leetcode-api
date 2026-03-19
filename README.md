@@ -60,6 +60,8 @@ docker run -p 3000:3000 alfaarghya/alfa-leetcode-api:2.0.3
 | _Skill Stats_                 | `/:username/skill`                   | Get the user's skill stats.                                          | <a href="./public/demo/demo24.png" target="_blank">click here</a> |
 | _Lang Stats_                  | `/:username/language`                | Get the language stats of a user                                     | <a href="./public/demo/demo25.png" target="_blank">click here</a> |
 | _Question Progress_           | `/:username/progress`                | Get your question progress                                           | <a href="./public/demo/demo26.png" target="_blank">click here</a> |
+| _Followers_                   | `/:username/followers`               | Get users who follow the profile.                                    | -                                                                 |
+| _Followings_                  | `/:username/followings`              | Get users the profile is following.                                  | -                                                                 |
 
 ### ❓Questions Details
 

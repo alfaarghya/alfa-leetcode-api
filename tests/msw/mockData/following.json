@@ -1,0 +1,24 @@
+{
+  "data": {
+    "following": {
+      "users": [
+        {
+          "realName": "Shreyaan16",
+          "userAvatar": "https://assets.leetcode.com/users/default_avatar.jpg",
+          "userSlug": "Shreyaan16",
+          "aboutMe": "",
+          "isFollowingMe": false,
+          "isFollowedByMe": true
+        },
+        {
+          "realName": "FlameRunner",
+          "userAvatar": "https://assets.leetcode.com/users/Siddharth_Singh2711/avatar_1770514645.png",
+          "userSlug": "Siddharth_Singh2711",
+          "aboutMe": "Pre Final Year at IIIT Sricity",
+          "isFollowingMe": false,
+          "isFollowedByMe": true
+        }
+      ]
+    }
+  }
+}

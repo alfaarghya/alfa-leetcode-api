@@ -53,6 +53,8 @@ app.get('/', (_req, res) => {
         '/:username/skill': 'Get your skill stats',
         '/:username/language': 'Get your language stats',
         '/:username/progress': 'Get your progress stats',
+        '/:username/followers': 'Get users following this profile',
+        '/:username/followings': 'Get users this profile is following',
       },
       discussion: {
         description: 'Endpoints for fetching discussion topics and comments.',
@@ -154,6 +156,8 @@ app.get('/:username/skill/', leetcode.skillStats);
 app.get('/:username/profile/', leetcode.userProfile);
 app.get('/:username/language', leetcode.languageStats);
 app.get('/:username/progress/', leetcode.progress);
+app.get('/:username/followers', leetcode.followers);
+app.get('/:username/followings', leetcode.followings);
 
 /* ----- Migrated to new routes -> these will be deleted -----*/
 //get user profile calendar

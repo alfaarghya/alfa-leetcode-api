@@ -2,6 +2,8 @@ export { default as allContests } from './allContests.json';
 export { default as dailyProblem } from './dailyProblem.json';
 export { default as discussComments } from './discussComments.json';
 export { default as discussTopic } from './discussTopic.json';
+export { default as followers } from './followers.json';
+export { default as following } from './following.json';
 export { default as languageStats } from './languageStats.json';
 export { default as officialSolution } from './officialSolution.json';
 export { default as problems } from './problems.json';

@@ -254,6 +254,60 @@ describe('User Routes Integration Tests', () => {
     });
   });
 
+  describe('GET /:username/followers', () => {
+    it('should return followers list', async () => {
+      const response = await request(app).get('/testuser/followers');
+
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('count');
+      expect(response.body).toHaveProperty('users');
+      expect(Array.isArray(response.body.users)).toBe(true);
+      expect(response.body.count).toBe(response.body.users.length);
+    });
+
+    it('should return followers with expected fields', async () => {
+      const response = await request(app).get('/testuser/followers');
+
+      expect(response.status).toBe(200);
+      if (response.body.users.length > 0) {
+        const user = response.body.users[0];
+        expect(user).toHaveProperty('realName');
+        expect(user).toHaveProperty('userAvatar');
+        expect(user).toHaveProperty('userSlug');
+        expect(user).toHaveProperty('aboutMe');
+        expect(user).toHaveProperty('isFollowingMe');
+        expect(user).toHaveProperty('isFollowedByMe');
+      }
+    });
+  });
+
+  describe('GET /:username/followings', () => {
+    it('should return following list', async () => {
+      const response = await request(app).get('/testuser/followings');
+
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('count');
+      expect(response.body).toHaveProperty('users');
+      expect(Array.isArray(response.body.users)).toBe(true);
+      expect(response.body.count).toBe(response.body.users.length);
+    });
+
+    it('should return followings with expected fields', async () => {
+      const response = await request(app).get('/testuser/followings');
+
+      expect(response.status).toBe(200);
+      if (response.body.users.length > 0) {
+        const user = response.body.users[0];
+        expect(user).toHaveProperty('realName');
+        expect(user).toHaveProperty('userAvatar');
+        expect(user).toHaveProperty('userSlug');
+        expect(user).toHaveProperty('aboutMe');
+        expect(user).toHaveProperty('isFollowingMe');
+        expect(user).toHaveProperty('isFollowedByMe');
+      }
+    });
+  });
+
   describe('Error handling', () => {
     it('should handle malformed requests gracefully', async () => {
       const response = await request(app).get('/user%20name/profile');

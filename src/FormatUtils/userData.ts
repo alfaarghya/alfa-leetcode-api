@@ -1,5 +1,5 @@
 import type { UserContest } from '../schema';
-import type { UserData } from '../types';
+import type { FollowersData, FollowingData, UserData } from '../types';
 
 export const formatUserData = (data: UserData) => ({
   username: data.matchedUser.username,
@@ -82,4 +82,14 @@ export const formatLanguageStats = (data: UserData) => ({
 
 export const formatProgressStats = (data: UserData) => ({
   numAcceptedQuestions: data.userProfileUserQuestionProgressV2,
+});
+
+export const formatFollowersData = (data: FollowersData) => ({
+  count: data.followers.users.length,
+  users: data.followers.users,
+});
+
+export const formatFollowingData = (data: FollowingData) => ({
+  count: data.following.users.length,
+  users: data.following.users,
 });

@@ -4,6 +4,8 @@ import {
   dailyProblem,
   discussComments,
   discussTopic,
+  followers,
+  following,
   languageStats,
   officialSolution,
   problems,
@@ -28,6 +30,8 @@ const queryResponseMap = [
   { identifier: 'selectProblem', response: selectProblem },
   { identifier: 'UserProfileCalendar', response: userCalendar },
   { identifier: 'languageStats', response: languageStats },
+  { identifier: 'getFollowers', response: followers },
+  { identifier: 'getFollowing', response: following },
   { identifier: 'skillStats', response: skillStats },
   {
     identifier: 'userProfileUserQuestionProgressV2',
@@ -42,6 +46,16 @@ const queryResponseMap = [
 
 export const handlers = [
   msw.http.post('https://leetcode.com/graphql', async (ctx) => {
+    const test = await ctx.request.json();
+    const typed = test as { query: string };
+
+    const matchedQuery = queryResponseMap.find((mapping) =>
+      typed.query.includes(mapping.identifier),
+    );
+
+    return msw.HttpResponse.json(matchedQuery?.response ?? {});
+  }),
+  msw.http.post('https://leetcode.com/graphql/noty', async (ctx) => {
     const test = await ctx.request.json();
     const typed = test as { query: string };
 
