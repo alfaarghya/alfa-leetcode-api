@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Alfa-LeetCode API
+  title: alfa-leetcode-api
   version: 2.0.3
   description: >
     A well-documented REST API wrapper around the LeetCode GraphQL API.
@@ -23,7 +23,7 @@ servers:
 tags:
   - name: General
     description: API overview and health
-  - name: 👤User Details
+  - name: User Details
     description: Endpoints for retrieving LeetCode user profile information
   - name: Problems
     description: Endpoints for fetching problem data, daily questions, and solutions
@@ -31,8 +31,6 @@ tags:
     description: Endpoints for fetching trending discussions and comments
   - name: Contests
     description: Endpoints for contest listings and upcoming contests
-  - name: Deprecated
-    description: Legacy endpoints — these will be removed in a future version
 
 # ─────────────────────────────────────────────
 # Reusable Schemas
@@ -1059,155 +1057,3 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-
-  # ── Deprecated ────────────────────────────
-  /userProfile/{id}:
-    get:
-      tags: [Deprecated]
-      summary: "[Deprecated] Get user profile by ID"
-      description: >
-        **Deprecated** — use `/{username}/profile` instead.
-        This endpoint will be removed in a future version.
-      deprecated: true
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: LeetCode username
-          schema:
-            type: string
-      responses:
-        '200':
-          description: User profile data
-          content:
-            application/json:
-              schema:
-                type: object
-        '404':
-          description: User not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-
-  /dailyQuestion:
-    get:
-      tags: [Deprecated]
-      summary: "[Deprecated] Get daily question"
-      description: >
-        **Deprecated** — use `/daily` instead.
-        This endpoint will be removed in a future version.
-      deprecated: true
-      responses:
-        '200':
-          description: Daily question data
-          content:
-            application/json:
-              schema:
-                type: object
-        '500':
-          description: LeetCode GraphQL error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-
-  /selectQuestion:
-    get:
-      tags: [Deprecated]
-      summary: "[Deprecated] Get selected question (raw)"
-      description: >
-        **Deprecated** — use `/select/raw` instead.
-        This endpoint will be removed in a future version.
-      deprecated: true
-      parameters:
-        - $ref: '#/components/parameters/titleSlug'
-      responses:
-        '200':
-          description: Raw problem data
-          content:
-            application/json:
-              schema:
-                type: object
-
-  /skillStats/{username}:
-    get:
-      tags: [Deprecated]
-      summary: "[Deprecated] Get skill stats"
-      description: >
-        **Deprecated** — use `/{username}/skill` instead.
-        This endpoint will be removed in a future version.
-      deprecated: true
-      parameters:
-        - $ref: '#/components/parameters/username'
-      responses:
-        '200':
-          description: Skill stats
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SkillStats'
-
-  /userProfileUserQuestionProgressV2/{userSlug}:
-    get:
-      tags: [Deprecated]
-      summary: "[Deprecated] Get user question progress"
-      description: >
-        **Deprecated** — use `/{username}/progress` instead.
-        This endpoint will be removed in a future version.
-      deprecated: true
-      parameters:
-        - name: userSlug
-          in: path
-          required: true
-          description: LeetCode username
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Progress stats
-          content:
-            application/json:
-              schema:
-                type: object
-
-  /languageStats:
-    get:
-      tags: [Deprecated]
-      summary: "[Deprecated] Get language stats"
-      description: >
-        **Deprecated** — use `/{username}/language` instead.
-        This endpoint will be removed in a future version.
-      deprecated: true
-      parameters:
-        - name: username
-          in: query
-          required: true
-          description: LeetCode username
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Language stats
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LanguageStats'
-
-  /userContestRankingInfo/{username}:
-    get:
-      tags: [Deprecated]
-      summary: "[Deprecated] Get user contest ranking info"
-      description: >
-        **Deprecated** — use `/{username}/contest` instead.
-        This endpoint will be removed in a future version.
-      deprecated: true
-      parameters:
-        - $ref: '#/components/parameters/username'
-      responses:
-        '200':
-          description: Contest ranking info
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ContestInfo'
