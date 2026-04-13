@@ -34,6 +34,15 @@ import {
   userQuestionProgressQuery,
   userContestRankingInfoQuery,
   skillStatsQuery,
+  submissionDetailsQuery,
+  streakCounterQuery,
+  userStatusQuery,
+  questionNoteQuery,
+  updateNoteMutation,
+  addToFavoriteMutation,
+  removeFromFavoriteMutation,
+  favoritesListsQuery,
+  problemStatusQuery,
 } from '../src/GQLQueries';
 import type {
   DailyProblemData,
@@ -42,8 +51,17 @@ import type {
   TrendingDiscussionObject,
   UserData,
 } from '../src/types';
-import { executeGraphQL } from './serverUtils';
-import { SubmissionArgs, CalendarArgs, ProblemArgs, DiscussCommentsArgs, Variables } from './types';
+import { executeGraphQL, requireAuth } from './serverUtils';
+import {
+  SubmissionArgs,
+  CalendarArgs,
+  ProblemArgs,
+  DiscussCommentsArgs,
+  Variables,
+  SubmissionDetailArgs,
+  QuestionNoteArgs,
+  ToggleFavoriteArgs,
+} from './types';
 
 // Builds GraphQL variables by filtering out undefined, null, and NaN values.
 function buildVariables(input: Record<string, unknown>): Variables {
@@ -233,4 +251,86 @@ export async function getUserContestRankingInfo(username: string) {
 // Retrieves raw question progress data for a user.
 export async function getUserProgressRaw(username: string) {
   return executeGraphQL(userQuestionProgressQuery, { username });
+}
+
+// ── Auth-required tools ─────────────────────────────────────────────
+
+// Retrieves authenticated user status (username, premium, checkedIn, notifications).
+export async function getUserStatus() {
+  requireAuth();
+  const data = (await executeGraphQL(userStatusQuery, {})) as { userStatus: Record<string, unknown> };
+  return data.userStatus;
+}
+
+// Retrieves the daily streak counter for the authenticated user.
+export async function getUserStreak() {
+  requireAuth();
+  const data = (await executeGraphQL(streakCounterQuery, {})) as { streakCounter: Record<string, unknown> };
+  return data.streakCounter;
+}
+
+// Retrieves the authenticated user's favorite/bookmark lists with problem IDs.
+export async function getUserFavorites() {
+  requireAuth();
+  const data = (await executeGraphQL(favoritesListsQuery, {})) as {
+    favoritesLists: { allFavorites: unknown[] };
+  };
+  return data.favoritesLists.allFavorites;
+}
+
+// Retrieves full submission details including source code.
+export async function getSubmissionDetails(args: SubmissionDetailArgs) {
+  requireAuth();
+  const data = (await executeGraphQL(submissionDetailsQuery, {
+    submissionId: args.submissionId,
+  })) as { submissionDetails: Record<string, unknown> };
+  return data.submissionDetails;
+}
+
+// Retrieves the user's personal note on a problem.
+export async function getProblemNote(titleSlug: string) {
+  requireAuth();
+  const data = (await executeGraphQL(questionNoteQuery, { titleSlug })) as {
+    question: { questionId: string; questionFrontendId: string; title: string; titleSlug: string; note: string | null };
+  };
+  return data.question;
+}
+
+// Creates or updates a personal note on a problem.
+export async function updateProblemNote(args: QuestionNoteArgs) {
+  requireAuth();
+  const data = (await executeGraphQL(updateNoteMutation, {
+    titleSlug: args.titleSlug,
+    content: args.note ?? '',
+  })) as { updateNote: { question: Record<string, unknown> } };
+  return data.updateNote.question;
+}
+
+// Adds a problem to a favorites list.
+export async function addProblemToFavorite(args: ToggleFavoriteArgs) {
+  requireAuth();
+  const data = (await executeGraphQL(addToFavoriteMutation, {
+    favoriteIdHash: args.favoriteIdHash,
+    questionId: args.questionId,
+  })) as { addQuestionToFavorite: { ok: boolean } };
+  return { ok: data.addQuestionToFavorite.ok };
+}
+
+// Removes a problem from a favorites list.
+export async function removeProblemFromFavorite(args: ToggleFavoriteArgs) {
+  requireAuth();
+  const data = (await executeGraphQL(removeFromFavoriteMutation, {
+    favoriteIdHash: args.favoriteIdHash,
+    questionId: args.questionId,
+  })) as { removeQuestionFromFavorite: { ok: boolean } };
+  return { ok: data.removeQuestionFromFavorite.ok };
+}
+
+// Retrieves solve status for a specific problem (lighter than full select).
+export async function getProblemStatus(titleSlug: string) {
+  requireAuth();
+  const data = (await executeGraphQL(problemStatusQuery, { titleSlug })) as {
+    question: Record<string, unknown>;
+  };
+  return data.question;
 }

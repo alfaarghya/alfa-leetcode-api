@@ -77,3 +77,18 @@ export type ToolExecutor = () => Promise<unknown>;
 export interface ToolModule {
   register(server: McpServer): void;
 }
+
+/**
+ * Arguments for submission detail lookups (auth required).
+ */
+export type SubmissionDetailArgs = { submissionId: number };
+
+/**
+ * Arguments for question note operations (auth required).
+ */
+export type QuestionNoteArgs = { titleSlug: string; note?: string };
+
+/**
+ * Arguments for favorite toggle operations (auth required).
+ */
+export type ToggleFavoriteArgs = { favoriteIdHash: string; questionId: string };

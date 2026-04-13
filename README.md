@@ -137,6 +137,49 @@ The build step produces `dist/mcp/index.js`, the entry point used by MCP clients
 
 To run only a subset of tools, append the module name (`users`, `problems`, or `discussions`) as an extra argument or set the `MCP_SERVER_MODE` environment variable.
 
+### Authenticated requests (optional)
+
+By default, the MCP server makes unauthenticated requests to the LeetCode GraphQL API. To access user-specific data (submission history, private problem lists, contest participation, etc.), you can provide session cookies via a JSON file:
+
+1. Extract your LeetCode session cookies using the included helper script:
+
+   ```bash
+   npx playwright install chromium   # first time only
+   npx ts-node scripts/extract-cookies.ts ./leetcode-cookies.json
+   ```
+
+   This opens a browser window — log in to LeetCode and the script will automatically detect your session and save the cookies. The output file is set to `600` permissions (owner-only read/write).
+
+   Alternatively, create the JSON file manually with cookies from your browser's developer tools:
+
+   ```json
+   {
+     "LEETCODE_SESSION": "<your session cookie>",
+     "csrftoken": "<your csrf token>",
+     "cf_clearance": "<your cf_clearance cookie>"
+   }
+   ```
+
+2. Set the `LEETCODE_COOKIES_FILE` environment variable in your MCP client config:
+
+   ```json
+   {
+     "mcpServers": {
+       "leetcode-suite": {
+         "command": "node",
+         "args": ["C:\\path\\to\\alfa-leetcode-api\\dist\\mcp\\index.js"],
+         "env": {
+           "LEETCODE_COOKIES_FILE": "C:\\path\\to\\leetcode-cookies.json"
+         }
+       }
+     }
+   }
+   ```
+
+When the env var is set, the server injects `Cookie` and `x-csrftoken` headers into all GraphQL requests. When unset, it falls back to unauthenticated mode silently.
+
+> **Note:** The `LEETCODE_SESSION` cookie typically expires after ~14 days. Re-run the extraction script to refresh it.
+
 ### MCP Inspector
 
 Use the Inspector to debug tools locally:

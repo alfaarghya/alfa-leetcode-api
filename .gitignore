@@ -15,6 +15,9 @@ bun.lockb
 coverage/
 .vitest/
 
+# Auth cookies (may contain session secrets)
+leetcode-cookies.json
+
 CLAUDE.md
 .claude/
 .specify/
