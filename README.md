@@ -170,14 +170,18 @@ Follow this documentation <a href="CONTRIBUTING.md" target="_blank">CONTRIBUTING
 | [@kvqn](https://www.github.com/kvqn)                 | PORT environment variable                                                        |
 | [@changchunlei](https://github.com/changchunlei)     | New Endpoints - language stats, integrated user profile, contest and discussions |
 | [@merakesh99](https://github.com/merakesh99)         | Hot reload issue solved                                                          |
-| [@Ayushman2004](https://github.com/Ayushman2004)     | Added Endpoints: all-contests, upcoming-contests                                 |
 | [@ajchili](https://github.com/ajchili)               | Skip param to fetch problems                                                     |
 | [@theinit01](https://github.com/theinit01)           | Temp fix for skip                                                                |
+| [@sazsu](https://github.com/sazsu)                   | Docs improvements (capitalization, clarity, typo fixes)                          |
 | [@123xylem](https://github.com/123xylem)             | Add Descriptions and Methods to API route documentation.                         |
 | [@P-M-Manmohan](https://github.com/P-M-Manmohan)     | Added filtering based on difficulty                                              |
+| [@Ar0manKhan](https://github.com/Ar0manKhan)         | Raw selected question API (`/select/raw`)                                        |
 | [@Ahmed-Armaan](https://github.com/Ahmed-Armaan)     | Update DOCS example with images                                                  |
 | [@Ayushman2004](https://github.com/Ayushman2004)     | Contest API endpoints                                                            |
 | [@devroopsaha744](https://github.com/devroopsaha744) | MCP server                                                                       |
+| [@nickbar01234](https://github.com/nickbar01234)     | Added Zod schema for contest route                                               |
+| [@DarrylMathias](https://github.com/DarrylMathias)   | Updated demo images and typo fixes                                               |
+| [@Morgan-Ngetich](https://github.com/Morgan-Ngetich) | Added Swagger documentation                                                      |
 
 ## Connect with me 📲
 
