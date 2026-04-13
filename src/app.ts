@@ -3,6 +3,7 @@ import cors from 'cors';
 import express, { type NextFunction, type Response } from 'express';
 import rateLimit from 'express-rate-limit';
 import * as leetcode from './leetCode';
+import { setupSwagger } from './swagger';
 import type { FetchUserDataRequest } from './types';
 
 const app = express();
@@ -23,6 +24,9 @@ app.use((req: express.Request, _res: Response, next: NextFunction) => {
   console.log('Requested URL:', req.originalUrl);
   next();
 });
+
+// Swagger UI must be mounted before /:username wildcard routes
+setupSwagger(app);
 
 app.get('/', (_req, res) => {
   res.json({
@@ -134,43 +138,51 @@ app.use(
 
 //get user profile details
 app.get('/:username', leetcode.userData);
+
+//get user badges
 app.get('/:username/badges', leetcode.userBadges);
+
+//get solved problem
 app.get('/:username/solved', leetcode.solvedProblem);
+
+//get user contest details
 app.get('/:username/contest', leetcode.userContest);
+
+//get user contest history
 app.get('/:username/contest/history', leetcode.userContestHistory);
+
+//get user submission
 app.get('/:username/submission', leetcode.submission);
+
+//get user acSubmission
 app.get('/:username/acSubmission', leetcode.acSubmission);
+
+//get user calendar
 app.get('/:username/calendar', leetcode.calendar);
+
+//get user skill stats
 app.get('/:username/skill/', leetcode.skillStats);
+
+//get user profile
 app.get('/:username/profile/', leetcode.userProfile);
+
+//get user language stats
 app.get('/:username/language', leetcode.languageStats);
+
+//get user progress
 app.get('/:username/progress/', leetcode.progress);
 
-/* ----- Migrated to new routes -> these will be deleted -----*/
-//get user profile calendar
-// app.get('/userProfileCalendar', leetcode.userProfileCalendar_);
+/* ----- Migrated to new routes -> these will be deleted ----- */
 
-//get user profile details
 app.get('/userProfile/:id', leetcode.userProfile_);
-
-//get daily question
 app.get('/dailyQuestion', leetcode.dailyQuestion_);
-
-// get the selection question raw
 app.get('/selectQuestion', leetcode.selectProblemRaw);
-
-//get skill stats
 app.get('/skillStats/:username', leetcode.skillStats_);
-
-//get user profile question progress
 app.get(
   '/userProfileUserQuestionProgressV2/:userSlug',
   leetcode.userProfileUserQuestionProgressV2_,
 );
-
 app.get('/languageStats', leetcode.languageStats_);
-
-//get user contest ranking info
 app.get('/userContestRankingInfo/:username', leetcode.userContestRankingInfo_);
 
 export default app;

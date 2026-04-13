@@ -1,0 +1,1059 @@
+openapi: 3.0.0
+info:
+  title: alfa-leetcode-api
+  version: 2.0.3
+  description: >
+    A well-documented REST API wrapper around the LeetCode GraphQL API.
+    Provides endpoints for user profiles, badges, solved questions, contest
+    details, contest history, submissions, daily questions, selected problems,
+    and problem lists.
+  contact:
+    name: alfaarghya
+    url: https://github.com/alfaarghya/alfa-leetcode-api
+  license:
+    name: MIT
+    url: https://github.com/alfaarghya/alfa-leetcode-api/blob/main/LICENSE
+
+servers:
+  - url: http://localhost:3000
+    description: Local development server
+  - url: https://alfa-leetcode-api.onrender.com
+    description: Production server
+
+tags:
+  - name: General
+    description: API overview and health
+  - name: User Details
+    description: Endpoints for retrieving LeetCode user profile information
+  - name: Problems
+    description: Endpoints for fetching problem data, daily questions, and solutions
+  - name: Discussions
+    description: Endpoints for fetching trending discussions and comments
+  - name: Contests
+    description: Endpoints for contest listings and upcoming contests
+
+# ─────────────────────────────────────────────
+# Reusable Schemas
+# ─────────────────────────────────────────────
+components:
+  schemas:
+
+    ApiOverview:
+      type: object
+      properties:
+        apiOverview:
+          type: string
+        apiEndpointsLink:
+          type: string
+        routes:
+          type: object
+
+    Badge:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        shortName:
+          type: string
+        displayName:
+          type: string
+        icon:
+          type: string
+        medal:
+          type: object
+          properties:
+            slug:
+              type: string
+            config:
+              type: object
+              properties:
+                iconGif:
+                  type: string
+                iconGifBackground:
+                  type: string
+        creationDate:
+          type: string
+          format: date
+
+    SolvedCount:
+      type: object
+      properties:
+        solvedProblem:
+          type: integer
+        easySolved:
+          type: integer
+        mediumSolved:
+          type: integer
+        hardSolved:
+          type: integer
+
+    ContestInfo:
+      type: object
+      properties:
+        contestAttend:
+          type: integer
+        contestRating:
+          type: number
+        contestGlobalRanking:
+          type: integer
+        totalParticipants:
+          type: integer
+        contestTopPercentage:
+          type: number
+
+    ContestHistoryEntry:
+      type: object
+      properties:
+        attended:
+          type: boolean
+        trendDirection:
+          type: string
+        problemsSolved:
+          type: integer
+        totalProblems:
+          type: integer
+        finishTimeInSeconds:
+          type: integer
+        rating:
+          type: number
+        ranking:
+          type: integer
+        contest:
+          type: object
+          properties:
+            title:
+              type: string
+            startTime:
+              type: integer
+
+    Submission:
+      type: object
+      properties:
+        title:
+          type: string
+        titleSlug:
+          type: string
+        timestamp:
+          type: string
+        statusDisplay:
+          type: string
+        lang:
+          type: string
+
+    CalendarData:
+      type: object
+      properties:
+        submissionCalendar:
+          type: object
+          additionalProperties:
+            type: integer
+          description: Map of Unix timestamps (as strings) to submission counts
+
+    SkillStats:
+      type: object
+      properties:
+        advanced:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillEntry'
+        intermediate:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillEntry'
+        fundamental:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillEntry'
+
+    SkillEntry:
+      type: object
+      properties:
+        tagName:
+          type: string
+        tagSlug:
+          type: string
+        problemsSolved:
+          type: integer
+
+    LanguageStats:
+      type: object
+      properties:
+        languageProblemCount:
+          type: array
+          items:
+            type: object
+            properties:
+              languageName:
+                type: string
+              problemsSolved:
+                type: integer
+
+    Problem:
+      type: object
+      properties:
+        questionId:
+          type: string
+        questionFrontendId:
+          type: string
+        title:
+          type: string
+        titleSlug:
+          type: string
+        difficulty:
+          type: string
+          enum: [Easy, Medium, Hard]
+        topicTags:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              slug:
+                type: string
+        isPaidOnly:
+          type: boolean
+        hasSolution:
+          type: boolean
+        hasVideoSolution:
+          type: boolean
+
+    ProblemDetail:
+      allOf:
+        - $ref: '#/components/schemas/Problem'
+        - type: object
+          properties:
+            content:
+              type: string
+              description: HTML formatted problem description
+            hints:
+              type: array
+              items:
+                type: string
+            sampleTestCase:
+              type: string
+            exampleTestcases:
+              type: string
+            similarQuestions:
+              type: string
+
+    ProblemList:
+      type: object
+      properties:
+        problemsetQuestionList:
+          type: object
+          properties:
+            total:
+              type: integer
+            questions:
+              type: array
+              items:
+                $ref: '#/components/schemas/Problem'
+
+    DailyProblem:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        link:
+          type: string
+        question:
+          $ref: '#/components/schemas/Problem'
+
+    DiscussionTopic:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        commentCount:
+          type: integer
+        viewCount:
+          type: integer
+        pinned:
+          type: boolean
+        tags:
+          type: array
+          items:
+            type: string
+        post:
+          type: object
+          properties:
+            id:
+              type: integer
+            content:
+              type: string
+            creationDate:
+              type: integer
+            author:
+              type: object
+              properties:
+                username:
+                  type: string
+                profile:
+                  type: object
+                  properties:
+                    userAvatar:
+                      type: string
+
+    Contest:
+      type: object
+      properties:
+        title:
+          type: string
+        titleSlug:
+          type: string
+        startTime:
+          type: integer
+        duration:
+          type: integer
+        originStartTime:
+          type: integer
+        isVirtual:
+          type: boolean
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: "User not found"
+
+  parameters:
+    username:
+      name: username
+      in: path
+      required: true
+      description: LeetCode username
+      schema:
+        type: string
+      example: alfaarghya
+
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Number of results to return (default 20)
+      schema:
+        type: integer
+        default: 20
+        minimum: 1
+      example: 10
+
+    year:
+      name: year
+      in: query
+      required: false
+      description: Year for calendar data (default is current year)
+      schema:
+        type: integer
+      example: 2025
+
+    titleSlug:
+      name: titleSlug
+      in: query
+      required: true
+      description: The URL slug of the problem (e.g. "two-sum")
+      schema:
+        type: string
+      example: two-sum
+
+    topicId:
+      name: topicId
+      in: path
+      required: true
+      description: The discussion topic ID
+      schema:
+        type: integer
+      example: 123456
+
+# ─────────────────────────────────────────────
+# Paths
+# ─────────────────────────────────────────────
+paths:
+
+  # ── General ──────────────────────────────
+  /:
+    get:
+      tags: [General]
+      summary: API overview
+      description: Returns a summary of all available endpoints and their descriptions.
+      responses:
+        '200':
+          description: API overview object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiOverview'
+
+  # ── Discussions ───────────────────────────
+  /trendingDiscuss:
+    get:
+      tags: [Discussions]
+      summary: Get trending discussions
+      description: Returns the top trending discussion topics on LeetCode.
+      parameters:
+        - name: first
+          in: query
+          required: false
+          description: Number of trending discussions to return (default 20)
+          schema:
+            type: integer
+            default: 20
+          example: 20
+      responses:
+        '200':
+          description: List of trending discussion topics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  trendingDiscuss:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DiscussionTopic'
+        '500':
+          description: LeetCode GraphQL error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /discussTopic/{topicId}:
+    get:
+      tags: [Discussions]
+      summary: Get a discussion topic
+      description: Returns details for a specific discussion topic by its ID.
+      parameters:
+        - $ref: '#/components/parameters/topicId'
+      responses:
+        '200':
+          description: Discussion topic details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscussionTopic'
+        '404':
+          description: Topic not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /discussComments/{topicId}:
+    get:
+      tags: [Discussions]
+      summary: Get comments for a discussion topic
+      description: Returns all comments for a given discussion topic.
+      parameters:
+        - $ref: '#/components/parameters/topicId'
+      responses:
+        '200':
+          description: List of comments for the discussion topic
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        content:
+                          type: string
+                        creationDate:
+                          type: integer
+                        author:
+                          type: object
+                          properties:
+                            username:
+                              type: string
+        '404':
+          description: Topic not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # ── Problems ──────────────────────────────
+  /daily:
+    get:
+      tags: [Problems]
+      summary: Get daily problem
+      description: Returns the current LeetCode daily challenge problem with full details.
+      responses:
+        '200':
+          description: Today's daily problem
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DailyProblem'
+        '500':
+          description: LeetCode GraphQL error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /daily/raw:
+    get:
+      tags: [Problems]
+      summary: Get raw daily problem
+      description: Returns the raw LeetCode GraphQL response for the daily challenge problem.
+      responses:
+        '200':
+          description: Raw daily problem data
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: LeetCode GraphQL error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /select:
+    get:
+      tags: [Problems]
+      summary: Get a selected problem
+      description: Returns full details for a specific problem by its title slug.
+      parameters:
+        - $ref: '#/components/parameters/titleSlug'
+      responses:
+        '200':
+          description: Problem details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        '404':
+          description: Problem not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /select/raw:
+    get:
+      tags: [Problems]
+      summary: Get raw selected problem
+      description: Returns the raw LeetCode GraphQL response for a specific problem by its title slug.
+      parameters:
+        - $ref: '#/components/parameters/titleSlug'
+      responses:
+        '200':
+          description: Raw problem data
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Problem not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /officialSolution:
+    get:
+      tags: [Problems]
+      summary: Get official solution for a problem
+      description: Returns the official LeetCode editorial/solution for a given problem.
+      parameters:
+        - $ref: '#/components/parameters/titleSlug'
+      responses:
+        '200':
+          description: Official solution content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  question:
+                    type: object
+                    properties:
+                      titleSlug:
+                        type: string
+                      solution:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          title:
+                            type: string
+                          content:
+                            type: string
+                          contentTypeId:
+                            type: string
+        '404':
+          description: Solution not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /problems:
+    get:
+      tags: [Problems]
+      summary: Get list of problems
+      description: >
+        Returns a paginated list of LeetCode problems. Supports filtering by
+        difficulty, topic tags, and pagination via limit and skip.
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - name: skip
+          in: query
+          required: false
+          description: Number of problems to skip (for pagination)
+          schema:
+            type: integer
+            default: 0
+          example: 100
+        - name: difficulty
+          in: query
+          required: false
+          description: Filter by difficulty level
+          schema:
+            type: string
+            enum: [EASY, MEDIUM, HARD]
+          example: EASY
+        - name: tags
+          in: query
+          required: false
+          description: Filter by topic tags, separated by `+` (e.g. `array+math`)
+          schema:
+            type: string
+          example: array+math
+      responses:
+        '200':
+          description: Paginated list of problems
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemList'
+        '500':
+          description: LeetCode GraphQL error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # ── Contests ──────────────────────────────
+  /contests:
+    get:
+      tags: [Contests]
+      summary: Get all contests
+      description: Returns a list of all LeetCode contests.
+      responses:
+        '200':
+          description: List of contests
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contests:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Contest'
+        '500':
+          description: LeetCode GraphQL error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /contests/upcoming:
+    get:
+      tags: [Contests]
+      summary: Get upcoming contests
+      description: Returns a list of upcoming LeetCode contests.
+      responses:
+        '200':
+          description: List of upcoming contests
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  upcomingContests:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Contest'
+        '500':
+          description: LeetCode GraphQL error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # ── User ──────────────────────────────────
+  /{username}:
+    get:
+      tags: [User]
+      summary: Get user profile summary
+      description: Returns a combined summary of a user's LeetCode profile data.
+      parameters:
+        - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: User profile summary
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  profile:
+                    type: object
+                  solved:
+                    $ref: '#/components/schemas/SolvedCount'
+                  contest:
+                    $ref: '#/components/schemas/ContestInfo'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /{username}/profile:
+    get:
+      tags: [User]
+      summary: Get full user profile
+      description: Returns full LeetCode profile details for a given user.
+      parameters:
+        - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: Full user profile
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  githubUrl:
+                    type: string
+                  twitterUrl:
+                    type: string
+                  linkedinUrl:
+                    type: string
+                  profile:
+                    type: object
+                    properties:
+                      realName:
+                        type: string
+                      userAvatar:
+                        type: string
+                      birthday:
+                        type: string
+                      ranking:
+                        type: integer
+                      reputation:
+                        type: integer
+                      school:
+                        type: string
+                      countryName:
+                        type: string
+                      company:
+                        type: string
+                      jobTitle:
+                        type: string
+                      aboutMe:
+                        type: string
+                      skillTags:
+                        type: array
+                        items:
+                          type: string
+                      websites:
+                        type: array
+                        items:
+                          type: string
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /{username}/badges:
+    get:
+      tags: [User]
+      summary: Get user badges
+      description: Returns all badges earned by the user.
+      parameters:
+        - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: List of user badges
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  badges:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Badge'
+                  upcomingBadges:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Badge'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /{username}/solved:
+    get:
+      tags: [User]
+      summary: Get total solved problems count
+      description: Returns the total number of problems solved by the user, broken down by difficulty.
+      parameters:
+        - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: Solved problems count
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SolvedCount'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /{username}/contest:
+    get:
+      tags: [User]
+      summary: Get user contest details
+      description: Returns a summary of the user's contest performance and ranking.
+      parameters:
+        - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: Contest details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContestInfo'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /{username}/contest/history:
+    get:
+      tags: [User]
+      summary: Get user contest history
+      description: Returns the full contest participation history for the user.
+      parameters:
+        - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: Contest history
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contestHistory:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContestHistoryEntry'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /{username}/submission:
+    get:
+      tags: [User]
+      summary: Get recent submissions
+      description: Returns the user's most recent submissions (default last 20).
+      parameters:
+        - $ref: '#/components/parameters/username'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: List of recent submissions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  submission:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Submission'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /{username}/acSubmission:
+    get:
+      tags: [User]
+      summary: Get recent accepted submissions
+      description: Returns the user's most recent accepted (AC) submissions (default last 20).
+      parameters:
+        - $ref: '#/components/parameters/username'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: List of accepted submissions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  acSubmission:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Submission'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /{username}/calendar:
+    get:
+      tags: [User]
+      summary: Get submission calendar
+      description: Returns the user's submission activity calendar. Optionally filter by year.
+      parameters:
+        - $ref: '#/components/parameters/username'
+        - $ref: '#/components/parameters/year'
+      responses:
+        '200':
+          description: Submission calendar data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarData'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /{username}/skill:
+    get:
+      tags: [User]
+      summary: Get user skill stats
+      description: Returns the user's skill statistics grouped by advanced, intermediate, and fundamental.
+      parameters:
+        - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: Skill stats
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillStats'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /{username}/language:
+    get:
+      tags: [User]
+      summary: Get user language stats
+      description: Returns the number of problems the user has solved per programming language.
+      parameters:
+        - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: Language stats
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LanguageStats'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /{username}/progress:
+    get:
+      tags: [User]
+      summary: Get user progress stats
+      description: Returns the user's question progress stats across difficulty levels.
+      parameters:
+        - $ref: '#/components/parameters/username'
+      responses:
+        '200':
+          description: Progress stats
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userProfileUserQuestionProgressV2:
+                    type: object
+                    properties:
+                      numAcceptedQuestions:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            difficulty:
+                              type: string
+                            count:
+                              type: integer
+                      numFailedQuestions:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            difficulty:
+                              type: string
+                            count:
+                              type: integer
+                      numUntouchedQuestions:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            difficulty:
+                              type: string
+                            count:
+                              type: integer
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
