@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: alfa-leetcode-api
-  version: 2.0.3
+  version: 2.0.4
   description: >
     A well-documented REST API wrapper around the LeetCode GraphQL API.
     Provides endpoints for user profiles, badges, solved questions, contest
