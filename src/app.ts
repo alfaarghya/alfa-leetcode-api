@@ -2,11 +2,13 @@ import apicache from 'apicache';
 import cors from 'cors';
 import express, { type NextFunction, type Response } from 'express';
 import rateLimit from 'express-rate-limit';
+import config from './config';
 import * as leetcode from './leetCode';
 import { setupSwagger } from './swagger';
 import type { FetchUserDataRequest } from './types';
 
 const app = express();
+app.set('trust proxy', config.trustProxy);
 const cache = apicache.middleware;
 
 const limiter = rateLimit({
