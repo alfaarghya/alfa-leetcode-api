@@ -85,8 +85,21 @@ Clone the repository:
 ```bash
 git clone https://github.com/<username>/alfa-leetcode-api.git
 cd alfa-leetcode-api # go to the project
+```
+
+### Without Docker
+
+```bash
 npm install # install required modules
 npm run dev # run the project
 ```
+
+### With Docker 🐳
+
+```bash
+docker-compose up # start the dev server with hot reload
+```
+
+This uses the `dev` target from the Dockerfile, mounts your local code into the container, and supports hot reload — any changes you make locally will be reflected immediately.
 
 Thank you for helping us to improve **alfa-leetcode-api**!
