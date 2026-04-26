@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# Enforce conventional commit format
+# Examples:
+#   feat: add user authentication
+#   fix(api): handle null response
+#   docs: update README
+
+commit_msg_file="$1"
+commit_msg=$(head -n1 "$commit_msg_file")
+
+if ! echo "$commit_msg" | grep -qE "^(feat|fix|chore|docs|style|refactor|test|build|ci|perf|bump)(\(.+\))?!?: .+"; then
+    echo ""
+    echo "❌ Invalid commit message format."
+    echo ""
+    echo "   Commit messages must follow conventional commits:"
+    echo ""
+    echo "   <type>[(optional scope)]: <description>"
+    echo ""
+    echo "   Allowed types:"
+    echo "     feat     – new feature"
+    echo "     fix      – bug fix"
+    echo "     chore    – maintenance, tooling"
+    echo "     docs     – documentation only"
+    echo "     style    – formatting, no code change"
+    echo "     refactor – code restructuring"
+    echo "     test     – adding or updating tests"
+    echo "     build    – build system or deps"
+    echo "     ci       – CI/CD changes"
+    echo "     perf     – performance improvements"
+    echo "     bump     – version bump"
+    echo ""
+    echo "   Examples:"
+    echo "     feat: add login page"
+    echo "     fix(api): handle timeout error"
+    echo "     docs: update CLAUDE.md"
+    echo ""
+    exit 1
+fi
+
+echo "✅ Commit message format valid"
