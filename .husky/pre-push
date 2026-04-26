@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Build before pushing to catch compilation errors
+echo "🔨 Building..."
+npm run build || exit 1
+
+# Run tests before pushing to remote
+echo "🧪 Running tests..."
+npm run test
