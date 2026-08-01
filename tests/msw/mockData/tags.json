@@ -1,0 +1,11 @@
+{
+  "data": {
+    "questionTopicTags": {
+      "edges": [
+        { "node": { "name": "Array", "slug": "array" } },
+        { "node": { "name": "Hash Table", "slug": "hash-table" } },
+        { "node": { "name": "Dynamic Programming", "slug": "dynamic-programming" } }
+      ]
+    }
+  }
+}

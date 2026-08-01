@@ -3,6 +3,7 @@ import {
   formatDailyData,
   formatProblemsData,
   formatQuestionData,
+  formatTagsData,
 } from '../../../src/FormatUtils/problemData';
 
 describe('problemData FormatUtils', () => {
@@ -384,6 +385,42 @@ describe('problemData FormatUtils', () => {
       expect(result.totalQuestions).toBe(2000);
       expect(result.count).toBe(50);
       expect(result.problemsetQuestionList).toHaveLength(50);
+    });
+  });
+
+  describe('formatTagsData', () => {
+    it('should flatten tag edges into a plain list', () => {
+      const input = {
+        questionTopicTags: {
+          edges: [
+            { node: { name: 'Array', slug: 'array' } },
+            {
+              node: {
+                name: 'Dynamic Programming',
+                slug: 'dynamic-programming',
+              },
+            },
+          ],
+        },
+      };
+
+      const result = formatTagsData(input as never);
+
+      expect(result).toEqual({
+        count: 2,
+        tags: [
+          { name: 'Array', slug: 'array' },
+          { name: 'Dynamic Programming', slug: 'dynamic-programming' },
+        ],
+      });
+    });
+
+    it('should handle an empty tag list', () => {
+      const input = { questionTopicTags: { edges: [] } };
+
+      const result = formatTagsData(input as never);
+
+      expect(result).toEqual({ count: 0, tags: [] });
     });
   });
 });

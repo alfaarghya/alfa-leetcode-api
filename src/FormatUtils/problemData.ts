@@ -2,6 +2,7 @@ import type {
   DailyProblemData,
   ProblemSetQuestionListData,
   SelectProblemData,
+  TagsData,
 } from '../types';
 
 export const formatDailyData = (data: DailyProblemData) => ({
@@ -52,3 +53,8 @@ export const formatProblemsData = (data: ProblemSetQuestionListData) => ({
   count: data.problemsetQuestionList.questions.length,
   problemsetQuestionList: data.problemsetQuestionList.questions,
 });
+
+export const formatTagsData = (data: TagsData) => {
+  const tags = data.questionTopicTags.edges.map((edge) => edge.node);
+  return { count: tags.length, tags };
+};

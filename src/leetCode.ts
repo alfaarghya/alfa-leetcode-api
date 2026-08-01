@@ -167,6 +167,10 @@ export const selectProblemRaw = (req: Request, res: Response) => {
   }
 };
 
+export const tags = (_req: Request, res: Response) => {
+  controllers.fetchTags(res, gqlQueries.tagsQuery, formatUtils.formatTagsData);
+};
+
 export const problems = (
   req: Request<
     object,
