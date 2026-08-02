@@ -8,6 +8,7 @@ import {
   getProblemSet,
   getSelectProblem,
   getSelectProblemRaw,
+  getTags,
 } from '../leetCodeService';
 import { runTool } from '../serverUtils';
 import { ToolModule } from '../types';
@@ -70,6 +71,15 @@ export class ProblemToolsModule implements ToolModule {
           },
         },
       async ({ limit, skip, tags, difficulty }) => runTool(() => getProblemSet({ limit, skip, tags, difficulty })),
+    );
+
+    server.registerTool(
+      'leetcode_problem_tags',
+      {
+        title: 'Problem Topic Tags',
+        description: 'Retrieves the full list of LeetCode problem topic tags',
+      },
+      async () => runTool(() => getTags()),
     );
 
     server.registerTool(

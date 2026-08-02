@@ -11,6 +11,7 @@ import {
   formatSolvedProblemsData,
   formatSubmissionCalendarData,
   formatSubmissionData,
+  formatTagsData,
   formatTrendingCategoryTopicData,
   formatSkillStats,
   formatUserData,
@@ -28,6 +29,7 @@ import {
   problemListQuery,
   selectProblemQuery,
   submissionQuery,
+  tagsQuery,
   trendingDiscussQuery,
   userProfileCalendarQuery,
   userProfileQuery,
@@ -39,6 +41,7 @@ import type {
   DailyProblemData,
   ProblemSetQuestionListData,
   SelectProblemData,
+  TagsData,
   TrendingDiscussionObject,
   UserData,
 } from '../src/types';
@@ -164,6 +167,12 @@ export async function getProblemSet(args: ProblemArgs) {
   });
   const data = await executeGraphQL(problemListQuery, variables);
   return formatProblemsData(data as ProblemSetQuestionListData);
+}
+
+// Retrieves the full list of problem topic tags.
+export async function getTags() {
+  const data = await executeGraphQL(tagsQuery, {});
+  return formatTagsData(data as TagsData);
 }
 
 // Retrieves the official solution for a problem.

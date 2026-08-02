@@ -120,6 +120,12 @@ export interface ProblemSetQuestionListData {
   };
 }
 
+export interface TagsData {
+  questionTopicTags: {
+    edges: { node: { name: string; slug: string } }[];
+  };
+}
+
 interface Submission {
   title: string;
   titleSlug: string;

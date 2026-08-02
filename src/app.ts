@@ -76,6 +76,7 @@ app.get('/', (_req, res) => {
           '/daily': 'Get daily Problem',
           '/daily/raw': 'Get raw daily Problem',
         },
+        '/tags': 'Get list of all problem topic tags',
         problemList: {
           '/problems': 'Get list of 20 problems',
           '/problems?limit=50': 'Get list of some problems',
@@ -117,6 +118,9 @@ app.get('/select/raw', leetcode.selectProblemRaw);
 
 //get official solution
 app.get('/officialSolution', leetcode.officialSolution);
+
+//get list of all topic tags
+app.get('/tags', leetcode.tags);
 
 //get list of problems
 app.get('/problems', leetcode.problems);

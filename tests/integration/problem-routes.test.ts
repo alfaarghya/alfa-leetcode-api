@@ -144,6 +144,28 @@ describe('Problem Routes Integration Tests', () => {
     });
   });
 
+  describe('GET /tags', () => {
+    it('should return the full list of topic tags', async () => {
+      const response = await request(app).get('/tags');
+
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('count');
+      expect(response.body).toHaveProperty('tags');
+      expect(Array.isArray(response.body.tags)).toBe(true);
+      expect(response.body.count).toBe(response.body.tags.length);
+    });
+
+    it('should return tags with name and slug fields', async () => {
+      const response = await request(app).get('/tags');
+
+      expect(response.status).toBe(200);
+      if (response.body.tags.length > 0) {
+        expect(response.body.tags[0]).toHaveProperty('name');
+        expect(response.body.tags[0]).toHaveProperty('slug');
+      }
+    });
+  });
+
   describe('GET /problems', () => {
     it('should return list of 20 problems by default', async () => {
       const response = await request(app).get('/problems');

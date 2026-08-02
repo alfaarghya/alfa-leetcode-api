@@ -11,6 +11,7 @@ export { default as AcSubmissionQuery } from './recentAcSubmit';
 export { default as submissionQuery } from './recentSubmit';
 export { default as selectProblemQuery } from './selectProblem';
 export { skillStatsQuery } from './skillStats';
+export { default as tagsQuery } from './tags';
 export { default as trendingDiscussQuery } from './trendingDiscuss';
 export { userContestRankingInfoQuery } from './userContestRanking';
 export { default as userProfileQuery } from './userProfile';

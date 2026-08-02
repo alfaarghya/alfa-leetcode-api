@@ -11,6 +11,7 @@ export { default as selectProblem } from './selectProblem.json';
 export { default as singleUser } from './singleUser.json';
 export { default as singleUserContests } from './singleUserContests.json';
 export { default as skillStats } from './skillStats.json';
+export { default as tags } from './tags.json';
 export { default as trendingDiscuss } from './trendingDiscuss.json';
 export { default as userCalendar } from './userCalendar.json';
 export { default as userQuestionProgress } from './userQuestionProgress.json';

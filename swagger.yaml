@@ -252,6 +252,21 @@ components:
               items:
                 $ref: '#/components/schemas/Problem'
 
+    Tags:
+      type: object
+      properties:
+        count:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              slug:
+                type: string
+
     DailyProblem:
       type: object
       properties:
@@ -598,6 +613,27 @@ paths:
                             type: string
         '404':
           description: Solution not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /tags:
+    get:
+      tags: [Problems]
+      summary: Get all problem topic tags
+      description: >
+        Returns the full list of LeetCode problem topic tags (name and slug),
+        useful for discovering valid values for the `/problems?tags=` filter.
+      responses:
+        '200':
+          description: List of all topic tags
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tags'
+        '500':
+          description: LeetCode GraphQL error
           content:
             application/json:
               schema:
