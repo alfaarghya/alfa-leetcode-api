@@ -1,34 +1,13 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { GraphQLParams, GraphQLClientError, ToolResponse, ToolExecutor, ToolModule } from './types';
+import { GraphQLClientError, ToolResponse, ToolExecutor, ToolModule } from './types';
 
-const GRAPHQL_ENDPOINT = 'https://leetcode.com/graphql';
 export const SERVER_VERSION = '1.0.0';
 
-// Executes a GraphQL query against the LeetCode API.
-export async function executeGraphQL(query: string, variables: GraphQLParams = {}): Promise<unknown> {
-  const requestInit: RequestInit = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Referer: 'https://leetcode.com',
-    },
-    body: JSON.stringify({ query, variables }),
-  };
-
-  const response = await fetch(GRAPHQL_ENDPOINT, requestInit);
-  const payload = await response.json();
-
-  if (!response.ok) {
-    throw new GraphQLClientError('HTTP error when calling LeetCode GraphQL', response.status, payload);
-  }
-
-  if (payload?.errors) {
-    throw new GraphQLClientError('LeetCode GraphQL responded with errors', response.status, payload);
-  }
-
-  return payload.data;
-}
+// The LeetCode GraphQL client now lives in src/internal so it can be shared
+// with the Graftcode service layer (src/services/*) instead of being
+// duplicated. Re-exported here so existing imports (`./serverUtils`) keep working.
+export { executeGraphQL } from '../src/internal/graphqlClient';
 
 // Converts data to tool content format.
 export function toToolContent(data: unknown): { type: 'text'; text: string }[] {

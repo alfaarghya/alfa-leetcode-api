@@ -3,6 +3,7 @@ node_modules
 leetCode-api.txt
 
 dist
+dist-graft
 
 # Package manager lock files (we use npm only)
 yarn.lock

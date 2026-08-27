@@ -49,17 +49,10 @@ export type GraphQLParams = Record<string, unknown>;
 
 /**
  * Custom error class for GraphQL client errors.
+ * Now defined in src/internal (shared with the Graftcode service layer) and
+ * re-exported here so existing imports (`./types`) keep working.
  */
-export class GraphQLClientError extends Error {
-  readonly status: number;
-  readonly body: unknown;
-
-  constructor(message: string, status: number, body: unknown) {
-    super(message);
-    this.status = status;
-    this.body = body;
-  }
-}
+export { GraphQLClientError } from '../src/internal/graphqlClient';
 
 /**
  * Response type for tools.
