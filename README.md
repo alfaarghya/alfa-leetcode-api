@@ -102,6 +102,10 @@ During development, it's recommended to utilize the API locally. To do so, you c
 
 Follow this documentation <a href="MCP.md" target="_blank">MCP.md</a>
 
+## Graftcode integration 🔗
+
+The same data is also available as a strongly-typed client - `npm install` a generated package and call methods directly, no hand-written `fetch` calls or response types required. Follow this documentation <a href="GRAFTCODE.md" target="_blank">GRAFTCODE.md</a>
+
 ## Wanna Contribute 🤔??
 
 Follow this documentation <a href="CONTRIBUTING.md" target="_blank">CONTRIBUTING.md</a>

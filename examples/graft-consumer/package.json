@@ -1,0 +1,15 @@
+{
+  "name": "graft-consumer-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal example consuming alfa-leetcode-api's Graftcode surface as a strongly-typed client instead of hand-writing a fetch-based API consumer. See README.md.",
+  "type": "module",
+  "main": "smoke-test.mjs",
+  "scripts": {
+    "start": "node smoke-test.mjs"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@graft/npm-alfa-leetcode-api-graft": "^1.0.0"
+  }
+}
