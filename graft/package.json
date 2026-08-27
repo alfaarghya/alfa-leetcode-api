@@ -1,0 +1,7 @@
+{
+  "name": "alfa-leetcode-api-graft",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Graftcode surface for alfa-leetcode-api - static service classes hosted via gg. See GRAFTCODE.md.",
+  "main": "services/index.js"
+}

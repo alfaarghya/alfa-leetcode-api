@@ -8,6 +8,7 @@
     "prepare": "husky",
     "prestart": "npm run build",
     "build": "tsc",
+    "build:graft": "tsc -p tsconfig.graft.json",
     "dev": "nodemon --exec ts-node src/index.ts",
     "start": "node dist/index.js",
     "test": "vitest run",

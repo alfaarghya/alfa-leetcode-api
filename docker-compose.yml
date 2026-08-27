@@ -13,3 +13,16 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+
+  # Graftcode Gateway - exposes src/services/* as a strongly-typed client for
+  # any language. See GRAFTCODE.md. Port 8080 -> gg service calls (container
+  # port 80), port 8081 -> Graftcode Vision (container port 81).
+  graft:
+    build:
+      context: .
+      target: graft
+    container_name: alfa-leetcode-api-graft
+    ports:
+      - '8080:80'
+      - '8081:81'
+    restart: 'no'
