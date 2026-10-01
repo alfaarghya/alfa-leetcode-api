@@ -126,6 +126,31 @@ export interface TagsData {
   };
 }
 
+// Solved questions (authenticated, single-user)
+export interface SolvedQuestion {
+  frontendId: string;
+  title: string;
+  titleSlug: string;
+  difficulty: Difficulty;
+  lastSubmittedAt: string;
+  numSubmitted: number;
+  questionStatus: string;
+  topicTags: { name: string; slug: string }[];
+}
+
+export interface SolvedQuestionsData {
+  // null when LeetCode rejects the session cookie
+  userProgressQuestionList: null | {
+    totalNum: number;
+    questions: SolvedQuestion[];
+  };
+}
+
+export interface LeetCodeCredentials {
+  session: string;
+  csrfToken: string;
+}
+
 interface Submission {
   title: string;
   titleSlug: string;

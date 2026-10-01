@@ -31,6 +31,10 @@ tags:
     description: Endpoints for fetching trending discussions and comments
   - name: Contests
     description: Endpoints for contest listings and upcoming contests
+  - name: My Account
+    description: >
+      Endpoints for your own LeetCode account. Disabled unless the server is
+      configured with your session cookie.
 
 # ─────────────────────────────────────────────
 # Reusable Schemas
@@ -266,6 +270,46 @@ components:
                 type: string
               slug:
                 type: string
+
+    SolvedQuestions:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of questions returned in this response
+        totalSolved:
+          type: integer
+          description: Total solved count reported by LeetCode
+        solvedQuestions:
+          type: array
+          items:
+            type: object
+            properties:
+              questionFrontendId:
+                type: string
+              title:
+                type: string
+              titleSlug:
+                type: string
+              link:
+                type: string
+              difficulty:
+                type: string
+                enum: [Easy, Medium, Hard]
+              lastSubmittedAt:
+                type: string
+                format: date-time
+              numSubmitted:
+                type: integer
+              topicTags:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    slug:
+                      type: string
 
     DailyProblem:
       type: object
@@ -634,6 +678,54 @@ paths:
                 $ref: '#/components/schemas/Tags'
         '500':
           description: LeetCode GraphQL error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # ── My Account ───────────────────────────
+  /me/solvedQuestions:
+    get:
+      tags: [My Account]
+      summary: Get every question you have solved
+      description: >
+        Returns the complete list of questions solved by the account whose
+        session cookie the server is configured with, including difficulty,
+        topic tags, attempt count and the last submission time.
+
+
+        LeetCode only exposes a full solved list to the session that owns it,
+        so this cannot be requested for an arbitrary username. The server reads
+        `LEETCODE_SESSION` (and optionally `LEETCODE_CSRF_TOKEN`) from its own
+        environment; the caller never sends credentials. The route returns 503
+        until those are set.
+
+
+        Results are paged from LeetCode 100 at a time, so a large solved list
+        costs several upstream requests per call.
+      responses:
+        '200':
+          description: The full list of solved questions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SolvedQuestions'
+        '401':
+          description: >
+            LeetCode rejected the configured session cookie, usually because it
+            expired (they last about 14 days)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: LeetCode GraphQL responded with errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: No session cookie is configured on the server
           content:
             application/json:
               schema:

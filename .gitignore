@@ -2,6 +2,10 @@ node_modules
 .vscode
 leetCode-api.txt
 
+# Never commit LEETCODE_SESSION or other secrets
+.env
+.env.*
+
 dist
 
 # Package manager lock files (we use npm only)
