@@ -1,0 +1,45 @@
+{
+  "data": {
+    "userProgressQuestionList": {
+      "totalNum": 3,
+      "questions": [
+        {
+          "frontendId": "1",
+          "title": "Two Sum",
+          "titleSlug": "two-sum",
+          "difficulty": "EASY",
+          "lastSubmittedAt": "2026-01-14T10:12:30+00:00",
+          "numSubmitted": 2,
+          "questionStatus": "SOLVED",
+          "topicTags": [
+            { "name": "Array", "slug": "array" },
+            { "name": "Hash Table", "slug": "hash-table" }
+          ]
+        },
+        {
+          "frontendId": "2",
+          "title": "Add Two Numbers",
+          "titleSlug": "add-two-numbers",
+          "difficulty": "MEDIUM",
+          "lastSubmittedAt": "2026-01-12T08:04:11+00:00",
+          "numSubmitted": 1,
+          "questionStatus": "SOLVED",
+          "topicTags": [{ "name": "Linked List", "slug": "linked-list" }]
+        },
+        {
+          "frontendId": "4",
+          "title": "Median of Two Sorted Arrays",
+          "titleSlug": "median-of-two-sorted-arrays",
+          "difficulty": "HARD",
+          "lastSubmittedAt": "2026-01-02T19:44:02+00:00",
+          "numSubmitted": 5,
+          "questionStatus": "SOLVED",
+          "topicTags": [
+            { "name": "Array", "slug": "array" },
+            { "name": "Binary Search", "slug": "binary-search" }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -126,6 +126,39 @@ export interface TagsData {
   };
 }
 
+// Solved questions (authenticated, single-user)
+
+/**
+ * userProgressQuestionList reports difficulty in upper case, unlike
+ * questionList and the public user endpoints, which use title case
+ * ('Easy' | 'Medium' | 'Hard'). Verified against the live API.
+ */
+export type SolvedQuestionDifficulty = 'EASY' | 'MEDIUM' | 'HARD';
+
+export interface SolvedQuestion {
+  frontendId: string;
+  title: string;
+  titleSlug: string;
+  difficulty: SolvedQuestionDifficulty;
+  lastSubmittedAt: string;
+  numSubmitted: number;
+  questionStatus: string;
+  topicTags: { name: string; slug: string }[];
+}
+
+export interface SolvedQuestionsData {
+  // null when LeetCode rejects the session cookie
+  userProgressQuestionList: null | {
+    totalNum: number;
+    questions: SolvedQuestion[];
+  };
+}
+
+export interface LeetCodeCredentials {
+  session: string;
+  csrfToken: string;
+}
+
 interface Submission {
   title: string;
   titleSlug: string;

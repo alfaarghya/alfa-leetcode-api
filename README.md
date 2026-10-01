@@ -90,6 +90,29 @@ docker run -p 3000:3000 alfaarghya/alfa-leetcode-api:2.0.4
 | _Discussion Topic_    | `/discussTopic/:topicId`    | Get discussion topic            | <a href="./public/demo/demo33.png" target="_blank">click here</a> |
 | _Discussion Comment_  | `/discussComments/:topicId` | Get discussion comments         | <a href="./public/demo/demo34.png" target="_blank">click here</a> |
 
+### 🔐 Your Own Account
+
+These endpoints return data that LeetCode only exposes to the session that owns it, so they work for **your** account only and are **disabled by default**.
+
+| Details            | Endpoint              | Description                        |
+| :----------------- | :-------------------- | :--------------------------------- |
+| _Solved Questions_ | `/me/solvedQuestions` | Get every question you have solved |
+
+Why this exists: the public API only reports solved _counts_, and `/:username/acSubmission` is capped at 20 entries by LeetCode. A complete solved list is only available to an authenticated session.
+
+**Setup.** The server reads your session from its own environment — the credential never travels in a request:
+
+```bash
+export LEETCODE_SESSION="<your LEETCODE_SESSION cookie>"
+export LEETCODE_CSRF_TOKEN="<your csrftoken cookie>"  # optional
+npm run dev
+```
+
+Both values come from your browser cookies for `leetcode.com` (DevTools → Application → Cookies). While `LEETCODE_SESSION` is unset the route returns `503`.
+
+> [!WARNING]
+> A `LEETCODE_SESSION` cookie grants full control of your LeetCode account. Only set it on a server you run yourself — never on a shared or public deployment, and never commit it. The cookie expires roughly every 14 days, after which the route returns `401` until you set a fresh value.
+
 ### 💡 Rate Limit
 
 I've implemented a rate limit to prevent any potential server overload issues.

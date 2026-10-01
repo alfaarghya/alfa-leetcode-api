@@ -3,6 +3,7 @@ import { withSchema } from './formatter';
 import { formatContestData as _formatContestData } from './userData';
 
 export * from './problemData';
+export * from './solvedQuestionsData';
 export * from './trendingTopicData';
 export * from './userData';
 export * from './userProfileData';

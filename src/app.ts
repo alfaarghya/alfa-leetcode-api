@@ -59,6 +59,12 @@ app.get('/', (_req, res) => {
         '/:username/language': 'Get your language stats',
         '/:username/progress': 'Get your progress stats',
       },
+      ownAccount: {
+        description:
+          'Endpoints for your own LeetCode account. Disabled unless LEETCODE_SESSION is set in the server environment, as LeetCode only exposes this data to the session that owns it.',
+        Method: 'GET',
+        '/me/solvedQuestions': 'Get every question you have solved',
+      },
       discussion: {
         description: 'Endpoints for fetching discussion topics and comments.',
         Method: 'GET',
@@ -128,6 +134,9 @@ app.get('/problems', leetcode.problems);
 //get contests
 app.get('/contests', leetcode.allContests);
 app.get('/contests/upcoming', leetcode.upcomingContests);
+
+//get your own solved questions -> must stay above the /:username wildcard
+app.get('/me/solvedQuestions', leetcode.solvedQuestions);
 
 // Construct options object on all user routes.
 app.use(

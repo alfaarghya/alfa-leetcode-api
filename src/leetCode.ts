@@ -1,5 +1,6 @@
 import type { Request, Response } from 'express';
 import * as controllers from './Controllers';
+import config from './config';
 import * as formatUtils from './FormatUtils';
 import * as gqlQueries from './GQLQueries';
 import type { TransformedUserDataRequest } from './types';
@@ -169,6 +170,20 @@ export const selectProblemRaw = (req: Request, res: Response) => {
 
 export const tags = (_req: Request, res: Response) => {
   controllers.fetchTags(res, gqlQueries.tagsQuery, formatUtils.formatTagsData);
+};
+
+//Your own solved questions. Needs LEETCODE_SESSION in the server environment,
+//since LeetCode only exposes a full solved list to the session that owns it.
+export const solvedQuestions = (_req: Request, res: Response) => {
+  controllers.fetchSolvedQuestions(
+    res,
+    gqlQueries.solvedQuestionsQuery,
+    {
+      session: config.leetcodeSession,
+      csrfToken: config.leetcodeCsrfToken,
+    },
+    formatUtils.formatSolvedQuestionsData,
+  );
 };
 
 export const problems = (
