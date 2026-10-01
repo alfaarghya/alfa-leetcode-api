@@ -10,7 +10,7 @@ const makeQuestion = (id: number): SolvedQuestion => ({
   frontendId: String(id),
   title: `Problem ${id}`,
   titleSlug: `problem-${id}`,
-  difficulty: 'Easy',
+  difficulty: 'EASY',
   lastSubmittedAt: '2026-01-14T10:12:30+00:00',
   numSubmitted: 1,
   questionStatus: 'SOLVED',

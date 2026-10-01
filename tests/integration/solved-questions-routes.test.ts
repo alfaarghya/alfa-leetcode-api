@@ -55,15 +55,16 @@ describe('Solved Questions Route Integration Tests', () => {
       expect(first.link).toBe('https://leetcode.com/problems/two-sum');
     });
 
-    it('should cover every difficulty returned by LeetCode', async () => {
+    it('should pass difficulty through in the upper case LeetCode sends', async () => {
       const response = await request(app).get('/me/solvedQuestions');
 
       expect(response.status).toBe(200);
+      // userProgressQuestionList reports EASY/MEDIUM/HARD, not title case
       expect(
         response.body.solvedQuestions.map(
           (q: { difficulty: string }) => q.difficulty,
         ),
-      ).toEqual(['Easy', 'Medium', 'Hard']);
+      ).toEqual(['EASY', 'MEDIUM', 'HARD']);
     });
 
     it('should not be swallowed by the /:username wildcard route', async () => {

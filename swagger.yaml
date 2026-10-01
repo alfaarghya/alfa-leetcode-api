@@ -295,7 +295,8 @@ components:
                 type: string
               difficulty:
                 type: string
-                enum: [Easy, Medium, Hard]
+                # upper case here, unlike /problems, which returns title case
+                enum: [EASY, MEDIUM, HARD]
               lastSubmittedAt:
                 type: string
                 format: date-time

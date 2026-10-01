@@ -6,7 +6,7 @@ const question: SolvedQuestion = {
   frontendId: '1',
   title: 'Two Sum',
   titleSlug: 'two-sum',
-  difficulty: 'Easy',
+  difficulty: 'EASY',
   lastSubmittedAt: '2026-01-14T10:12:30+00:00',
   numSubmitted: 2,
   questionStatus: 'SOLVED',
@@ -32,7 +32,7 @@ describe('formatSolvedQuestionsData', () => {
       title: 'Two Sum',
       titleSlug: 'two-sum',
       link: 'https://leetcode.com/problems/two-sum',
-      difficulty: 'Easy',
+      difficulty: 'EASY',
       lastSubmittedAt: '2026-01-14T10:12:30+00:00',
       numSubmitted: 2,
       topicTags: [
